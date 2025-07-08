@@ -1,0 +1,55 @@
+{
+  "name": "@yieldxyz/sdk",
+  "version": "0.0.1",
+  "description": "Yield.xyz SDK",
+  "type": "module",
+  "scripts": {
+    "lint": "biome check . && tsc -b",
+    "format": "biome check . --write",
+    "build": "pnpm run generate-api && rslib build",
+    "generate-api": "orval --config ./orval.config.ts",
+    "prepare": "husky"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./msw": {
+      "types": "./dist/src/api/index.msw.d.ts",
+      "import": "./dist/index.msw.js",
+      "default": "./dist/index.msw.js"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@faker-js/faker": "^9",
+    "msw": "^2"
+  },
+  "peerDependenciesMeta": {
+    "@faker-js/faker": {
+      "optional": true
+    },
+    "msw": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@faker-js/faker": "^9.9.0",
+    "@rslib/core": "^0.10.5",
+    "@types/node": "^24.0.10",
+    "husky": "^9.1.7",
+    "msw": "^2.10.3",
+    "orval": "^7.10.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: jdx/mise-action@v2
+
+      - run: mise x -- pnpm install --frozen-lockfile
+
+      - run: mise x -- pnpm run build
+
+      - run: mise x -- pnpm run lint
