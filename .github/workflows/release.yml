@@ -27,7 +27,6 @@ jobs:
 
       - name: Fix executable files for changesets
         run: |
-          chmod -x .husky/commit-msg
           chmod -x .husky/pre-commit
 
       - name: Create release pull request or publish to npm
