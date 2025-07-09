@@ -22,10 +22,34 @@ export default defineConfig({
           path: apiClientPath,
           name: "customFetch",
         },
-        transformer: (val) => ({
-          ...val,
-          operationName: val.operationName?.replace(/controller/i, ""),
-        }),
+        transformer: (val) => {
+          let operationName = val.operationName?.replace(/controller/i, "");
+
+          // Remove redundant prefixes to clean up function names
+          if (operationName) {
+            operationName = operationName
+              .replace(/^yields/i, "")
+              .replace(/^actions/i, "")
+              .replace(/^transactions/i, "")
+              .replace(/^networks/i, "")
+              .replace(/^providers/i, "")
+              .replace(/^health/i, "");
+
+            // Ensure the first letter is lowercase
+            operationName =
+              operationName.charAt(0).toLowerCase() + operationName.slice(1);
+
+            // Handle special cases where removing prefix leaves empty or awkward names
+            if (operationName === "health" || operationName === "") {
+              operationName = "health";
+            }
+          }
+
+          return {
+            ...val,
+            operationName,
+          };
+        },
       },
     },
     input: {
