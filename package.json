@@ -8,7 +8,9 @@
     "format": "biome check . --write",
     "build": "pnpm run generate-api && rslib build",
     "generate-api": "orval --config ./orval.config.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "changeset publish",
+    "version": "changeset version"
   },
   "main": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.0",
+    "@changesets/cli": "^2.29.5",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@faker-js/faker": "^9.9.0",

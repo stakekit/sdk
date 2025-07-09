@@ -1,0 +1,44 @@
+name: Release or publish
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release or publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@v2
+
+      - run: mise x -- pnpm install --frozen-lockfile
+
+      - run: mise x -- pnpm run build
+
+      - name: Fix executable files for changesets
+        run: |
+          chmod -x .husky/commit-msg
+          chmod -x .husky/pre-commit
+
+      - name: Create release pull request or publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm run release
+          version: pnpm run version
+          commit: 'ci(changesets): version packages'
+          title: 'ci(changesets): version packages'
+          commitMode: github-api
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
