@@ -31,7 +31,6 @@ import { sdk } from '@yieldxyz/sdk';
 
 sdk.configure({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.yield.xyz/', // Optional, defaults to this URL
 });
 ```
 
