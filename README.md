@@ -45,19 +45,19 @@ sdk.configure({
 });
 
 // Discover yield opportunities
-const yields = await sdk.api.yieldsGetYields({
+const yields = await sdk.api.getYields({
   network: 'ethereum',
   limit: 10
 });
 
 // Get balances for a specific yield and address
-const balances = await sdk.api.yieldsGetYieldBalances('yield-id', {
+const balances = await sdk.api.getYieldBalances('yield-id', {
   address: '0x1234567890123456789012345678901234567890',
   arguments: {}
 });
 
 // Enter a yield position
-const action = await sdk.api.actionsEnterYield({
+const action = await sdk.api.enterYield({
   yieldId: 'yield-id',
   address: '0x1234567890123456789012345678901234567890',
   arguments: {
@@ -72,7 +72,7 @@ const action = await sdk.api.actionsEnterYield({
 
 #### Get All Yields
 ```typescript
-const yields = await sdk.api.yieldsGetYields({
+const yields = await sdk.api.getYields({
   network?: string;
   limit?: number;
   offset?: number;
@@ -81,12 +81,12 @@ const yields = await sdk.api.yieldsGetYields({
 
 #### Get Specific Yield
 ```typescript
-const yieldDetails = await sdk.api.yieldsGetYield('yield-id');
+const yieldDetails = await sdk.api.getYield('yield-id');
 ```
 
 #### Get Yield Balances
 ```typescript
-const balances = await sdk.api.yieldsGetYieldBalances('yield-id', {
+const balances = await sdk.api.getYieldBalances('yield-id', {
   address: '0x...',
   arguments?: object
 });
@@ -94,8 +94,8 @@ const balances = await sdk.api.yieldsGetYieldBalances('yield-id', {
 
 #### Get Aggregate Balances
 ```typescript
-const aggregateBalances = await sdk.api.yieldsGetAggregateBalances({
-  requests: [
+const aggregateBalances = await sdk.api.getAggregateBalances({
+  queries: [
     {
       yieldId: 'yield-id-1',
       address: '0x...',
@@ -114,7 +114,7 @@ const aggregateBalances = await sdk.api.yieldsGetAggregateBalances({
 
 #### Enter Yield Position
 ```typescript
-const enterAction = await sdk.api.actionsEnterYield({
+const enterAction = await sdk.api.enterYield({
   yieldId: 'yield-id',
   address: '0x...',
   arguments: {
@@ -125,7 +125,7 @@ const enterAction = await sdk.api.actionsEnterYield({
 
 #### Exit Yield Position
 ```typescript
-const exitAction = await sdk.api.actionsExitYield({
+const exitAction = await sdk.api.exitYield({
   yieldId: 'yield-id',
   address: '0x...',
   arguments: {
@@ -136,17 +136,18 @@ const exitAction = await sdk.api.actionsExitYield({
 
 #### Manage Yield Position
 ```typescript
-const manageAction = await sdk.api.actionsManageYield({
+const manageAction = await sdk.api.manageYield({
   yieldId: 'yield-id',
   address: '0x...',
-  action: 'claim', // or other management actions
+  action: 'CLAIM_REWARDS', // or other management actions
+  passthrough: 'server-generated-passthrough',
   arguments: {}
 });
 ```
 
 #### Get Actions
 ```typescript
-const actions = await sdk.api.actionsGetActions({
+const actions = await sdk.api.getActions({
   address: '0x...',
   status?: 'pending' | 'completed' | 'failed',
   yieldId?: 'yield-id',
@@ -157,14 +158,14 @@ const actions = await sdk.api.actionsGetActions({
 
 #### Get Action Details
 ```typescript
-const action = await sdk.api.actionsGetAction('action-id');
+const action = await sdk.api.getAction('action-id');
 ```
 
 ### Transactions
 
 #### Submit Transaction Hash
 ```typescript
-const transaction = await sdk.api.transactionsSubmitTransactionHash(
+const transaction = await sdk.api.submitTransactionHash(
   'transaction-id',
   {
     hash: '0x...'
@@ -174,19 +175,19 @@ const transaction = await sdk.api.transactionsSubmitTransactionHash(
 
 #### Get Transaction Details
 ```typescript
-const transaction = await sdk.api.transactionsGetTransaction('transaction-id');
+const transaction = await sdk.api.getTransaction('transaction-id');
 ```
 
 ### Networks & Providers
 
 #### Get Networks
 ```typescript
-const networks = await sdk.api.networksGetNetworks();
+const networks = await sdk.api.getNetworks();
 ```
 
 #### Get Providers
 ```typescript
-const providers = await sdk.api.providersGetProviders({
+const providers = await sdk.api.getProviders({
   limit?: 10,
   offset?: 0
 });
@@ -194,14 +195,14 @@ const providers = await sdk.api.providersGetProviders({
 
 #### Get Provider Details
 ```typescript
-const provider = await sdk.api.providersGetProvider('provider-id');
+const provider = await sdk.api.getProvider('provider-id');
 ```
 
 ### Validators
 
 #### Get Yield Validators
 ```typescript
-const validators = await sdk.api.yieldsGetYieldValidators('yield-id', {
+const validators = await sdk.api.getYieldValidators('yield-id', {
   limit?: 10,
   offset?: 0
 });
@@ -211,7 +212,7 @@ const validators = await sdk.api.yieldsGetYieldValidators('yield-id', {
 
 #### Get Health Status
 ```typescript
-const healthStatus = await sdk.api.healthHealth();
+const healthStatus = await sdk.api.health();
 ```
 
 ## Advanced Configuration
@@ -236,7 +237,7 @@ const customFetch: FetchInstance = async <T>(url: string, init: RequestInit): Pr
 
 sdk.configure({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.stakek.it/',
+  baseURL: 'https://api.yield.xyz/',
   fetchInstance: customFetch
 });
 ```
@@ -284,7 +285,7 @@ import { sdk } from '@yieldxyz/sdk';
 
 try {
   // This will throw an error if not configured
-  const yields = await sdk.api.yieldsGetYields();
+  const yields = await sdk.api.getYields();
 } catch (error) {
   console.error('SDK not configured:', error.message);
 }
@@ -293,7 +294,7 @@ try {
 sdk.configure({ apiKey: 'your-api-key' });
 
 // Now API calls will work
-const yields = await sdk.api.yieldsGetYields();
+const yields = await sdk.api.getYields();
 ```
 
 ## Development
