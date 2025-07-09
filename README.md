@@ -1,16 +1,41 @@
 # Yield.xyz SDK
 
-A TypeScript SDK for interacting with the Yield.xyz API, providing access to DeFi yield opportunities across multiple blockchain networks.
+A TypeScript SDK for the **most complete API for integrating non-custodial, on-chain yield** — including staking, restaking, liquid staking, DeFi lending, RWA yields, vaults, and more across 70+ blockchain networks.
 
-## Features
+Originally developed as the backbone of Omni (one of the most advanced staking wallets in Web3), Yield.xyz now powers platforms like **Ledger, Zerion, and Tangem**, serving **4M+ users** and supporting **hundreds of millions in monthly volume**.
 
-- 🔗 **Multi-chain Support**: Access yield opportunities across various blockchain networks
-- 📊 **Yield Management**: Enter, exit, and manage yield positions programmatically
-- 💰 **Balance Tracking**: Monitor your balances across different protocols and networks
-- 🔍 **Discovery**: Find and filter yield opportunities by network, protocol, and other criteria
-- 🛠️ **Transaction Management**: Generate and track blockchain transactions
-- 🎯 **TypeScript First**: Full type safety with auto-generated types from OpenAPI spec
-- 🧪 **Testing Support**: Built-in MSW (Mock Service Worker) support for testing
+## Why Yield.xyz?
+
+- **🔗 Unified Interface** — Every protocol and opportunity is abstracted into a consistent, schema-based format: one format for metadata, one for actions, one for balances
+- **⚡ Instant Integration** — No need to write custom logic for Cosmos staking vs. Aave lending — integrate once, support everything
+- **🔐 Self-Custodial by Design** — Transactions are returned fully constructed but never executed — you sign and broadcast using any infrastructure: wallets, smart contracts, or custody platforms
+- **🏗️ Battle-Tested Infrastructure** — Built on the stack that powers millions of real-world transactions and billions in TVL
+- **🔄 Composable** — Chain together multiple yields to build cross-chain workflows (e.g. bridge + stake + restake) in a single declarative call
+- **🌐 Chain-Agnostic** — Works across EVM and non-EVM chains, including Ethereum, Cosmos, Tron, Solana, and more
+- **💰 Monetizable** — Configure deposit, performance, and management fees or earn validator rebates directly in your integration
+- **🎯 TypeScript First** — Full type safety with auto-generated types from OpenAPI spec
+- **🧪 Testing Support** — Built-in MSW (Mock Service Worker) support for testing
+
+## What You Can Build
+
+- **💳 Wallets** — Add staking, DeFi flows with full control over UX, signing, and monetization
+- **🏦 Custodians & Fintechs** — Offer on-chain yield on crypto or stablecoin balances with full transparency and fee control
+- **🤖 AI Agents** — Query all available yield actions and execute optimal strategies using standard schemas
+- **🔗 Aggregators & Infra** — Compose multi-step flows using a unified transaction model — no chain-specific code required
+
+## Core Concepts
+
+### Yields
+Each yield represents an opportunity: staking, restaking, lending, vaults, or RWA strategies — with standardized metadata, reward mechanics, and execution logic across 70+ networks.
+
+### Actions
+Each yield supports consistent actions like `enter`, `exit`, and `manage`, using schema-based inputs. No matter if it's Ethereum staking or Cosmos delegation — the interface is the same.
+
+### Balances
+Retrieve unified views of user positions across all lifecycle stages: active, pending, cooldown, claimable, and more — all in a consistent format regardless of the underlying protocol.
+
+### Protocols
+Yields can be grouped under known brands or ecosystems (e.g. Aave, Cosmos, EigenLayer) for easy discovery and filtering.
 
 ## Installation
 
@@ -31,6 +56,7 @@ import { sdk } from '@yieldxyz/sdk';
 
 sdk.configure({
   apiKey: 'your-api-key',
+  baseURL: 'https://api.yield.xyz/', // Optional, defaults to this URL
 });
 ```
 
@@ -44,65 +70,81 @@ sdk.configure({
   apiKey: 'your-api-key',
 });
 
-// Discover yield opportunities
-const yields = await sdk.api.yieldsGetYields({
+// Discover yield opportunities across all networks and protocols
+const yields = await sdk.api.getYields({
   network: 'ethereum',
   limit: 10
 });
 
 // Get balances for a specific yield and address
-const balances = await sdk.api.yieldsGetYieldBalances('yield-id', {
+const balances = await sdk.api.getYieldBalances('ethereum-lido-staking', {
   address: '0x1234567890123456789012345678901234567890',
   arguments: {}
 });
 
-// Enter a yield position
-const action = await sdk.api.actionsEnterYield({
-  yieldId: 'yield-id',
+// Enter a yield position (returns unsigned transactions)
+const action = await sdk.api.enterYield({
+  yieldId: 'ethereum-lido-staking',
   address: '0x1234567890123456789012345678901234567890',
   arguments: {
     amount: '1000000000000000000' // 1 ETH in wei
   }
 });
+
+// The transactions are ready to sign and broadcast with your preferred method
+console.log(action.transactions); // Array of unsigned transactions
 ```
 
 ## API Reference
 
-### Yields
+### Yield Discovery
 
 #### Get All Yields
 ```typescript
-const yields = await sdk.api.yieldsGetYields({
-  network?: string;
-  limit?: number;
-  offset?: number;
+const yields = await sdk.api.getYields({
+  network?: string;        // Filter by network (ethereum, polygon, etc.)
+  token?: string;          // Filter by token symbol or address
+  inputToken?: string;     // Filter by input token
+  provider?: string;       // Filter by provider
+  limit?: number;          // Page size
+  offset?: number;         // Pagination offset
 });
 ```
 
 #### Get Specific Yield
 ```typescript
-const yieldDetails = await sdk.api.yieldsGetYield('yield-id');
+const yieldDetails = await sdk.api.getYield('ethereum-lido-staking');
 ```
 
-#### Get Yield Balances
+#### Get Yield Validators (for staking)
 ```typescript
-const balances = await sdk.api.yieldsGetYieldBalances('yield-id', {
-  address: '0x...',
-  arguments?: object
+const validators = await sdk.api.getYieldValidators('cosmos-staking', {
+  limit?: 10,
+  offset?: 0
 });
 ```
 
-#### Get Aggregate Balances
+### Balance Management
+
+#### Get Yield Balances
 ```typescript
-const aggregateBalances = await sdk.api.yieldsGetAggregateBalances({
-  requests: [
+const balances = await sdk.api.getYieldBalances('ethereum-lido-staking', {
+  address: '0x...',
+  arguments?: object // Protocol-specific parameters
+});
+```
+
+#### Get Aggregate Balances (multiple yields)
+```typescript
+const aggregateBalances = await sdk.api.getAggregateBalances({
+  queries: [
     {
-      yieldId: 'yield-id-1',
+      yieldId: 'ethereum-lido-staking',
       address: '0x...',
       network: 'ethereum'
     },
     {
-      yieldId: 'yield-id-2',
+      yieldId: 'polygon-staking', 
       address: '0x...',
       network: 'polygon'
     }
@@ -110,12 +152,12 @@ const aggregateBalances = await sdk.api.yieldsGetAggregateBalances({
 });
 ```
 
-### Actions
+### Action Execution
 
 #### Enter Yield Position
 ```typescript
-const enterAction = await sdk.api.actionsEnterYield({
-  yieldId: 'yield-id',
+const enterAction = await sdk.api.enterYield({
+  yieldId: 'ethereum-lido-staking',
   address: '0x...',
   arguments: {
     amount: '1000000000000000000'
@@ -125,8 +167,8 @@ const enterAction = await sdk.api.actionsEnterYield({
 
 #### Exit Yield Position
 ```typescript
-const exitAction = await sdk.api.actionsExitYield({
-  yieldId: 'yield-id',
+const exitAction = await sdk.api.exitYield({
+  yieldId: 'ethereum-lido-staking',
   address: '0x...',
   arguments: {
     amount: '1000000000000000000'
@@ -136,20 +178,22 @@ const exitAction = await sdk.api.actionsExitYield({
 
 #### Manage Yield Position
 ```typescript
-const manageAction = await sdk.api.actionsManageYield({
-  yieldId: 'yield-id',
+const manageAction = await sdk.api.manageYield({
+  yieldId: 'ethereum-lido-staking',
   address: '0x...',
-  action: 'claim', // or other management actions
+  action: 'CLAIM_REWARDS', // Available actions from balance.pendingActions
+  passthrough: 'server-generated-passthrough', // From balance query
   arguments: {}
 });
 ```
 
-#### Get Actions
+#### Get User Actions
 ```typescript
-const actions = await sdk.api.actionsGetActions({
+const actions = await sdk.api.getActions({
   address: '0x...',
-  status?: 'pending' | 'completed' | 'failed',
-  yieldId?: 'yield-id',
+  status?: 'CREATED' | 'PROCESSING' | 'SUCCESS' | 'FAILED',
+  intent?: 'enter' | 'exit' | 'manage',
+  yieldId?: 'ethereum-lido-staking',
   limit?: 10,
   offset?: 0
 });
@@ -157,36 +201,36 @@ const actions = await sdk.api.actionsGetActions({
 
 #### Get Action Details
 ```typescript
-const action = await sdk.api.actionsGetAction('action-id');
+const action = await sdk.api.getAction('action-id');
 ```
 
-### Transactions
+### Transaction Management
 
 #### Submit Transaction Hash
 ```typescript
-const transaction = await sdk.api.transactionsSubmitTransactionHash(
+const transaction = await sdk.api.submitTransactionHash(
   'transaction-id',
   {
-    hash: '0x...'
+    hash: '0x...' // After broadcasting the transaction
   }
 );
 ```
 
 #### Get Transaction Details
 ```typescript
-const transaction = await sdk.api.transactionsGetTransaction('transaction-id');
+const transaction = await sdk.api.getTransaction('transaction-id');
 ```
 
-### Networks & Providers
+### Network & Provider Discovery
 
 #### Get Networks
 ```typescript
-const networks = await sdk.api.networksGetNetworks();
+const networks = await sdk.api.getNetworks();
 ```
 
 #### Get Providers
 ```typescript
-const providers = await sdk.api.providersGetProviders({
+const providers = await sdk.api.getProviders({
   limit?: 10,
   offset?: 0
 });
@@ -194,24 +238,14 @@ const providers = await sdk.api.providersGetProviders({
 
 #### Get Provider Details
 ```typescript
-const provider = await sdk.api.providersGetProvider('provider-id');
-```
-
-### Validators
-
-#### Get Yield Validators
-```typescript
-const validators = await sdk.api.yieldsGetYieldValidators('yield-id', {
-  limit?: 10,
-  offset?: 0
-});
+const provider = await sdk.api.getProvider('lido');
 ```
 
 ### Health Check
 
-#### Get Health Status
+#### Get API Health Status
 ```typescript
-const healthStatus = await sdk.api.healthHealth();
+const healthStatus = await sdk.api.health();
 ```
 
 ## Advanced Configuration
@@ -236,7 +270,7 @@ const customFetch: FetchInstance = async <T>(url: string, init: RequestInit): Pr
 
 sdk.configure({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.stakek.it/',
+  baseURL: 'https://api.yield.xyz/',
   fetchInstance: customFetch
 });
 ```
@@ -272,6 +306,8 @@ import type {
 // All API responses are fully typed
 const handleYieldData = (yield: YieldDto) => {
   console.log(yield.id, yield.metadata.name);
+  console.log(yield.rewardRate.total); // Fully typed reward information
+  console.log(yield.mechanics.type); // staking | restaking | lending | vault | etc.
 };
 ```
 
@@ -284,7 +320,7 @@ import { sdk } from '@yieldxyz/sdk';
 
 try {
   // This will throw an error if not configured
-  const yields = await sdk.api.yieldsGetYields();
+  const yields = await sdk.api.getYields();
 } catch (error) {
   console.error('SDK not configured:', error.message);
 }
@@ -293,7 +329,7 @@ try {
 sdk.configure({ apiKey: 'your-api-key' });
 
 // Now API calls will work
-const yields = await sdk.api.yieldsGetYields();
+const yields = await sdk.api.getYields();
 ```
 
 ## Development
@@ -315,12 +351,26 @@ pnpm run lint
 pnpm run format
 ```
 
+## Getting an API Key
+
+To get started with Yield.xyz:
+
+1. Visit [docs.yield.xyz](https://docs.yield.xyz/) to learn more about the platform
+2. Contact the Yield.xyz team to get your API key and discuss your use case
+3. Review the [official documentation](https://docs.yield.xyz/) for comprehensive guides and examples
+
 ## License
 
 ISC
 
 ## Documentation & Support
 
-For comprehensive guides, API reference, and detailed examples, visit the [official Yield.xyz documentation](https://docs.yield.xyz/docs/getting-started).
+For comprehensive guides, API reference, and detailed examples, visit the [official Yield.xyz documentation](https://docs.yield.xyz/).
 
-For support, please contact the Yield.xyz team or refer to the official documentation.
+For support and partnerships:
+- Email: [support@yield.xyz](mailto:support@yield.xyz)
+- Documentation: [docs.yield.xyz](https://docs.yield.xyz/)
+
+---
+
+**Welcome to the yield layer of Web3** 🌱
