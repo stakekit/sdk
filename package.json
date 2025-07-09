@@ -38,6 +38,10 @@
   ],
   "author": "",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
     "@faker-js/faker": "^9",
     "msw": "^2"
