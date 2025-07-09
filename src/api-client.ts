@@ -17,7 +17,7 @@ export const customFetch = async <T>({
 }): Promise<T> => {
   const {
     apiKey,
-    baseURL = "https://api.stakek.it/",
+    baseURL = "https://api.yield.xyz/",
     fetchInstance,
   } = sdkConfig;
 
