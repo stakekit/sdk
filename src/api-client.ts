@@ -1,20 +1,21 @@
 import { sdkConfig } from "./sdk-config";
 
-export const customFetch = async <T>({
-  url,
-  method,
-  params,
-  headers,
-  data,
-  signal,
-}: {
-  url: string;
-  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  params?: unknown;
-  data?: unknown;
-  headers?: Record<string, string>;
-  signal?: AbortSignal;
-}): Promise<T> => {
+export const customFetch = async <T>(
+  {
+    url,
+    method,
+    params,
+    headers,
+    data,
+  }: {
+    url: string;
+    method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+    params?: unknown;
+    data?: unknown;
+    headers?: Record<string, string>;
+  },
+  options?: { signal?: AbortSignal },
+): Promise<T> => {
   const {
     apiKey,
     baseURL = "https://api.yield.xyz/",
@@ -26,7 +27,7 @@ export const customFetch = async <T>({
   const requestInit: RequestInit = {
     method,
     headers: { ...headers, "X-API-KEY": apiKey },
-    signal,
+    signal: options?.signal,
     ...(!!data && { body: JSON.stringify(data) }),
   };
 

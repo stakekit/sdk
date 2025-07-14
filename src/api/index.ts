@@ -23,16 +23,20 @@ import type {
   YieldsControllerGetYieldValidatorsParams,
 } from "./schemas";
 
+type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+
 /**
  * Retrieve a paginated list of available yield opportunities across all supported networks and protocols.
  * @summary List all yield opportunities
  */
-export const getYields = (params?: YieldsControllerGetYieldsParams) => {
-  return customFetch<YieldsControllerGetYields200>({
-    url: `/v1/yields`,
-    method: "GET",
-    params,
-  });
+export const getYields = (
+  params?: YieldsControllerGetYieldsParams,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<YieldsControllerGetYields200>(
+    { url: `/v1/yields`, method: "GET", params },
+    options,
+  );
 };
 
 /**
@@ -41,21 +45,31 @@ export const getYields = (params?: YieldsControllerGetYieldsParams) => {
  */
 export const getAggregateBalances = (
   balancesRequestDto: BalancesRequestDto,
+  options?: SecondParameter<typeof customFetch>,
 ) => {
-  return customFetch<BalancesResponseDto>({
-    url: `/v1/yields/balances`,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: balancesRequestDto,
-  });
+  return customFetch<BalancesResponseDto>(
+    {
+      url: `/v1/yields/balances`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: balancesRequestDto,
+    },
+    options,
+  );
 };
 
 /**
  * Retrieve detailed information about a specific yield opportunity including APY, tokens, protocol details, and more.
  * @summary Get yield metadata
  */
-export const getYield = (yieldId: string) => {
-  return customFetch<YieldDto>({ url: `/v1/yields/${yieldId}`, method: "GET" });
+export const getYield = (
+  yieldId: string,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<YieldDto>(
+    { url: `/v1/yields/${yieldId}`, method: "GET" },
+    options,
+  );
 };
 
 /**
@@ -65,12 +79,12 @@ export const getYield = (yieldId: string) => {
 export const getYieldBalances = (
   yieldId: string,
   params: YieldsControllerGetYieldBalancesParams,
+  options?: SecondParameter<typeof customFetch>,
 ) => {
-  return customFetch<YieldBalancesDto>({
-    url: `/v1/yields/${yieldId}/balances`,
-    method: "GET",
-    params,
-  });
+  return customFetch<YieldBalancesDto>(
+    { url: `/v1/yields/${yieldId}/balances`, method: "GET", params },
+    options,
+  );
 };
 
 /**
@@ -80,74 +94,97 @@ export const getYieldBalances = (
 export const getYieldValidators = (
   yieldId: string,
   params?: YieldsControllerGetYieldValidatorsParams,
+  options?: SecondParameter<typeof customFetch>,
 ) => {
-  return customFetch<YieldsControllerGetYieldValidators200>({
-    url: `/v1/yields/${yieldId}/validators`,
-    method: "GET",
-    params,
-  });
+  return customFetch<YieldsControllerGetYieldValidators200>(
+    { url: `/v1/yields/${yieldId}/validators`, method: "GET", params },
+    options,
+  );
 };
 
 /**
  * Retrieve all actions performed by a user, with optional filtering by yield, status, category, etc. In the future, this may include personalized action recommendations.
  * @summary Get user actions
  */
-export const getActions = (params: ActionsControllerGetActionsParams) => {
-  return customFetch<ActionsControllerGetActions200>({
-    url: `/v1/actions`,
-    method: "GET",
-    params,
-  });
+export const getActions = (
+  params: ActionsControllerGetActionsParams,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ActionsControllerGetActions200>(
+    { url: `/v1/actions`, method: "GET", params },
+    options,
+  );
 };
 
 /**
  * Retrieve detailed information about a specific action including current status, transactions, and execution details.
  * @summary Get action details
  */
-export const getAction = (actionId: string) => {
-  return customFetch<ActionDto>({
-    url: `/v1/actions/${actionId}`,
-    method: "GET",
-  });
+export const getAction = (
+  actionId: string,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ActionDto>(
+    { url: `/v1/actions/${actionId}`, method: "GET" },
+    options,
+  );
 };
 
 /**
  * Generate the transactions needed to enter a yield position with the provided parameters.
  * @summary Enter a yield
  */
-export const enterYield = (createActionDto: CreateActionDto) => {
-  return customFetch<ActionDto>({
-    url: `/v1/actions/enter`,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: createActionDto,
-  });
+export const enterYield = (
+  createActionDto: CreateActionDto,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ActionDto>(
+    {
+      url: `/v1/actions/enter`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: createActionDto,
+    },
+    options,
+  );
 };
 
 /**
  * Generate the transactions needed to exit a yield position with the provided parameters.
  * @summary Exit a yield
  */
-export const exitYield = (createActionDto: CreateActionDto) => {
-  return customFetch<ActionDto>({
-    url: `/v1/actions/exit`,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: createActionDto,
-  });
+export const exitYield = (
+  createActionDto: CreateActionDto,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ActionDto>(
+    {
+      url: `/v1/actions/exit`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: createActionDto,
+    },
+    options,
+  );
 };
 
 /**
  * Generate the transactions needed to perform management actions on a yield position.
  * @summary Manage a yield
  */
-export const manageYield = (createManageActionDto: CreateManageActionDto) => {
-  return customFetch<ActionDto>({
-    url: `/v1/actions/manage`,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: createManageActionDto,
-  });
+export const manageYield = (
+  createManageActionDto: CreateManageActionDto,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ActionDto>(
+    {
+      url: `/v1/actions/manage`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: createManageActionDto,
+    },
+    options,
+  );
 };
 
 /**
@@ -157,32 +194,42 @@ export const manageYield = (createManageActionDto: CreateManageActionDto) => {
 export const submitTransactionHash = (
   transactionId: string,
   submitHashDto: SubmitHashDto,
+  options?: SecondParameter<typeof customFetch>,
 ) => {
-  return customFetch<TransactionDto>({
-    url: `/v1/transactions/${transactionId}/submit-hash`,
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    data: submitHashDto,
-  });
+  return customFetch<TransactionDto>(
+    {
+      url: `/v1/transactions/${transactionId}/submit-hash`,
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      data: submitHashDto,
+    },
+    options,
+  );
 };
 
 /**
  * Retrieve detailed information about a specific transaction including current status, hash, and execution details.
  * @summary Get transaction details
  */
-export const getTransaction = (transactionId: string) => {
-  return customFetch<TransactionDto>({
-    url: `/v1/transactions/${transactionId}`,
-    method: "GET",
-  });
+export const getTransaction = (
+  transactionId: string,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<TransactionDto>(
+    { url: `/v1/transactions/${transactionId}`, method: "GET" },
+    options,
+  );
 };
 
 /**
  * Retrieve a list of all supported networks that can be used for filtering yields and other operations.
  * @summary List all available networks
  */
-export const getNetworks = () => {
-  return customFetch<NetworkDto[]>({ url: `/v1/networks`, method: "GET" });
+export const getNetworks = (options?: SecondParameter<typeof customFetch>) => {
+  return customFetch<NetworkDto[]>(
+    { url: `/v1/networks`, method: "GET" },
+    options,
+  );
 };
 
 /**
@@ -191,31 +238,37 @@ export const getNetworks = () => {
  */
 export const getProviders = (
   params?: ProvidersControllerGetProvidersParams,
+  options?: SecondParameter<typeof customFetch>,
 ) => {
-  return customFetch<ProvidersControllerGetProviders200>({
-    url: `/v1/providers`,
-    method: "GET",
-    params,
-  });
+  return customFetch<ProvidersControllerGetProviders200>(
+    { url: `/v1/providers`, method: "GET", params },
+    options,
+  );
 };
 
 /**
  * Returns detailed information about a specific provider.
  * @summary Get provider by ID
  */
-export const getProvider = (providerId: string) => {
-  return customFetch<ProviderDto>({
-    url: `/v1/providers/${providerId}`,
-    method: "GET",
-  });
+export const getProvider = (
+  providerId: string,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<ProviderDto>(
+    { url: `/v1/providers/${providerId}`, method: "GET" },
+    options,
+  );
 };
 
 /**
  * Get the health status of the yield API with current timestamp
  * @summary Health check
  */
-export const health = () => {
-  return customFetch<HealthStatusDto>({ url: `/health`, method: "GET" });
+export const health = (options?: SecondParameter<typeof customFetch>) => {
+  return customFetch<HealthStatusDto>(
+    { url: `/health`, method: "GET" },
+    options,
+  );
 };
 
 export type GetYieldsResult = NonNullable<
