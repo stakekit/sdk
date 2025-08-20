@@ -1,9 +1,10 @@
 import type { ArgumentFieldDtoDefault } from "./argumentFieldDtoDefault";
+import type { ArgumentFieldDtoName } from "./argumentFieldDtoName";
 import type { ArgumentFieldDtoType } from "./argumentFieldDtoType";
 
 export interface ArgumentFieldDto {
   /** Field name */
-  name: string;
+  name: ArgumentFieldDtoName;
   /** Field type */
   type: ArgumentFieldDtoType;
   /** Field label */

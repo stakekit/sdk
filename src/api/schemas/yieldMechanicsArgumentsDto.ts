@@ -4,7 +4,7 @@ import type { YieldMechanicsArgumentsDtoManage } from "./yieldMechanicsArguments
 export interface YieldMechanicsArgumentsDto {
   enter?: ArgumentSchemaDto;
   exit?: ArgumentSchemaDto;
-  /** Arguments for manage sub-actions (claim, restake, etc.). Values are ArgumentSchemaDto objects. */
+  /** Manage action schemas. Each yield supports different ActionTypes (CLAIM_UNSTAKED, CLAIM_REWARDS, etc.). Keys are ActionTypes enum values. */
   manage?: YieldMechanicsArgumentsDtoManage;
   /** Arguments for the balances endpoint (e.g., alternative addresses, chain-specific fields) */
   balance?: ArgumentSchemaDto;

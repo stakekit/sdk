@@ -13,10 +13,12 @@ import type {
   ProvidersControllerGetProviders200,
   ProvidersControllerGetProvidersParams,
   SubmitHashDto,
+  SubmitTransactionDto,
   TransactionDto,
   YieldBalancesDto,
+  YieldBalancesRequestDto,
   YieldDto,
-  YieldsControllerGetYieldBalancesParams,
+  YieldsControllerGetYieldBalancesLegacyParams,
   YieldsControllerGetYields200,
   YieldsControllerGetYieldsParams,
   YieldsControllerGetYieldValidators200,
@@ -73,16 +75,36 @@ export const getYield = (
 };
 
 /**
- * Retrieve all balances associated with a yield position for a specific wallet address, including active, pending, claimable, and withdrawable balances. The network is automatically determined from the yield configuration.
- * @summary Get balances for a specific yield and address
+ * Retrieve all balances associated with a yield opportunity for a specific wallet address, including active, pending, claimable, and withdrawable balances. The network is automatically determined from the yield configuration.
+ * @summary Get balances for a specific yield
  */
-export const getYieldBalances = (
+export const getYieldBalancesLegacy = (
   yieldId: string,
-  params: YieldsControllerGetYieldBalancesParams,
+  params: YieldsControllerGetYieldBalancesLegacyParams,
   options?: SecondParameter<typeof customFetch>,
 ) => {
   return customFetch<YieldBalancesDto>(
     { url: `/v1/yields/${yieldId}/balances`, method: "GET", params },
+    options,
+  );
+};
+
+/**
+ * Retrieve all balances associated with a yield opportunity for a specific wallet address, including active, pending, claimable, and withdrawable balances. The network is automatically determined from the yield configuration.
+ * @summary Get balances for a specific yield
+ */
+export const getYieldBalances = (
+  yieldId: string,
+  yieldBalancesRequestDto: YieldBalancesRequestDto,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<YieldBalancesDto>(
+    {
+      url: `/v1/yields/${yieldId}/balances`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: yieldBalancesRequestDto,
+    },
     options,
   );
 };
@@ -208,6 +230,26 @@ export const submitTransactionHash = (
 };
 
 /**
+ * Submit the transaction to the blockchain.
+ * @summary Submit transaction
+ */
+export const submitTransaction = (
+  transactionId: string,
+  submitTransactionDto: SubmitTransactionDto,
+  options?: SecondParameter<typeof customFetch>,
+) => {
+  return customFetch<TransactionDto>(
+    {
+      url: `/v1/transactions/${transactionId}/submit`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: submitTransactionDto,
+    },
+    options,
+  );
+};
+
+/**
  * Retrieve detailed information about a specific transaction including current status, hash, and execution details.
  * @summary Get transaction details
  */
@@ -278,6 +320,9 @@ export type GetAggregateBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getAggregateBalances>>
 >;
 export type GetYieldResult = NonNullable<Awaited<ReturnType<typeof getYield>>>;
+export type GetYieldBalancesLegacyResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldBalancesLegacy>>
+>;
 export type GetYieldBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getYieldBalances>>
 >;
@@ -301,6 +346,9 @@ export type ManageYieldResult = NonNullable<
 >;
 export type SubmitTransactionHashResult = NonNullable<
   Awaited<ReturnType<typeof submitTransactionHash>>
+>;
+export type SubmitTransactionResult = NonNullable<
+  Awaited<ReturnType<typeof submitTransaction>>
 >;
 export type GetTransactionResult = NonNullable<
   Awaited<ReturnType<typeof getTransaction>>

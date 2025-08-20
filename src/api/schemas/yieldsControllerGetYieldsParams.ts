@@ -1,4 +1,5 @@
 import type { YieldsControllerGetYieldsNetwork } from "./yieldsControllerGetYieldsNetwork";
+import type { YieldsControllerGetYieldsType } from "./yieldsControllerGetYieldsType";
 
 export type YieldsControllerGetYieldsParams = {
   /**
@@ -17,6 +18,18 @@ export type YieldsControllerGetYieldsParams = {
    */
   network?: YieldsControllerGetYieldsNetwork;
   /**
+   * Filter by yield type
+   */
+  type?: YieldsControllerGetYieldsType;
+  /**
+   * Filter by cooldown period
+   */
+  hasCooldownPeriod?: boolean;
+  /**
+   * Filter by warmup period
+   */
+  hasWarmupPeriod?: boolean;
+  /**
    * Filter by token symbol or address
    */
   token?: string;
@@ -25,7 +38,11 @@ export type YieldsControllerGetYieldsParams = {
    */
   inputToken?: string;
   /**
-   * Filter by provider id
+   * Filter by provider ID
    */
   provider?: string;
+  /**
+   * Search by yield name
+   */
+  search?: string;
 };
