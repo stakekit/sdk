@@ -17,6 +17,7 @@ import type {
 } from "./schemas";
 import {
   BalanceType,
+  ERCStandards,
   HealthStatus,
   RewardClaiming,
   RewardSchedule,
@@ -670,19 +671,45 @@ export const getYieldsControllerGetYieldsResponseMock =
           statistics: faker.helpers.arrayElement([
             {
               ...{
-                tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                uniqueUsers: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
-                averagePositionSizeUsd: faker.string.alpha({
-                  length: { min: 10, max: 20 },
-                }),
-                averagePositionSize: faker.string.alpha({
-                  length: { min: 10, max: 20 },
-                }),
+                tvlUsd: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
+                tvl: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
+                uniqueUsers: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
+                averagePositionSizeUsd: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
+                averagePositionSize: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
               },
             },
             undefined,
@@ -701,6 +728,11 @@ export const getYieldsControllerGetYieldsResponseMock =
               documentation: faker.string.alpha({
                 length: { min: 10, max: 20 },
               }),
+              underMaintenance: faker.datatype.boolean(),
+              deprecated: faker.datatype.boolean(),
+              supportedStandards: faker.helpers.arrayElements(
+                Object.values(ERCStandards),
+              ),
             },
           },
           mechanics: {
@@ -928,9 +960,23 @@ export const getYieldsControllerGetYieldsResponseMock =
                           { length: faker.number.int({ min: 1, max: 10 }) },
                           (_, i) => i + 1,
                         ).map(() => ({
-                          name: faker.string.alpha({
-                            length: { min: 10, max: 20 },
-                          }),
+                          name: faker.helpers.arrayElement([
+                            "amount",
+                            "validatorAddress",
+                            "validatorAddresses",
+                            "providerId",
+                            "duration",
+                            "inputToken",
+                            "subnetId",
+                            "tronResource",
+                            "feeConfigurationId",
+                            "cosmosPubKey",
+                            "tezosPubKey",
+                            "cAddressBech",
+                            "pAddressBech",
+                            "executionMode",
+                            "ledgerWalletApiCompatible",
+                          ] as const),
                           type: faker.helpers.arrayElement([
                             "string",
                             "number",
@@ -1011,9 +1057,23 @@ export const getYieldsControllerGetYieldsResponseMock =
                           { length: faker.number.int({ min: 1, max: 10 }) },
                           (_, i) => i + 1,
                         ).map(() => ({
-                          name: faker.string.alpha({
-                            length: { min: 10, max: 20 },
-                          }),
+                          name: faker.helpers.arrayElement([
+                            "amount",
+                            "validatorAddress",
+                            "validatorAddresses",
+                            "providerId",
+                            "duration",
+                            "inputToken",
+                            "subnetId",
+                            "tronResource",
+                            "feeConfigurationId",
+                            "cosmosPubKey",
+                            "tezosPubKey",
+                            "cAddressBech",
+                            "pAddressBech",
+                            "executionMode",
+                            "ledgerWalletApiCompatible",
+                          ] as const),
                           type: faker.helpers.arrayElement([
                             "string",
                             "number",
@@ -1088,7 +1148,112 @@ export const getYieldsControllerGetYieldsResponseMock =
                       },
                       undefined,
                     ]),
-                    manage: faker.helpers.arrayElement([{}, undefined]),
+                    manage: faker.helpers.arrayElement([
+                      {
+                        [faker.string.alphanumeric(5)]: {
+                          fields: Array.from(
+                            { length: faker.number.int({ min: 1, max: 10 }) },
+                            (_, i) => i + 1,
+                          ).map(() => ({
+                            name: faker.helpers.arrayElement([
+                              "amount",
+                              "validatorAddress",
+                              "validatorAddresses",
+                              "providerId",
+                              "duration",
+                              "inputToken",
+                              "subnetId",
+                              "tronResource",
+                              "feeConfigurationId",
+                              "cosmosPubKey",
+                              "tezosPubKey",
+                              "cAddressBech",
+                              "pAddressBech",
+                              "executionMode",
+                              "ledgerWalletApiCompatible",
+                            ] as const),
+                            type: faker.helpers.arrayElement([
+                              "string",
+                              "number",
+                              "address",
+                              "enum",
+                              "boolean",
+                            ] as const),
+                            label: faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            description: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                            required: faker.helpers.arrayElement([
+                              faker.datatype.boolean(),
+                              undefined,
+                            ]),
+                            options: faker.helpers.arrayElement([
+                              Array.from(
+                                {
+                                  length: faker.number.int({ min: 1, max: 10 }),
+                                },
+                                (_, i) => i + 1,
+                              ).map(() =>
+                                faker.string.alpha({
+                                  length: { min: 10, max: 20 },
+                                }),
+                              ),
+                              undefined,
+                            ]),
+                            optionsRef: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                            default: faker.helpers.arrayElement([
+                              {},
+                              undefined,
+                            ]),
+                            placeholder: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                            minimum: faker.helpers.arrayElement([
+                              faker.helpers.arrayElement([
+                                faker.string.alpha({
+                                  length: { min: 10, max: 20 },
+                                }),
+                                null,
+                              ]),
+                              undefined,
+                            ]),
+                            maximum: faker.helpers.arrayElement([
+                              faker.helpers.arrayElement([
+                                faker.string.alpha({
+                                  length: { min: 10, max: 20 },
+                                }),
+                                null,
+                              ]),
+                              undefined,
+                            ]),
+                            isArray: faker.helpers.arrayElement([
+                              faker.datatype.boolean(),
+                              undefined,
+                            ]),
+                          })),
+                          notes: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                        },
+                      },
+                      undefined,
+                    ]),
                     balance: faker.helpers.arrayElement([
                       {
                         ...{
@@ -1096,9 +1261,23 @@ export const getYieldsControllerGetYieldsResponseMock =
                             { length: faker.number.int({ min: 1, max: 10 }) },
                             (_, i) => i + 1,
                           ).map(() => ({
-                            name: faker.string.alpha({
-                              length: { min: 10, max: 20 },
-                            }),
+                            name: faker.helpers.arrayElement([
+                              "amount",
+                              "validatorAddress",
+                              "validatorAddresses",
+                              "providerId",
+                              "duration",
+                              "inputToken",
+                              "subnetId",
+                              "tronResource",
+                              "feeConfigurationId",
+                              "cosmosPubKey",
+                              "tezosPubKey",
+                              "cAddressBech",
+                              "pAddressBech",
+                              "executionMode",
+                              "ledgerWalletApiCompatible",
+                            ] as const),
                             type: faker.helpers.arrayElement([
                               "string",
                               "number",
@@ -1276,7 +1455,23 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 { length: faker.number.int({ min: 1, max: 10 }) },
                 (_, i) => i + 1,
               ).map(() => ({
-                name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                name: faker.helpers.arrayElement([
+                  "amount",
+                  "validatorAddress",
+                  "validatorAddresses",
+                  "providerId",
+                  "duration",
+                  "inputToken",
+                  "subnetId",
+                  "tronResource",
+                  "feeConfigurationId",
+                  "cosmosPubKey",
+                  "tezosPubKey",
+                  "cAddressBech",
+                  "pAddressBech",
+                  "executionMode",
+                  "ledgerWalletApiCompatible",
+                ] as const),
                 type: faker.helpers.arrayElement([
                   "string",
                   "number",
@@ -1464,9 +1659,18 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
         {
           ...{
             address: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            name: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            logoURI: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            website: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
             rewardRate: faker.helpers.arrayElement([
               {
                 ...{
@@ -1633,38 +1837,163 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               },
               undefined,
             ]),
-            commission: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-            tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            votingPower: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-            preferred: faker.datatype.boolean(),
-            minimumStake: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            remainingPossibleStake: faker.string.alpha({
-              length: { min: 10, max: 20 },
-            }),
-            remainingSlots: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-            nominatorCount: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            provider: faker.helpers.arrayElement([
+              {
+                ...{
+                  name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  uniqueId: faker.string.alpha({
+                    length: { min: 10, max: 20 },
+                  }),
+                  website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  rank: faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  preferred: faker.datatype.boolean(),
+                  revshare: faker.helpers.arrayElement([
+                    {
+                      ...{
+                        trial: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                        standard: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                        pro: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                      },
+                    },
+                    undefined,
+                  ]),
+                },
+              },
+              undefined,
+            ]),
+            commission: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            tvlUsd: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tvl: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            votingPower: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            preferred: faker.helpers.arrayElement([
+              faker.datatype.boolean(),
+              undefined,
+            ]),
+            minimumStake: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            remainingPossibleStake: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            remainingSlots: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            nominatorCount: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
             status: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
               undefined,
             ]),
             providerId: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            pricePerShare: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            subnetId: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            subnetName: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            marketCap: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tokenSymbol: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
               undefined,
             ]),
@@ -1678,9 +2007,18 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           (_, i) => i + 1,
         ).map(() => ({
           address: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          name: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          logoURI: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          website: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
@@ -1845,38 +2183,161 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             },
             undefined,
           ]),
-          commission: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          votingPower: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          preferred: faker.datatype.boolean(),
-          minimumStake: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          remainingPossibleStake: faker.string.alpha({
-            length: { min: 10, max: 20 },
-          }),
-          remainingSlots: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          nominatorCount: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          provider: faker.helpers.arrayElement([
+            {
+              ...{
+                name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                rank: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                preferred: faker.datatype.boolean(),
+                revshare: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      trial: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      standard: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      pro: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                    },
+                  },
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+          commission: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          tvlUsd: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          votingPower: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          preferred: faker.helpers.arrayElement([
+            faker.datatype.boolean(),
+            undefined,
+          ]),
+          minimumStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingPossibleStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingSlots: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          nominatorCount: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
           status: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
           providerId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          pricePerShare: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          subnetId: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          subnetName: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          marketCap: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tokenSymbol: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
@@ -2523,19 +2984,45 @@ export const getYieldsControllerGetYieldResponseMock = (
   statistics: faker.helpers.arrayElement([
     {
       ...{
-        tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        uniqueUsers: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
-        averagePositionSizeUsd: faker.string.alpha({
-          length: { min: 10, max: 20 },
-        }),
-        averagePositionSize: faker.string.alpha({
-          length: { min: 10, max: 20 },
-        }),
+        tvlUsd: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
+        tvl: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
+        uniqueUsers: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            null,
+          ]),
+          undefined,
+        ]),
+        averagePositionSizeUsd: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
+        averagePositionSize: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
       },
     },
     undefined,
@@ -2549,6 +3036,11 @@ export const getYieldsControllerGetYieldResponseMock = (
       logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
       description: faker.string.alpha({ length: { min: 10, max: 20 } }),
       documentation: faker.string.alpha({ length: { min: 10, max: 20 } }),
+      underMaintenance: faker.datatype.boolean(),
+      deprecated: faker.datatype.boolean(),
+      supportedStandards: faker.helpers.arrayElements(
+        Object.values(ERCStandards),
+      ),
     },
   },
   mechanics: {
@@ -2772,7 +3264,23 @@ export const getYieldsControllerGetYieldResponseMock = (
                   { length: faker.number.int({ min: 1, max: 10 }) },
                   (_, i) => i + 1,
                 ).map(() => ({
-                  name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  name: faker.helpers.arrayElement([
+                    "amount",
+                    "validatorAddress",
+                    "validatorAddresses",
+                    "providerId",
+                    "duration",
+                    "inputToken",
+                    "subnetId",
+                    "tronResource",
+                    "feeConfigurationId",
+                    "cosmosPubKey",
+                    "tezosPubKey",
+                    "cAddressBech",
+                    "pAddressBech",
+                    "executionMode",
+                    "ledgerWalletApiCompatible",
+                  ] as const),
                   type: faker.helpers.arrayElement([
                     "string",
                     "number",
@@ -2839,7 +3347,23 @@ export const getYieldsControllerGetYieldResponseMock = (
                   { length: faker.number.int({ min: 1, max: 10 }) },
                   (_, i) => i + 1,
                 ).map(() => ({
-                  name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  name: faker.helpers.arrayElement([
+                    "amount",
+                    "validatorAddress",
+                    "validatorAddresses",
+                    "providerId",
+                    "duration",
+                    "inputToken",
+                    "subnetId",
+                    "tronResource",
+                    "feeConfigurationId",
+                    "cosmosPubKey",
+                    "tezosPubKey",
+                    "cAddressBech",
+                    "pAddressBech",
+                    "executionMode",
+                    "ledgerWalletApiCompatible",
+                  ] as const),
                   type: faker.helpers.arrayElement([
                     "string",
                     "number",
@@ -2900,7 +3424,91 @@ export const getYieldsControllerGetYieldResponseMock = (
               },
               undefined,
             ]),
-            manage: faker.helpers.arrayElement([{}, undefined]),
+            manage: faker.helpers.arrayElement([
+              {
+                [faker.string.alphanumeric(5)]: {
+                  fields: Array.from(
+                    { length: faker.number.int({ min: 1, max: 10 }) },
+                    (_, i) => i + 1,
+                  ).map(() => ({
+                    name: faker.helpers.arrayElement([
+                      "amount",
+                      "validatorAddress",
+                      "validatorAddresses",
+                      "providerId",
+                      "duration",
+                      "inputToken",
+                      "subnetId",
+                      "tronResource",
+                      "feeConfigurationId",
+                      "cosmosPubKey",
+                      "tezosPubKey",
+                      "cAddressBech",
+                      "pAddressBech",
+                      "executionMode",
+                      "ledgerWalletApiCompatible",
+                    ] as const),
+                    type: faker.helpers.arrayElement([
+                      "string",
+                      "number",
+                      "address",
+                      "enum",
+                      "boolean",
+                    ] as const),
+                    label: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    description: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    required: faker.helpers.arrayElement([
+                      faker.datatype.boolean(),
+                      undefined,
+                    ]),
+                    options: faker.helpers.arrayElement([
+                      Array.from(
+                        { length: faker.number.int({ min: 1, max: 10 }) },
+                        (_, i) => i + 1,
+                      ).map(() =>
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      ),
+                      undefined,
+                    ]),
+                    optionsRef: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    default: faker.helpers.arrayElement([{}, undefined]),
+                    placeholder: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    minimum: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
+                      undefined,
+                    ]),
+                    maximum: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
+                      undefined,
+                    ]),
+                    isArray: faker.helpers.arrayElement([
+                      faker.datatype.boolean(),
+                      undefined,
+                    ]),
+                  })),
+                  notes: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                },
+              },
+              undefined,
+            ]),
             balance: faker.helpers.arrayElement([
               {
                 ...{
@@ -2908,7 +3516,23 @@ export const getYieldsControllerGetYieldResponseMock = (
                     { length: faker.number.int({ min: 1, max: 10 }) },
                     (_, i) => i + 1,
                   ).map(() => ({
-                    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    name: faker.helpers.arrayElement([
+                      "amount",
+                      "validatorAddress",
+                      "validatorAddresses",
+                      "providerId",
+                      "duration",
+                      "inputToken",
+                      "subnetId",
+                      "tronResource",
+                      "feeConfigurationId",
+                      "cosmosPubKey",
+                      "tezosPubKey",
+                      "cAddressBech",
+                      "pAddressBech",
+                      "executionMode",
+                      "ledgerWalletApiCompatible",
+                    ] as const),
                     type: faker.helpers.arrayElement([
                       "string",
                       "number",
@@ -2998,7 +3622,7 @@ export const getYieldsControllerGetYieldResponseMock = (
   ...overrideResponse,
 });
 
-export const getYieldsControllerGetYieldBalancesResponseMock = (
+export const getYieldsControllerGetYieldBalancesLegacyResponseMock = (
   overrideResponse: Partial<YieldBalancesDto> = {},
 ): YieldBalancesDto => ({
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -3054,7 +3678,23 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               { length: faker.number.int({ min: 1, max: 10 }) },
               (_, i) => i + 1,
             ).map(() => ({
-              name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              name: faker.helpers.arrayElement([
+                "amount",
+                "validatorAddress",
+                "validatorAddresses",
+                "providerId",
+                "duration",
+                "inputToken",
+                "subnetId",
+                "tronResource",
+                "feeConfigurationId",
+                "cosmosPubKey",
+                "tezosPubKey",
+                "cAddressBech",
+                "pAddressBech",
+                "executionMode",
+                "ledgerWalletApiCompatible",
+              ] as const),
               type: faker.helpers.arrayElement([
                 "string",
                 "number",
@@ -3242,9 +3882,18 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
       {
         ...{
           address: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          name: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          logoURI: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          website: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
@@ -3409,38 +4058,161 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             },
             undefined,
           ]),
-          commission: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          votingPower: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          preferred: faker.datatype.boolean(),
-          minimumStake: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          remainingPossibleStake: faker.string.alpha({
-            length: { min: 10, max: 20 },
-          }),
-          remainingSlots: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          nominatorCount: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          provider: faker.helpers.arrayElement([
+            {
+              ...{
+                name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                rank: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                preferred: faker.datatype.boolean(),
+                revshare: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      trial: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      standard: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      pro: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                    },
+                  },
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+          commission: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          tvlUsd: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          votingPower: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          preferred: faker.helpers.arrayElement([
+            faker.datatype.boolean(),
+            undefined,
+          ]),
+          minimumStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingPossibleStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingSlots: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          nominatorCount: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
           status: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
           providerId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          pricePerShare: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          subnetId: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          subnetName: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          marketCap: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tokenSymbol: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
@@ -3454,9 +4226,18 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         (_, i) => i + 1,
       ).map(() => ({
         address: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        name: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        logoURI: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        website: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
         rewardRate: faker.helpers.arrayElement([
           {
             ...{
@@ -3617,38 +4398,161 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           },
           undefined,
         ]),
-        commission: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
-        tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        votingPower: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
-        preferred: faker.datatype.boolean(),
-        minimumStake: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        remainingPossibleStake: faker.string.alpha({
-          length: { min: 10, max: 20 },
-        }),
-        remainingSlots: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
-        nominatorCount: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        provider: faker.helpers.arrayElement([
+          {
+            ...{
+              name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              rank: faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              preferred: faker.datatype.boolean(),
+              revshare: faker.helpers.arrayElement([
+                {
+                  ...{
+                    trial: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                    standard: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                    pro: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                  },
+                },
+                undefined,
+              ]),
+            },
+          },
+          undefined,
+        ]),
+        commission: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        tvlUsd: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        tvl: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        votingPower: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        preferred: faker.helpers.arrayElement([
+          faker.datatype.boolean(),
+          undefined,
+        ]),
+        minimumStake: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        remainingPossibleStake: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        remainingSlots: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        nominatorCount: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
         status: faker.helpers.arrayElement([
           faker.string.alpha({ length: { min: 10, max: 20 } }),
           undefined,
         ]),
         providerId: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        pricePerShare: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        subnetId: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        subnetName: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        marketCap: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        tokenSymbol: faker.helpers.arrayElement([
           faker.string.alpha({ length: { min: 10, max: 20 } }),
           undefined,
         ]),
@@ -3667,35 +4571,278 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
   ...overrideResponse,
 });
 
-export const getYieldsControllerGetYieldValidatorsResponseMock =
-  (): YieldsControllerGetYieldValidators200 => ({
-    ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+export const getYieldsControllerGetYieldBalancesResponseMock = (
+  overrideResponse: Partial<YieldBalancesDto> = {},
+): YieldBalancesDto => ({
+  yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+  balances: Array.from(
+    { length: faker.number.int({ min: 1, max: 10 }) },
+    (_, i) => i + 1,
+  ).map(() => ({
+    address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    type: faker.helpers.arrayElement(Object.values(BalanceType)),
+    amount: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    date: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([
+        `${faker.date.past().toISOString().split(".")[0]}Z`,
+        null,
+      ]),
+      undefined,
+    ]),
+    feeConfigurationId: faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      undefined,
+    ]),
+    pendingActions: Array.from(
+      { length: faker.number.int({ min: 1, max: 10 }) },
+      (_, i) => i + 1,
+    ).map(() => ({
+      intent: faker.helpers.arrayElement(["enter", "manage", "exit"] as const),
+      type: faker.helpers.arrayElement([
+        "STAKE",
+        "UNSTAKE",
+        "CLAIM_REWARDS",
+        "RESTAKE_REWARDS",
+        "WITHDRAW",
+        "WITHDRAW_ALL",
+        "RESTAKE",
+        "CLAIM_UNSTAKED",
+        "UNLOCK_LOCKED",
+        "STAKE_LOCKED",
+        "VOTE",
+        "REVOKE",
+        "VOTE_LOCKED",
+        "REVOTE",
+        "REBOND",
+        "MIGRATE",
+        "VERIFY_WITHDRAW_CREDENTIALS",
+        "DELEGATE",
+      ] as const),
+      passthrough: faker.string.alpha({ length: { min: 10, max: 20 } }),
+      arguments: faker.helpers.arrayElement([
+        {
+          ...{
+            fields: Array.from(
+              { length: faker.number.int({ min: 1, max: 10 }) },
+              (_, i) => i + 1,
+            ).map(() => ({
+              name: faker.helpers.arrayElement([
+                "amount",
+                "validatorAddress",
+                "validatorAddresses",
+                "providerId",
+                "duration",
+                "inputToken",
+                "subnetId",
+                "tronResource",
+                "feeConfigurationId",
+                "cosmosPubKey",
+                "tezosPubKey",
+                "cAddressBech",
+                "pAddressBech",
+                "executionMode",
+                "ledgerWalletApiCompatible",
+              ] as const),
+              type: faker.helpers.arrayElement([
+                "string",
+                "number",
+                "address",
+                "enum",
+                "boolean",
+              ] as const),
+              label: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              description: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              required: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              options: faker.helpers.arrayElement([
+                Array.from(
+                  { length: faker.number.int({ min: 1, max: 10 }) },
+                  (_, i) => i + 1,
+                ).map(() =>
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                ),
+                undefined,
+              ]),
+              optionsRef: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              default: faker.helpers.arrayElement([{}, undefined]),
+              placeholder: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              minimum: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  null,
+                ]),
+                undefined,
+              ]),
+              maximum: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  null,
+                ]),
+                undefined,
+              ]),
+              isArray: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+            })),
+            notes: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+          },
+        },
+        undefined,
+      ]),
+    })),
+    token: {
+      ...{
+        symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        decimals: faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        network: faker.helpers.arrayElement([
+          "ethereum",
+          "ethereum-goerli",
+          "ethereum-holesky",
+          "ethereum-sepolia",
+          "ethereum-hoodi",
+          "arbitrum",
+          "base",
+          "base-sepolia",
+          "gnosis",
+          "optimism",
+          "polygon",
+          "polygon-amoy",
+          "starknet",
+          "zksync",
+          "linea",
+          "unichain",
+          "avalanche-c",
+          "avalanche-c-atomic",
+          "avalanche-p",
+          "binance",
+          "celo",
+          "fantom",
+          "harmony",
+          "moonriver",
+          "okc",
+          "viction",
+          "core",
+          "sonic",
+          "katana",
+          "agoric",
+          "akash",
+          "axelar",
+          "band-protocol",
+          "bitsong",
+          "canto",
+          "chihuahua",
+          "comdex",
+          "coreum",
+          "cosmos",
+          "crescent",
+          "cronos",
+          "cudos",
+          "desmos",
+          "dydx",
+          "evmos",
+          "fetch-ai",
+          "gravity-bridge",
+          "injective",
+          "irisnet",
+          "juno",
+          "kava",
+          "ki-network",
+          "mars-protocol",
+          "nym",
+          "okex-chain",
+          "onomy",
+          "osmosis",
+          "persistence",
+          "quicksilver",
+          "regen",
+          "secret",
+          "sentinel",
+          "sommelier",
+          "stafi",
+          "stargaze",
+          "stride",
+          "teritori",
+          "tgrade",
+          "umee",
+          "sei",
+          "mantra",
+          "celestia",
+          "saga",
+          "zetachain",
+          "dymension",
+          "humansai",
+          "neutron",
+          "polkadot",
+          "kusama",
+          "westend",
+          "bittensor",
+          "binancebeacon",
+          "cardano",
+          "near",
+          "solana",
+          "solana-devnet",
+          "stellar",
+          "stellar-testnet",
+          "tezos",
+          "tron",
+          "ton",
+          "ton-testnet",
+        ] as const),
+        address: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        logoURI: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        isPoints: faker.helpers.arrayElement([
+          faker.datatype.boolean(),
+          undefined,
+        ]),
+        coinGeckoId: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+      },
     },
-    ...{
-      items: faker.helpers.arrayElement([
-        Array.from(
-          { length: faker.number.int({ min: 1, max: 10 }) },
-          (_, i) => i + 1,
-        ).map(() => ({
+    validator: faker.helpers.arrayElement([
+      {
+        ...{
           address: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          name: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          logoURI: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          website: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
@@ -3860,38 +5007,876 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             },
             undefined,
           ]),
-          commission: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          tvlUsd: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          tvl: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          votingPower: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          preferred: faker.datatype.boolean(),
-          minimumStake: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          remainingPossibleStake: faker.string.alpha({
-            length: { min: 10, max: 20 },
-          }),
-          remainingSlots: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
-          nominatorCount: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          provider: faker.helpers.arrayElement([
+            {
+              ...{
+                name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                rank: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                preferred: faker.datatype.boolean(),
+                revshare: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      trial: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      standard: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      pro: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                    },
+                  },
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+          commission: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          tvlUsd: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          votingPower: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          preferred: faker.helpers.arrayElement([
+            faker.datatype.boolean(),
+            undefined,
+          ]),
+          minimumStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingPossibleStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingSlots: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          nominatorCount: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
           status: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
           providerId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          pricePerShare: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          subnetId: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          subnetName: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          marketCap: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tokenSymbol: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+        },
+      },
+      undefined,
+    ]),
+    validators: faker.helpers.arrayElement([
+      Array.from(
+        { length: faker.number.int({ min: 1, max: 10 }) },
+        (_, i) => i + 1,
+      ).map(() => ({
+        address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        name: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        logoURI: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        website: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        rewardRate: faker.helpers.arrayElement([
+          {
+            ...{
+              total: faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              components: Array.from(
+                { length: faker.number.int({ min: 1, max: 10 }) },
+                (_, i) => i + 1,
+              ).map(() => ({
+                rate: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                token: {
+                  ...{
+                    symbol: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    decimals: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    network: faker.helpers.arrayElement([
+                      "ethereum",
+                      "ethereum-goerli",
+                      "ethereum-holesky",
+                      "ethereum-sepolia",
+                      "ethereum-hoodi",
+                      "arbitrum",
+                      "base",
+                      "base-sepolia",
+                      "gnosis",
+                      "optimism",
+                      "polygon",
+                      "polygon-amoy",
+                      "starknet",
+                      "zksync",
+                      "linea",
+                      "unichain",
+                      "avalanche-c",
+                      "avalanche-c-atomic",
+                      "avalanche-p",
+                      "binance",
+                      "celo",
+                      "fantom",
+                      "harmony",
+                      "moonriver",
+                      "okc",
+                      "viction",
+                      "core",
+                      "sonic",
+                      "katana",
+                      "agoric",
+                      "akash",
+                      "axelar",
+                      "band-protocol",
+                      "bitsong",
+                      "canto",
+                      "chihuahua",
+                      "comdex",
+                      "coreum",
+                      "cosmos",
+                      "crescent",
+                      "cronos",
+                      "cudos",
+                      "desmos",
+                      "dydx",
+                      "evmos",
+                      "fetch-ai",
+                      "gravity-bridge",
+                      "injective",
+                      "irisnet",
+                      "juno",
+                      "kava",
+                      "ki-network",
+                      "mars-protocol",
+                      "nym",
+                      "okex-chain",
+                      "onomy",
+                      "osmosis",
+                      "persistence",
+                      "quicksilver",
+                      "regen",
+                      "secret",
+                      "sentinel",
+                      "sommelier",
+                      "stafi",
+                      "stargaze",
+                      "stride",
+                      "teritori",
+                      "tgrade",
+                      "umee",
+                      "sei",
+                      "mantra",
+                      "celestia",
+                      "saga",
+                      "zetachain",
+                      "dymension",
+                      "humansai",
+                      "neutron",
+                      "polkadot",
+                      "kusama",
+                      "westend",
+                      "bittensor",
+                      "binancebeacon",
+                      "cardano",
+                      "near",
+                      "solana",
+                      "solana-devnet",
+                      "stellar",
+                      "stellar-testnet",
+                      "tezos",
+                      "tron",
+                      "ton",
+                      "ton-testnet",
+                    ] as const),
+                    address: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    logoURI: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    isPoints: faker.helpers.arrayElement([
+                      faker.datatype.boolean(),
+                      undefined,
+                    ]),
+                    coinGeckoId: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                  },
+                },
+                yieldSource: faker.helpers.arrayElement([
+                  "staking",
+                  "restaking",
+                  "protocol_incentive",
+                  "points",
+                  "lending_interest",
+                  "mev",
+                  "real_world_asset_yield",
+                ] as const),
+                description: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+              })),
+            },
+          },
+          undefined,
+        ]),
+        provider: faker.helpers.arrayElement([
+          {
+            ...{
+              name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              rank: faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              preferred: faker.datatype.boolean(),
+              revshare: faker.helpers.arrayElement([
+                {
+                  ...{
+                    trial: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                    standard: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                    pro: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          minRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          maxRevShare: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                        },
+                      },
+                      undefined,
+                    ]),
+                  },
+                },
+                undefined,
+              ]),
+            },
+          },
+          undefined,
+        ]),
+        commission: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        tvlUsd: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        tvl: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        votingPower: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        preferred: faker.helpers.arrayElement([
+          faker.datatype.boolean(),
+          undefined,
+        ]),
+        minimumStake: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        remainingPossibleStake: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        remainingSlots: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        nominatorCount: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        status: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        providerId: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        pricePerShare: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        subnetId: faker.helpers.arrayElement([
+          faker.number.float({
+            min: undefined,
+            max: undefined,
+            fractionDigits: 2,
+          }),
+          undefined,
+        ]),
+        subnetName: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        marketCap: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        tokenSymbol: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+      })),
+      undefined,
+    ]),
+    amountUsd: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
+      undefined,
+    ]),
+    isEarning: faker.datatype.boolean(),
+  })),
+  ...overrideResponse,
+});
+
+export const getYieldsControllerGetYieldValidatorsResponseMock =
+  (): YieldsControllerGetYieldValidators200 => ({
+    ...{
+      total: faker.number.float({
+        min: undefined,
+        max: undefined,
+        fractionDigits: 2,
+      }),
+      offset: faker.number.float({
+        min: undefined,
+        max: undefined,
+        fractionDigits: 2,
+      }),
+      limit: faker.number.float({
+        min: undefined,
+        max: undefined,
+        fractionDigits: 2,
+      }),
+    },
+    ...{
+      items: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => ({
+          address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          name: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          logoURI: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          website: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          rewardRate: faker.helpers.arrayElement([
+            {
+              ...{
+                total: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                components: Array.from(
+                  { length: faker.number.int({ min: 1, max: 10 }) },
+                  (_, i) => i + 1,
+                ).map(() => ({
+                  rate: faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  rateType: faker.string.alpha({
+                    length: { min: 10, max: 20 },
+                  }),
+                  token: {
+                    ...{
+                      symbol: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      name: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      decimals: faker.number.float({
+                        min: undefined,
+                        max: undefined,
+                        fractionDigits: 2,
+                      }),
+                      network: faker.helpers.arrayElement([
+                        "ethereum",
+                        "ethereum-goerli",
+                        "ethereum-holesky",
+                        "ethereum-sepolia",
+                        "ethereum-hoodi",
+                        "arbitrum",
+                        "base",
+                        "base-sepolia",
+                        "gnosis",
+                        "optimism",
+                        "polygon",
+                        "polygon-amoy",
+                        "starknet",
+                        "zksync",
+                        "linea",
+                        "unichain",
+                        "avalanche-c",
+                        "avalanche-c-atomic",
+                        "avalanche-p",
+                        "binance",
+                        "celo",
+                        "fantom",
+                        "harmony",
+                        "moonriver",
+                        "okc",
+                        "viction",
+                        "core",
+                        "sonic",
+                        "katana",
+                        "agoric",
+                        "akash",
+                        "axelar",
+                        "band-protocol",
+                        "bitsong",
+                        "canto",
+                        "chihuahua",
+                        "comdex",
+                        "coreum",
+                        "cosmos",
+                        "crescent",
+                        "cronos",
+                        "cudos",
+                        "desmos",
+                        "dydx",
+                        "evmos",
+                        "fetch-ai",
+                        "gravity-bridge",
+                        "injective",
+                        "irisnet",
+                        "juno",
+                        "kava",
+                        "ki-network",
+                        "mars-protocol",
+                        "nym",
+                        "okex-chain",
+                        "onomy",
+                        "osmosis",
+                        "persistence",
+                        "quicksilver",
+                        "regen",
+                        "secret",
+                        "sentinel",
+                        "sommelier",
+                        "stafi",
+                        "stargaze",
+                        "stride",
+                        "teritori",
+                        "tgrade",
+                        "umee",
+                        "sei",
+                        "mantra",
+                        "celestia",
+                        "saga",
+                        "zetachain",
+                        "dymension",
+                        "humansai",
+                        "neutron",
+                        "polkadot",
+                        "kusama",
+                        "westend",
+                        "bittensor",
+                        "binancebeacon",
+                        "cardano",
+                        "near",
+                        "solana",
+                        "solana-devnet",
+                        "stellar",
+                        "stellar-testnet",
+                        "tezos",
+                        "tron",
+                        "ton",
+                        "ton-testnet",
+                      ] as const),
+                      address: faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        undefined,
+                      ]),
+                      logoURI: faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        undefined,
+                      ]),
+                      isPoints: faker.helpers.arrayElement([
+                        faker.datatype.boolean(),
+                        undefined,
+                      ]),
+                      coinGeckoId: faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        undefined,
+                      ]),
+                    },
+                  },
+                  yieldSource: faker.helpers.arrayElement([
+                    "staking",
+                    "restaking",
+                    "protocol_incentive",
+                    "points",
+                    "lending_interest",
+                    "mev",
+                    "real_world_asset_yield",
+                  ] as const),
+                  description: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                })),
+              },
+            },
+            undefined,
+          ]),
+          provider: faker.helpers.arrayElement([
+            {
+              ...{
+                name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                uniqueId: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                rank: faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                preferred: faker.datatype.boolean(),
+                revshare: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      trial: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      standard: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                      pro: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            minRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            maxRevShare: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                          },
+                        },
+                        undefined,
+                      ]),
+                    },
+                  },
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+          commission: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          tvlUsd: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          votingPower: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          preferred: faker.helpers.arrayElement([
+            faker.datatype.boolean(),
+            undefined,
+          ]),
+          minimumStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingPossibleStake: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          remainingSlots: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          nominatorCount: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          status: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          providerId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          pricePerShare: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          subnetId: faker.helpers.arrayElement([
+            faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            undefined,
+          ]),
+          subnetName: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          marketCap: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tokenSymbol: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
@@ -4188,7 +6173,83 @@ export const getActionsControllerGetActionsResponseMock =
             "asynchronous",
             "batch",
           ] as const),
-          rawArguments: {},
+          rawArguments: {
+            ...{
+              amount: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              validatorAddress: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              validatorAddresses: faker.helpers.arrayElement([
+                Array.from(
+                  { length: faker.number.int({ min: 1, max: 10 }) },
+                  (_, i) => i + 1,
+                ).map(() =>
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                ),
+                undefined,
+              ]),
+              providerId: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              duration: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              inputToken: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              subnetId: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              tronResource: faker.helpers.arrayElement([
+                faker.helpers.arrayElement(["BANDWIDTH", "ENERGY"] as const),
+                undefined,
+              ]),
+              feeConfigurationId: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              cosmosPubKey: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tezosPubKey: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              cAddressBech: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              pAddressBech: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              executionMode: faker.helpers.arrayElement([
+                faker.helpers.arrayElement(["individual", "batched"] as const),
+                undefined,
+              ]),
+              ledgerWalletApiCompatible: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+            },
+          },
           createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
           completedAt: faker.helpers.arrayElement([
             `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -4466,7 +6527,81 @@ export const getActionsControllerGetActionResponseMock = (
     "asynchronous",
     "batch",
   ] as const),
-  rawArguments: {},
+  rawArguments: {
+    ...{
+      amount: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddress: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddresses: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
+      providerId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      duration: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      inputToken: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      subnetId: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      tronResource: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["BANDWIDTH", "ENERGY"] as const),
+        undefined,
+      ]),
+      feeConfigurationId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cosmosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      tezosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      pAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      executionMode: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["individual", "batched"] as const),
+        undefined,
+      ]),
+      ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+    },
+  },
   createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
   completedAt: faker.helpers.arrayElement([
     `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -4741,7 +6876,81 @@ export const getActionsControllerEnterYieldResponseMock = (
     "asynchronous",
     "batch",
   ] as const),
-  rawArguments: {},
+  rawArguments: {
+    ...{
+      amount: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddress: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddresses: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
+      providerId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      duration: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      inputToken: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      subnetId: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      tronResource: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["BANDWIDTH", "ENERGY"] as const),
+        undefined,
+      ]),
+      feeConfigurationId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cosmosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      tezosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      pAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      executionMode: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["individual", "batched"] as const),
+        undefined,
+      ]),
+      ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+    },
+  },
   createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
   completedAt: faker.helpers.arrayElement([
     `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -5016,7 +7225,81 @@ export const getActionsControllerExitYieldResponseMock = (
     "asynchronous",
     "batch",
   ] as const),
-  rawArguments: {},
+  rawArguments: {
+    ...{
+      amount: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddress: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddresses: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
+      providerId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      duration: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      inputToken: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      subnetId: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      tronResource: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["BANDWIDTH", "ENERGY"] as const),
+        undefined,
+      ]),
+      feeConfigurationId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cosmosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      tezosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      pAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      executionMode: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["individual", "batched"] as const),
+        undefined,
+      ]),
+      ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+    },
+  },
   createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
   completedAt: faker.helpers.arrayElement([
     `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -5291,7 +7574,81 @@ export const getActionsControllerManageYieldResponseMock = (
     "asynchronous",
     "batch",
   ] as const),
-  rawArguments: {},
+  rawArguments: {
+    ...{
+      amount: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddress: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      validatorAddresses: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
+      providerId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      duration: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      inputToken: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      subnetId: faker.helpers.arrayElement([
+        faker.number.float({
+          min: undefined,
+          max: undefined,
+          fractionDigits: 2,
+        }),
+        undefined,
+      ]),
+      tronResource: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["BANDWIDTH", "ENERGY"] as const),
+        undefined,
+      ]),
+      feeConfigurationId: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cosmosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      tezosPubKey: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      cAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      pAddressBech: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      executionMode: faker.helpers.arrayElement([
+        faker.helpers.arrayElement(["individual", "batched"] as const),
+        undefined,
+      ]),
+      ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+    },
+  },
   createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
   completedAt: faker.helpers.arrayElement([
     `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -5310,6 +7667,217 @@ export const getActionsControllerManageYieldResponseMock = (
 });
 
 export const getTransactionsControllerSubmitTransactionHashResponseMock = (
+  overrideResponse: Partial<TransactionDto> = {},
+): TransactionDto => ({
+  id: faker.string.alpha({ length: { min: 10, max: 20 } }),
+  title: faker.string.alpha({ length: { min: 10, max: 20 } }),
+  network: faker.helpers.arrayElement([
+    "ethereum",
+    "ethereum-goerli",
+    "ethereum-holesky",
+    "ethereum-sepolia",
+    "ethereum-hoodi",
+    "arbitrum",
+    "base",
+    "base-sepolia",
+    "gnosis",
+    "optimism",
+    "polygon",
+    "polygon-amoy",
+    "starknet",
+    "zksync",
+    "linea",
+    "unichain",
+    "avalanche-c",
+    "avalanche-c-atomic",
+    "avalanche-p",
+    "binance",
+    "celo",
+    "fantom",
+    "harmony",
+    "moonriver",
+    "okc",
+    "viction",
+    "core",
+    "sonic",
+    "katana",
+    "agoric",
+    "akash",
+    "axelar",
+    "band-protocol",
+    "bitsong",
+    "canto",
+    "chihuahua",
+    "comdex",
+    "coreum",
+    "cosmos",
+    "crescent",
+    "cronos",
+    "cudos",
+    "desmos",
+    "dydx",
+    "evmos",
+    "fetch-ai",
+    "gravity-bridge",
+    "injective",
+    "irisnet",
+    "juno",
+    "kava",
+    "ki-network",
+    "mars-protocol",
+    "nym",
+    "okex-chain",
+    "onomy",
+    "osmosis",
+    "persistence",
+    "quicksilver",
+    "regen",
+    "secret",
+    "sentinel",
+    "sommelier",
+    "stafi",
+    "stargaze",
+    "stride",
+    "teritori",
+    "tgrade",
+    "umee",
+    "sei",
+    "mantra",
+    "celestia",
+    "saga",
+    "zetachain",
+    "dymension",
+    "humansai",
+    "neutron",
+    "polkadot",
+    "kusama",
+    "westend",
+    "bittensor",
+    "binancebeacon",
+    "cardano",
+    "near",
+    "solana",
+    "solana-devnet",
+    "stellar",
+    "stellar-testnet",
+    "tezos",
+    "tron",
+    "ton",
+    "ton-testnet",
+  ] as const),
+  status: faker.helpers.arrayElement([
+    "NOT_FOUND",
+    "CREATED",
+    "BLOCKED",
+    "WAITING_FOR_SIGNATURE",
+    "SIGNED",
+    "BROADCASTED",
+    "PENDING",
+    "CONFIRMED",
+    "FAILED",
+    "SKIPPED",
+  ] as const),
+  type: faker.helpers.arrayElement([
+    "SWAP",
+    "DEPOSIT",
+    "APPROVAL",
+    "STAKE",
+    "CLAIM_UNSTAKED",
+    "CLAIM_REWARDS",
+    "RESTAKE_REWARDS",
+    "UNSTAKE",
+    "SPLIT",
+    "MERGE",
+    "LOCK",
+    "UNLOCK",
+    "SUPPLY",
+    "BRIDGE",
+    "VOTE",
+    "REVOKE",
+    "RESTAKE",
+    "REBOND",
+    "WITHDRAW",
+    "WITHDRAW_ALL",
+    "CREATE_ACCOUNT",
+    "REVEAL",
+    "MIGRATE",
+    "DELEGATE",
+    "UNDELEGATE",
+    "UTXO_P_TO_C_IMPORT",
+    "UTXO_C_TO_P_IMPORT",
+    "WRAP",
+    "UNWRAP",
+    "UNFREEZE_LEGACY",
+    "UNFREEZE_LEGACY_BANDWIDTH",
+    "UNFREEZE_LEGACY_ENERGY",
+    "UNFREEZE_BANDWIDTH",
+    "UNFREEZE_ENERGY",
+    "FREEZE_BANDWIDTH",
+    "FREEZE_ENERGY",
+    "UNDELEGATE_BANDWIDTH",
+    "UNDELEGATE_ENERGY",
+    "P2P_NODE_REQUEST",
+    "CREATE_EIGENPOD",
+    "VERIFY_WITHDRAW_CREDENTIALS",
+    "START_CHECKPOINT",
+    "VERIFY_CHECKPOINT_PROOFS",
+    "QUEUE_WITHDRAWALS",
+    "COMPLETE_QUEUED_WITHDRAWALS",
+    "LUGANODES_PROVISION",
+    "LUGANODES_EXIT_REQUEST",
+    "INFSTONES_PROVISION",
+    "INFSTONES_EXIT_REQUEST",
+    "INFSTONES_CLAIM_REQUEST",
+  ] as const),
+  hash: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    null,
+  ]),
+  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  broadcastedAt: faker.helpers.arrayElement([
+    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    null,
+  ]),
+  signedTransaction: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    null,
+  ]),
+  unsignedTransaction: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+  ]),
+  annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
+  structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+  stepIndex: faker.helpers.arrayElement([
+    faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+    undefined,
+  ]),
+  description: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    undefined,
+  ]),
+  error: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
+    undefined,
+  ]),
+  gasEstimate: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    undefined,
+  ]),
+  explorerUrl: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
+    undefined,
+  ]),
+  isMessage: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]),
+  ...overrideResponse,
+});
+
+export const getTransactionsControllerSubmitTransactionResponseMock = (
   overrideResponse: Partial<TransactionDto> = {},
 ): TransactionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -5987,7 +8555,7 @@ export const getYieldsControllerGetYieldMockHandler = (
   });
 };
 
-export const getYieldsControllerGetYieldBalancesMockHandler = (
+export const getYieldsControllerGetYieldBalancesLegacyMockHandler = (
   overrideResponse?:
     | YieldBalancesDto
     | ((
@@ -5995,6 +8563,29 @@ export const getYieldsControllerGetYieldBalancesMockHandler = (
       ) => Promise<YieldBalancesDto> | YieldBalancesDto),
 ) => {
   return http.get("*/v1/yields/:yieldId/balances", async (info) => {
+    await delay(1000);
+
+    return new HttpResponse(
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldBalancesLegacyResponseMock(),
+      ),
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
+  });
+};
+
+export const getYieldsControllerGetYieldBalancesMockHandler = (
+  overrideResponse?:
+    | YieldBalancesDto
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0],
+      ) => Promise<YieldBalancesDto> | YieldBalancesDto),
+) => {
+  return http.post("*/v1/yields/:yieldId/balances", async (info) => {
     await delay(1000);
 
     return new HttpResponse(
@@ -6178,6 +8769,29 @@ export const getTransactionsControllerSubmitTransactionHashMockHandler = (
   );
 };
 
+export const getTransactionsControllerSubmitTransactionMockHandler = (
+  overrideResponse?:
+    | TransactionDto
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0],
+      ) => Promise<TransactionDto> | TransactionDto),
+) => {
+  return http.post("*/v1/transactions/:transactionId/submit", async (info) => {
+    await delay(1000);
+
+    return new HttpResponse(
+      JSON.stringify(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getTransactionsControllerSubmitTransactionResponseMock(),
+      ),
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
+  });
+};
+
 export const getTransactionsControllerGetTransactionMockHandler = (
   overrideResponse?:
     | TransactionDto
@@ -6298,6 +8912,7 @@ export const getYieldXyzAPIMock = () => [
   getYieldsControllerGetYieldsMockHandler(),
   getYieldsControllerGetAggregateBalancesMockHandler(),
   getYieldsControllerGetYieldMockHandler(),
+  getYieldsControllerGetYieldBalancesLegacyMockHandler(),
   getYieldsControllerGetYieldBalancesMockHandler(),
   getYieldsControllerGetYieldValidatorsMockHandler(),
   getActionsControllerGetActionsMockHandler(),
@@ -6306,6 +8921,7 @@ export const getYieldXyzAPIMock = () => [
   getActionsControllerExitYieldMockHandler(),
   getActionsControllerManageYieldMockHandler(),
   getTransactionsControllerSubmitTransactionHashMockHandler(),
+  getTransactionsControllerSubmitTransactionMockHandler(),
   getTransactionsControllerGetTransactionMockHandler(),
   getNetworksControllerGetNetworksMockHandler(),
   getProvidersControllerGetProvidersMockHandler(),

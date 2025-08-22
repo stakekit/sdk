@@ -1,4 +1,4 @@
-import type { BalancesQueryDtoArguments } from "./balancesQueryDtoArguments";
+import type { GetBalancesArgumentsDto } from "./getBalancesArgumentsDto";
 import type { Networks } from "./networks";
 
 export interface BalancesQueryDto {
@@ -7,6 +7,6 @@ export interface BalancesQueryDto {
   /** User wallet address to check balances for */
   address: string;
   network: Networks;
-  /** Custom arguments for advanced or protocol-specific balance queries. Should be a JSON object with custom parameters. See the yield mechanics.arguments.balance schema for details. */
-  arguments?: BalancesQueryDtoArguments;
+  /** Arguments for balance queries */
+  arguments?: GetBalancesArgumentsDto;
 }

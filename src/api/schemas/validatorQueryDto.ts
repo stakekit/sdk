@@ -14,7 +14,7 @@ export interface ValidatorQueryDto {
   name?: string;
   /** Filter by validator address */
   address?: string;
-  /** Filter by provider id */
+  /** Filter by provider ID */
   provider?: string;
   /** Filter by validator status */
   status?: string;

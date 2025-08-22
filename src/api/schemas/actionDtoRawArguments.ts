@@ -1,5 +1,7 @@
+import type { ActionArgumentsDto } from "./actionArgumentsDto";
+
 /**
  * Raw arguments exactly as submitted by the user for this action
  * @nullable
  */
-export type ActionDtoRawArguments = { [key: string]: unknown } | null;
+export type ActionDtoRawArguments = ActionArgumentsDto | null;

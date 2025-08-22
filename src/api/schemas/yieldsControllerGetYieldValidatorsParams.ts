@@ -19,7 +19,7 @@ export type YieldsControllerGetYieldValidatorsParams = {
    */
   address?: string;
   /**
-   * Filter by provider id
+   * Filter by provider ID
    */
   provider?: string;
   /**

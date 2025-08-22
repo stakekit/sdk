@@ -1,4 +1,8 @@
+import type { ArgumentSchemaDto } from "./argumentSchemaDto";
+
 /**
- * Arguments for manage sub-actions (claim, restake, etc.). Values are ArgumentSchemaDto objects.
+ * Manage action schemas. Each yield supports different ActionTypes (CLAIM_UNSTAKED, CLAIM_REWARDS, etc.). Keys are ActionTypes enum values.
  */
-export type YieldMechanicsArgumentsDtoManage = { [key: string]: unknown };
+export type YieldMechanicsArgumentsDtoManage = {
+  [key: string]: ArgumentSchemaDto;
+};

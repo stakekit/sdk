@@ -1,3 +1,5 @@
+import type { ERCStandards } from "./eRCStandards";
+
 export interface YieldMetadataDto {
   /** Display name of the yield opportunity */
   name: string;
@@ -7,4 +9,9 @@ export interface YieldMetadataDto {
   description: string;
   /** Link to documentation or integration guide */
   documentation: string;
+  /** Whether this yield is currently under maintenance */
+  underMaintenance: boolean;
+  /** Whether this yield is deprecated and will be discontinued */
+  deprecated: boolean;
+  supportedStandards: ERCStandards[];
 }
