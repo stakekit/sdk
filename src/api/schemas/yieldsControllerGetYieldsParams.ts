@@ -1,5 +1,7 @@
 import type { YieldsControllerGetYieldsNetwork } from "./yieldsControllerGetYieldsNetwork";
+import type { YieldsControllerGetYieldsSort } from "./yieldsControllerGetYieldsSort";
 import type { YieldsControllerGetYieldsType } from "./yieldsControllerGetYieldsType";
+import type { YieldsControllerGetYieldsTypesItem } from "./yieldsControllerGetYieldsTypesItem";
 
 export type YieldsControllerGetYieldsParams = {
   /**
@@ -18,9 +20,26 @@ export type YieldsControllerGetYieldsParams = {
    */
   network?: YieldsControllerGetYieldsNetwork;
   /**
+   * Filter by multiple networks (comma separated)
+   */
+  networks?: string;
+  /**
+   * @maxLength 200
+   */
+  yieldId?: string;
+  /**
+   * @maxLength 200
+   * @maxItems 100
+   */
+  yieldIds?: string[];
+  /**
    * Filter by yield type
    */
   type?: YieldsControllerGetYieldsType;
+  /**
+   * Filter by multiple yield types (comma separated)
+   */
+  types?: YieldsControllerGetYieldsTypesItem[];
   /**
    * Filter by cooldown period
    */
@@ -38,11 +57,23 @@ export type YieldsControllerGetYieldsParams = {
    */
   inputToken?: string;
   /**
+   * Filter by multiple input token symbol or address (comma separated)
+   */
+  inputTokens?: string[];
+  /**
    * Filter by provider ID
    */
   provider?: string;
   /**
+   * Filter by multiple provider IDs (comma separated)
+   */
+  providers?: string[];
+  /**
    * Search by yield name
    */
   search?: string;
+  /**
+   * Sort by yield status
+   */
+  sort?: YieldsControllerGetYieldsSort;
 };

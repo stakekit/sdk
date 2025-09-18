@@ -56,19 +56,19 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
-    "@changesets/cli": "^2.29.6",
+    "@biomejs/biome": "2.2.4",
+    "@changesets/cli": "^2.29.7",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@faker-js/faker": "^9.9.0",
-    "@rslib/core": "^0.12.2",
-    "@types/node": "^24.3.0",
+    "@faker-js/faker": "^10.0.0",
+    "@rslib/core": "^0.13.2",
+    "@types/node": "^24.4.0",
     "bignumber.js": "^9.3.1",
     "husky": "^9.1.7",
-    "msw": "^2.10.5",
+    "msw": "^2.11.2",
     "orval": "^7.11.2",
-    "tsx": "^4.20.4",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2",
-    "viem": "^2.34.0"
+    "viem": "^2.37.6"
   }
 }

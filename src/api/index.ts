@@ -18,7 +18,6 @@ import type {
   YieldBalancesDto,
   YieldBalancesRequestDto,
   YieldDto,
-  YieldsControllerGetYieldBalancesLegacyParams,
   YieldsControllerGetYields200,
   YieldsControllerGetYieldsParams,
   YieldsControllerGetYieldValidators200,
@@ -70,21 +69,6 @@ export const getYield = (
 ) => {
   return customFetch<YieldDto>(
     { url: `/v1/yields/${yieldId}`, method: "GET" },
-    options,
-  );
-};
-
-/**
- * Retrieve all balances associated with a yield opportunity for a specific wallet address, including active, pending, claimable, and withdrawable balances. The network is automatically determined from the yield configuration.
- * @summary Get balances for a specific yield
- */
-export const getYieldBalancesLegacy = (
-  yieldId: string,
-  params: YieldsControllerGetYieldBalancesLegacyParams,
-  options?: SecondParameter<typeof customFetch>,
-) => {
-  return customFetch<YieldBalancesDto>(
-    { url: `/v1/yields/${yieldId}/balances`, method: "GET", params },
     options,
   );
 };
@@ -320,9 +304,6 @@ export type GetAggregateBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getAggregateBalances>>
 >;
 export type GetYieldResult = NonNullable<Awaited<ReturnType<typeof getYield>>>;
-export type GetYieldBalancesLegacyResult = NonNullable<
-  Awaited<ReturnType<typeof getYieldBalancesLegacy>>
->;
 export type GetYieldBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getYieldBalances>>
 >;

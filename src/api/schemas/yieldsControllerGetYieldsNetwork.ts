@@ -32,6 +32,7 @@ export const YieldsControllerGetYieldsNetwork = {
   core: "core",
   sonic: "sonic",
   katana: "katana",
+  hyperevm: "hyperevm",
   agoric: "agoric",
   akash: "akash",
   axelar: "axelar",

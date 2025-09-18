@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - msw
+
+# 4320 minutes = 3 days
+minimumReleaseAge: 4320
