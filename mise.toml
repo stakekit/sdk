@@ -1,6 +1,3 @@
 [tools]
 node = "22"
 pnpm = "10"
-
-[alias]
-pnpm = "https://github.com/jonathanmorley/asdf-pnpm.git"

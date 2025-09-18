@@ -14,8 +14,8 @@ jobs:
 
       - uses: jdx/mise-action@v2
 
-      - run: mise x -- pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
-      - run: mise x -- pnpm run build
+      - run: pnpm run build
 
-      - run: mise x -- pnpm run lint
+      - run: pnpm run lint
