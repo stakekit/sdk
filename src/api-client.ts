@@ -41,7 +41,7 @@ export const customFetch = async <T>(
     return response.json() as Promise<T>;
   }
 
-  const responseText = await response.text()
+  const responseText = await response.text();
   return Promise.reject(responseText);
 };
 
