@@ -1,5 +1,13 @@
 # @yieldxyz/sdk
 
+## 0.0.5
+
+### Patch Changes
+
+- 1013932: chore: deps bump
+- 1013932: feat: schema changes
+- 3fc2f8b: feat: update API schemas
+
 ## 0.0.4
 
 ### Patch Changes
