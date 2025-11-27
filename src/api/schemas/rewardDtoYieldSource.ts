@@ -13,4 +13,5 @@ export const RewardDtoYieldSource = {
   lending_interest: "lending_interest",
   mev: "mev",
   real_world_asset_yield: "real_world_asset_yield",
+  vault: "vault",
 } as const;

@@ -11,12 +11,16 @@ export interface YieldDto {
   id: string;
   /** Network this yield opportunity is on */
   network: YieldDtoNetwork;
+  /** EVM chain ID for this network (only for EVM networks) */
+  chainId?: string;
   /** Accepted input tokens (auto-converted as needed) */
   inputTokens: TokenDto[];
   /** Token received from the protocol */
   outputToken?: TokenDto;
   /** Canonical deposit token - used for balances */
   token: TokenDto;
+  /** Canonical deposit tokens - used for balances */
+  tokens: TokenDto[];
   /** Total effective yield broken down by source and token. */
   rewardRate: RewardRateDto;
   /** Key statistics and analytics for this yield opportunity */

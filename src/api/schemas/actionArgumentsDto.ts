@@ -4,6 +4,8 @@ import type { ActionArgumentsDtoTronResource } from "./actionArgumentsDtoTronRes
 export interface ActionArgumentsDto {
   /** Amount to stake/unstake */
   amount?: string;
+  /** Amounts to stake/unstake */
+  amounts?: string[];
   /** Validator address for single validator selection */
   validatorAddress?: string;
   /** Multiple validator addresses */
@@ -32,4 +34,8 @@ export interface ActionArgumentsDto {
   executionMode?: ActionArgumentsDtoExecutionMode;
   /** Transactions should have Ledger wallet API compatibility for hardware wallet users */
   ledgerWalletApiCompatible?: boolean;
+  /** Use max amount for ERC4626 withdraw */
+  useMaxAmount?: boolean;
+  /** Use instant execution for exit (faster but may have fees) */
+  useInstantExecution?: boolean;
 }

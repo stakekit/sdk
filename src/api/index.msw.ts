@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-
+import type { RequestHandlerOptions } from "msw";
 import { delay, HttpResponse, http } from "msw";
 import type {
   ActionDto,
@@ -67,6 +67,8 @@ export const getYieldsControllerGetYieldsResponseMock =
             "zksync",
             "linea",
             "unichain",
+            "monad-testnet",
+            "monad",
             "avalanche-c",
             "avalanche-c-atomic",
             "avalanche-p",
@@ -79,6 +81,7 @@ export const getYieldsControllerGetYieldsResponseMock =
             "viction",
             "core",
             "sonic",
+            "plasma",
             "katana",
             "hyperevm",
             "agoric",
@@ -140,11 +143,16 @@ export const getYieldsControllerGetYieldsResponseMock =
             "solana-devnet",
             "stellar",
             "stellar-testnet",
+            "sui",
             "tezos",
             "tron",
             "ton",
             "ton-testnet",
           ] as const),
+          chainId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
           inputTokens: Array.from(
             { length: faker.number.int({ min: 1, max: 10 }) },
             (_, i) => i + 1,
@@ -173,6 +181,8 @@ export const getYieldsControllerGetYieldsResponseMock =
               "zksync",
               "linea",
               "unichain",
+              "monad-testnet",
+              "monad",
               "avalanche-c",
               "avalanche-c-atomic",
               "avalanche-p",
@@ -185,6 +195,7 @@ export const getYieldsControllerGetYieldsResponseMock =
               "viction",
               "core",
               "sonic",
+              "plasma",
               "katana",
               "hyperevm",
               "agoric",
@@ -246,6 +257,7 @@ export const getYieldsControllerGetYieldsResponseMock =
               "solana-devnet",
               "stellar",
               "stellar-testnet",
+              "sui",
               "tezos",
               "tron",
               "ton",
@@ -295,6 +307,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                   "zksync",
                   "linea",
                   "unichain",
+                  "monad-testnet",
+                  "monad",
                   "avalanche-c",
                   "avalanche-c-atomic",
                   "avalanche-p",
@@ -307,6 +321,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                   "viction",
                   "core",
                   "sonic",
+                  "plasma",
                   "katana",
                   "hyperevm",
                   "agoric",
@@ -368,6 +383,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                   "solana-devnet",
                   "stellar",
                   "stellar-testnet",
+                  "sui",
                   "tezos",
                   "tron",
                   "ton",
@@ -419,6 +435,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                 "zksync",
                 "linea",
                 "unichain",
+                "monad-testnet",
+                "monad",
                 "avalanche-c",
                 "avalanche-c-atomic",
                 "avalanche-p",
@@ -431,6 +449,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 "viction",
                 "core",
                 "sonic",
+                "plasma",
                 "katana",
                 "hyperevm",
                 "agoric",
@@ -492,6 +511,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 "solana-devnet",
                 "stellar",
                 "stellar-testnet",
+                "sui",
                 "tezos",
                 "tron",
                 "ton",
@@ -515,6 +535,133 @@ export const getYieldsControllerGetYieldsResponseMock =
               ]),
             },
           },
+          tokens: Array.from(
+            { length: faker.number.int({ min: 1, max: 10 }) },
+            (_, i) => i + 1,
+          ).map(() => ({
+            symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            decimals: faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            network: faker.helpers.arrayElement([
+              "ethereum",
+              "ethereum-goerli",
+              "ethereum-holesky",
+              "ethereum-sepolia",
+              "ethereum-hoodi",
+              "arbitrum",
+              "base",
+              "base-sepolia",
+              "gnosis",
+              "optimism",
+              "polygon",
+              "polygon-amoy",
+              "starknet",
+              "zksync",
+              "linea",
+              "unichain",
+              "monad-testnet",
+              "monad",
+              "avalanche-c",
+              "avalanche-c-atomic",
+              "avalanche-p",
+              "binance",
+              "celo",
+              "fantom",
+              "harmony",
+              "moonriver",
+              "okc",
+              "viction",
+              "core",
+              "sonic",
+              "plasma",
+              "katana",
+              "hyperevm",
+              "agoric",
+              "akash",
+              "axelar",
+              "band-protocol",
+              "bitsong",
+              "canto",
+              "chihuahua",
+              "comdex",
+              "coreum",
+              "cosmos",
+              "crescent",
+              "cronos",
+              "cudos",
+              "desmos",
+              "dydx",
+              "evmos",
+              "fetch-ai",
+              "gravity-bridge",
+              "injective",
+              "irisnet",
+              "juno",
+              "kava",
+              "ki-network",
+              "mars-protocol",
+              "nym",
+              "okex-chain",
+              "onomy",
+              "osmosis",
+              "persistence",
+              "quicksilver",
+              "regen",
+              "secret",
+              "sentinel",
+              "sommelier",
+              "stafi",
+              "stargaze",
+              "stride",
+              "teritori",
+              "tgrade",
+              "umee",
+              "sei",
+              "mantra",
+              "celestia",
+              "saga",
+              "zetachain",
+              "dymension",
+              "humansai",
+              "neutron",
+              "polkadot",
+              "kusama",
+              "westend",
+              "bittensor",
+              "binancebeacon",
+              "cardano",
+              "near",
+              "solana",
+              "solana-devnet",
+              "stellar",
+              "stellar-testnet",
+              "sui",
+              "tezos",
+              "tron",
+              "ton",
+              "ton-testnet",
+            ] as const),
+            address: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            logoURI: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            isPoints: faker.helpers.arrayElement([
+              faker.datatype.boolean(),
+              undefined,
+            ]),
+            coinGeckoId: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+          })),
           rewardRate: {
             ...{
               total: faker.number.float({
@@ -561,6 +708,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                       "zksync",
                       "linea",
                       "unichain",
+                      "monad-testnet",
+                      "monad",
                       "avalanche-c",
                       "avalanche-c-atomic",
                       "avalanche-p",
@@ -573,6 +722,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                       "viction",
                       "core",
                       "sonic",
+                      "plasma",
                       "katana",
                       "hyperevm",
                       "agoric",
@@ -634,6 +784,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                       "solana-devnet",
                       "stellar",
                       "stellar-testnet",
+                      "sui",
                       "tezos",
                       "tron",
                       "ton",
@@ -665,6 +816,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                   "lending_interest",
                   "mev",
                   "real_world_asset_yield",
+                  "vault",
                 ] as const),
                 description: faker.helpers.arrayElement([
                   faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -684,6 +836,13 @@ export const getYieldsControllerGetYieldsResponseMock =
                   undefined,
                 ]),
                 tvl: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    null,
+                  ]),
+                  undefined,
+                ]),
+                tvlRaw: faker.helpers.arrayElement([
                   faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
                     null,
@@ -779,6 +938,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                     "zksync",
                     "linea",
                     "unichain",
+                    "monad-testnet",
+                    "monad",
                     "avalanche-c",
                     "avalanche-c-atomic",
                     "avalanche-p",
@@ -791,6 +952,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                     "viction",
                     "core",
                     "sonic",
+                    "plasma",
                     "katana",
                     "hyperevm",
                     "agoric",
@@ -852,6 +1014,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                     "solana-devnet",
                     "stellar",
                     "stellar-testnet",
+                    "sui",
                     "tezos",
                     "tron",
                     "ton",
@@ -968,8 +1131,10 @@ export const getYieldsControllerGetYieldsResponseMock =
                         ).map(() => ({
                           name: faker.helpers.arrayElement([
                             "amount",
+                            "amounts",
                             "validatorAddress",
                             "validatorAddresses",
+                            "receiverAddress",
                             "providerId",
                             "duration",
                             "inputToken",
@@ -982,6 +1147,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "pAddressBech",
                             "executionMode",
                             "ledgerWalletApiCompatible",
+                            "useMaxAmount",
+                            "useInstantExecution",
                           ] as const),
                           type: faker.helpers.arrayElement([
                             "string",
@@ -1065,8 +1232,10 @@ export const getYieldsControllerGetYieldsResponseMock =
                         ).map(() => ({
                           name: faker.helpers.arrayElement([
                             "amount",
+                            "amounts",
                             "validatorAddress",
                             "validatorAddresses",
+                            "receiverAddress",
                             "providerId",
                             "duration",
                             "inputToken",
@@ -1079,6 +1248,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "pAddressBech",
                             "executionMode",
                             "ledgerWalletApiCompatible",
+                            "useMaxAmount",
+                            "useInstantExecution",
                           ] as const),
                           type: faker.helpers.arrayElement([
                             "string",
@@ -1163,8 +1334,10 @@ export const getYieldsControllerGetYieldsResponseMock =
                           ).map(() => ({
                             name: faker.helpers.arrayElement([
                               "amount",
+                              "amounts",
                               "validatorAddress",
                               "validatorAddresses",
+                              "receiverAddress",
                               "providerId",
                               "duration",
                               "inputToken",
@@ -1177,6 +1350,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                               "pAddressBech",
                               "executionMode",
                               "ledgerWalletApiCompatible",
+                              "useMaxAmount",
+                              "useInstantExecution",
                             ] as const),
                             type: faker.helpers.arrayElement([
                               "string",
@@ -1269,8 +1444,10 @@ export const getYieldsControllerGetYieldsResponseMock =
                           ).map(() => ({
                             name: faker.helpers.arrayElement([
                               "amount",
+                              "amounts",
                               "validatorAddress",
                               "validatorAddresses",
+                              "receiverAddress",
                               "providerId",
                               "duration",
                               "inputToken",
@@ -1283,6 +1460,8 @@ export const getYieldsControllerGetYieldsResponseMock =
                               "pAddressBech",
                               "executionMode",
                               "ledgerWalletApiCompatible",
+                              "useMaxAmount",
+                              "useInstantExecution",
                             ] as const),
                             type: faker.helpers.arrayElement([
                               "string",
@@ -1463,8 +1642,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               ).map(() => ({
                 name: faker.helpers.arrayElement([
                   "amount",
+                  "amounts",
                   "validatorAddress",
                   "validatorAddresses",
+                  "receiverAddress",
                   "providerId",
                   "duration",
                   "inputToken",
@@ -1477,6 +1658,8 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   "pAddressBech",
                   "executionMode",
                   "ledgerWalletApiCompatible",
+                  "useMaxAmount",
+                  "useInstantExecution",
                 ] as const),
                 type: faker.helpers.arrayElement([
                   "string",
@@ -1566,6 +1749,8 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             "zksync",
             "linea",
             "unichain",
+            "monad-testnet",
+            "monad",
             "avalanche-c",
             "avalanche-c-atomic",
             "avalanche-p",
@@ -1578,6 +1763,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             "viction",
             "core",
             "sonic",
+            "plasma",
             "katana",
             "hyperevm",
             "agoric",
@@ -1639,6 +1825,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             "solana-devnet",
             "stellar",
             "stellar-testnet",
+            "sui",
             "tezos",
             "tron",
             "ton",
@@ -1731,6 +1918,8 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           "zksync",
                           "linea",
                           "unichain",
+                          "monad-testnet",
+                          "monad",
                           "avalanche-c",
                           "avalanche-c-atomic",
                           "avalanche-p",
@@ -1743,6 +1932,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           "viction",
                           "core",
                           "sonic",
+                          "plasma",
                           "katana",
                           "hyperevm",
                           "agoric",
@@ -1804,6 +1994,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           "solana-devnet",
                           "stellar",
                           "stellar-testnet",
+                          "sui",
                           "tezos",
                           "tron",
                           "ton",
@@ -1835,6 +2026,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       "lending_interest",
                       "mev",
                       "real_world_asset_yield",
+                      "vault",
                     ] as const),
                     description: faker.helpers.arrayElement([
                       faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -1934,6 +2126,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               undefined,
             ]),
             tvl: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tvlRaw: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
               undefined,
             ]),
@@ -2078,6 +2274,8 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         "zksync",
                         "linea",
                         "unichain",
+                        "monad-testnet",
+                        "monad",
                         "avalanche-c",
                         "avalanche-c-atomic",
                         "avalanche-p",
@@ -2090,6 +2288,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         "viction",
                         "core",
                         "sonic",
+                        "plasma",
                         "katana",
                         "hyperevm",
                         "agoric",
@@ -2151,6 +2350,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         "solana-devnet",
                         "stellar",
                         "stellar-testnet",
+                        "sui",
                         "tezos",
                         "tron",
                         "ton",
@@ -2182,6 +2382,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     "lending_interest",
                     "mev",
                     "real_world_asset_yield",
+                    "vault",
                   ] as const),
                   description: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -2282,6 +2483,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
+          tvlRaw: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
           votingPower: faker.helpers.arrayElement([
             faker.number.float({
               min: undefined,
@@ -2362,6 +2567,1013 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
       ]),
       isEarning: faker.datatype.boolean(),
     })),
+    outputTokenBalance: faker.helpers.arrayElement([
+      {
+        ...{
+          address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          type: faker.helpers.arrayElement(Object.values(BalanceType)),
+          amount: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          date: faker.helpers.arrayElement([
+            faker.helpers.arrayElement([
+              `${faker.date.past().toISOString().split(".")[0]}Z`,
+              null,
+            ]),
+            undefined,
+          ]),
+          feeConfigurationId: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          pendingActions: Array.from(
+            { length: faker.number.int({ min: 1, max: 10 }) },
+            (_, i) => i + 1,
+          ).map(() => ({
+            intent: faker.helpers.arrayElement([
+              "enter",
+              "manage",
+              "exit",
+            ] as const),
+            type: faker.helpers.arrayElement([
+              "STAKE",
+              "UNSTAKE",
+              "CLAIM_REWARDS",
+              "RESTAKE_REWARDS",
+              "WITHDRAW",
+              "WITHDRAW_ALL",
+              "RESTAKE",
+              "CLAIM_UNSTAKED",
+              "UNLOCK_LOCKED",
+              "STAKE_LOCKED",
+              "VOTE",
+              "REVOKE",
+              "VOTE_LOCKED",
+              "REVOTE",
+              "REBOND",
+              "MIGRATE",
+              "VERIFY_WITHDRAW_CREDENTIALS",
+              "DELEGATE",
+            ] as const),
+            passthrough: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            arguments: faker.helpers.arrayElement([
+              {
+                ...{
+                  fields: Array.from(
+                    { length: faker.number.int({ min: 1, max: 10 }) },
+                    (_, i) => i + 1,
+                  ).map(() => ({
+                    name: faker.helpers.arrayElement([
+                      "amount",
+                      "amounts",
+                      "validatorAddress",
+                      "validatorAddresses",
+                      "receiverAddress",
+                      "providerId",
+                      "duration",
+                      "inputToken",
+                      "subnetId",
+                      "tronResource",
+                      "feeConfigurationId",
+                      "cosmosPubKey",
+                      "tezosPubKey",
+                      "cAddressBech",
+                      "pAddressBech",
+                      "executionMode",
+                      "ledgerWalletApiCompatible",
+                      "useMaxAmount",
+                      "useInstantExecution",
+                    ] as const),
+                    type: faker.helpers.arrayElement([
+                      "string",
+                      "number",
+                      "address",
+                      "enum",
+                      "boolean",
+                    ] as const),
+                    label: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    description: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    required: faker.helpers.arrayElement([
+                      faker.datatype.boolean(),
+                      undefined,
+                    ]),
+                    options: faker.helpers.arrayElement([
+                      Array.from(
+                        { length: faker.number.int({ min: 1, max: 10 }) },
+                        (_, i) => i + 1,
+                      ).map(() =>
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      ),
+                      undefined,
+                    ]),
+                    optionsRef: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    default: faker.helpers.arrayElement([{}, undefined]),
+                    placeholder: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                    minimum: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
+                      undefined,
+                    ]),
+                    maximum: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
+                      undefined,
+                    ]),
+                    isArray: faker.helpers.arrayElement([
+                      faker.datatype.boolean(),
+                      undefined,
+                    ]),
+                  })),
+                  notes: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                },
+              },
+              undefined,
+            ]),
+          })),
+          token: {
+            ...{
+              symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              decimals: faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              network: faker.helpers.arrayElement([
+                "ethereum",
+                "ethereum-goerli",
+                "ethereum-holesky",
+                "ethereum-sepolia",
+                "ethereum-hoodi",
+                "arbitrum",
+                "base",
+                "base-sepolia",
+                "gnosis",
+                "optimism",
+                "polygon",
+                "polygon-amoy",
+                "starknet",
+                "zksync",
+                "linea",
+                "unichain",
+                "monad-testnet",
+                "monad",
+                "avalanche-c",
+                "avalanche-c-atomic",
+                "avalanche-p",
+                "binance",
+                "celo",
+                "fantom",
+                "harmony",
+                "moonriver",
+                "okc",
+                "viction",
+                "core",
+                "sonic",
+                "plasma",
+                "katana",
+                "hyperevm",
+                "agoric",
+                "akash",
+                "axelar",
+                "band-protocol",
+                "bitsong",
+                "canto",
+                "chihuahua",
+                "comdex",
+                "coreum",
+                "cosmos",
+                "crescent",
+                "cronos",
+                "cudos",
+                "desmos",
+                "dydx",
+                "evmos",
+                "fetch-ai",
+                "gravity-bridge",
+                "injective",
+                "irisnet",
+                "juno",
+                "kava",
+                "ki-network",
+                "mars-protocol",
+                "nym",
+                "okex-chain",
+                "onomy",
+                "osmosis",
+                "persistence",
+                "quicksilver",
+                "regen",
+                "secret",
+                "sentinel",
+                "sommelier",
+                "stafi",
+                "stargaze",
+                "stride",
+                "teritori",
+                "tgrade",
+                "umee",
+                "sei",
+                "mantra",
+                "celestia",
+                "saga",
+                "zetachain",
+                "dymension",
+                "humansai",
+                "neutron",
+                "polkadot",
+                "kusama",
+                "westend",
+                "bittensor",
+                "binancebeacon",
+                "cardano",
+                "near",
+                "solana",
+                "solana-devnet",
+                "stellar",
+                "stellar-testnet",
+                "sui",
+                "tezos",
+                "tron",
+                "ton",
+                "ton-testnet",
+              ] as const),
+              address: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              logoURI: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              isPoints: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              coinGeckoId: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+            },
+          },
+          validator: faker.helpers.arrayElement([
+            {
+              ...{
+                address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                name: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                logoURI: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                website: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                rewardRate: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      total: faker.number.float({
+                        min: undefined,
+                        max: undefined,
+                        fractionDigits: 2,
+                      }),
+                      rateType: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      components: Array.from(
+                        { length: faker.number.int({ min: 1, max: 10 }) },
+                        (_, i) => i + 1,
+                      ).map(() => ({
+                        rate: faker.number.float({
+                          min: undefined,
+                          max: undefined,
+                          fractionDigits: 2,
+                        }),
+                        rateType: faker.string.alpha({
+                          length: { min: 10, max: 20 },
+                        }),
+                        token: {
+                          ...{
+                            symbol: faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            name: faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            decimals: faker.number.float({
+                              min: undefined,
+                              max: undefined,
+                              fractionDigits: 2,
+                            }),
+                            network: faker.helpers.arrayElement([
+                              "ethereum",
+                              "ethereum-goerli",
+                              "ethereum-holesky",
+                              "ethereum-sepolia",
+                              "ethereum-hoodi",
+                              "arbitrum",
+                              "base",
+                              "base-sepolia",
+                              "gnosis",
+                              "optimism",
+                              "polygon",
+                              "polygon-amoy",
+                              "starknet",
+                              "zksync",
+                              "linea",
+                              "unichain",
+                              "monad-testnet",
+                              "monad",
+                              "avalanche-c",
+                              "avalanche-c-atomic",
+                              "avalanche-p",
+                              "binance",
+                              "celo",
+                              "fantom",
+                              "harmony",
+                              "moonriver",
+                              "okc",
+                              "viction",
+                              "core",
+                              "sonic",
+                              "plasma",
+                              "katana",
+                              "hyperevm",
+                              "agoric",
+                              "akash",
+                              "axelar",
+                              "band-protocol",
+                              "bitsong",
+                              "canto",
+                              "chihuahua",
+                              "comdex",
+                              "coreum",
+                              "cosmos",
+                              "crescent",
+                              "cronos",
+                              "cudos",
+                              "desmos",
+                              "dydx",
+                              "evmos",
+                              "fetch-ai",
+                              "gravity-bridge",
+                              "injective",
+                              "irisnet",
+                              "juno",
+                              "kava",
+                              "ki-network",
+                              "mars-protocol",
+                              "nym",
+                              "okex-chain",
+                              "onomy",
+                              "osmosis",
+                              "persistence",
+                              "quicksilver",
+                              "regen",
+                              "secret",
+                              "sentinel",
+                              "sommelier",
+                              "stafi",
+                              "stargaze",
+                              "stride",
+                              "teritori",
+                              "tgrade",
+                              "umee",
+                              "sei",
+                              "mantra",
+                              "celestia",
+                              "saga",
+                              "zetachain",
+                              "dymension",
+                              "humansai",
+                              "neutron",
+                              "polkadot",
+                              "kusama",
+                              "westend",
+                              "bittensor",
+                              "binancebeacon",
+                              "cardano",
+                              "near",
+                              "solana",
+                              "solana-devnet",
+                              "stellar",
+                              "stellar-testnet",
+                              "sui",
+                              "tezos",
+                              "tron",
+                              "ton",
+                              "ton-testnet",
+                            ] as const),
+                            address: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                            logoURI: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                            isPoints: faker.helpers.arrayElement([
+                              faker.datatype.boolean(),
+                              undefined,
+                            ]),
+                            coinGeckoId: faker.helpers.arrayElement([
+                              faker.string.alpha({
+                                length: { min: 10, max: 20 },
+                              }),
+                              undefined,
+                            ]),
+                          },
+                        },
+                        yieldSource: faker.helpers.arrayElement([
+                          "staking",
+                          "restaking",
+                          "protocol_incentive",
+                          "points",
+                          "lending_interest",
+                          "mev",
+                          "real_world_asset_yield",
+                          "vault",
+                        ] as const),
+                        description: faker.helpers.arrayElement([
+                          faker.string.alpha({ length: { min: 10, max: 20 } }),
+                          undefined,
+                        ]),
+                      })),
+                    },
+                  },
+                  undefined,
+                ]),
+                provider: faker.helpers.arrayElement([
+                  {
+                    ...{
+                      name: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      uniqueId: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      website: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      rank: faker.number.float({
+                        min: undefined,
+                        max: undefined,
+                        fractionDigits: 2,
+                      }),
+                      preferred: faker.datatype.boolean(),
+                      revshare: faker.helpers.arrayElement([
+                        {
+                          ...{
+                            trial: faker.helpers.arrayElement([
+                              {
+                                ...{
+                                  minRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                  maxRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                },
+                              },
+                              undefined,
+                            ]),
+                            standard: faker.helpers.arrayElement([
+                              {
+                                ...{
+                                  minRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                  maxRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                },
+                              },
+                              undefined,
+                            ]),
+                            pro: faker.helpers.arrayElement([
+                              {
+                                ...{
+                                  minRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                  maxRevShare: faker.number.float({
+                                    min: undefined,
+                                    max: undefined,
+                                    fractionDigits: 2,
+                                  }),
+                                },
+                              },
+                              undefined,
+                            ]),
+                          },
+                        },
+                        undefined,
+                      ]),
+                    },
+                  },
+                  undefined,
+                ]),
+                commission: faker.helpers.arrayElement([
+                  faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  undefined,
+                ]),
+                tvlUsd: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                tvl: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                tvlRaw: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                votingPower: faker.helpers.arrayElement([
+                  faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  undefined,
+                ]),
+                preferred: faker.helpers.arrayElement([
+                  faker.datatype.boolean(),
+                  undefined,
+                ]),
+                minimumStake: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                remainingPossibleStake: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                remainingSlots: faker.helpers.arrayElement([
+                  faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  undefined,
+                ]),
+                nominatorCount: faker.helpers.arrayElement([
+                  faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  undefined,
+                ]),
+                status: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                providerId: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                pricePerShare: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                subnetId: faker.helpers.arrayElement([
+                  faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  undefined,
+                ]),
+                subnetName: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                marketCap: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+                tokenSymbol: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+          validators: faker.helpers.arrayElement([
+            Array.from(
+              { length: faker.number.int({ min: 1, max: 10 }) },
+              (_, i) => i + 1,
+            ).map(() => ({
+              address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              name: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              logoURI: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              website: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              rewardRate: faker.helpers.arrayElement([
+                {
+                  ...{
+                    total: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    rateType: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    components: Array.from(
+                      { length: faker.number.int({ min: 1, max: 10 }) },
+                      (_, i) => i + 1,
+                    ).map(() => ({
+                      rate: faker.number.float({
+                        min: undefined,
+                        max: undefined,
+                        fractionDigits: 2,
+                      }),
+                      rateType: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      token: {
+                        ...{
+                          symbol: faker.string.alpha({
+                            length: { min: 10, max: 20 },
+                          }),
+                          name: faker.string.alpha({
+                            length: { min: 10, max: 20 },
+                          }),
+                          decimals: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          network: faker.helpers.arrayElement([
+                            "ethereum",
+                            "ethereum-goerli",
+                            "ethereum-holesky",
+                            "ethereum-sepolia",
+                            "ethereum-hoodi",
+                            "arbitrum",
+                            "base",
+                            "base-sepolia",
+                            "gnosis",
+                            "optimism",
+                            "polygon",
+                            "polygon-amoy",
+                            "starknet",
+                            "zksync",
+                            "linea",
+                            "unichain",
+                            "monad-testnet",
+                            "monad",
+                            "avalanche-c",
+                            "avalanche-c-atomic",
+                            "avalanche-p",
+                            "binance",
+                            "celo",
+                            "fantom",
+                            "harmony",
+                            "moonriver",
+                            "okc",
+                            "viction",
+                            "core",
+                            "sonic",
+                            "plasma",
+                            "katana",
+                            "hyperevm",
+                            "agoric",
+                            "akash",
+                            "axelar",
+                            "band-protocol",
+                            "bitsong",
+                            "canto",
+                            "chihuahua",
+                            "comdex",
+                            "coreum",
+                            "cosmos",
+                            "crescent",
+                            "cronos",
+                            "cudos",
+                            "desmos",
+                            "dydx",
+                            "evmos",
+                            "fetch-ai",
+                            "gravity-bridge",
+                            "injective",
+                            "irisnet",
+                            "juno",
+                            "kava",
+                            "ki-network",
+                            "mars-protocol",
+                            "nym",
+                            "okex-chain",
+                            "onomy",
+                            "osmosis",
+                            "persistence",
+                            "quicksilver",
+                            "regen",
+                            "secret",
+                            "sentinel",
+                            "sommelier",
+                            "stafi",
+                            "stargaze",
+                            "stride",
+                            "teritori",
+                            "tgrade",
+                            "umee",
+                            "sei",
+                            "mantra",
+                            "celestia",
+                            "saga",
+                            "zetachain",
+                            "dymension",
+                            "humansai",
+                            "neutron",
+                            "polkadot",
+                            "kusama",
+                            "westend",
+                            "bittensor",
+                            "binancebeacon",
+                            "cardano",
+                            "near",
+                            "solana",
+                            "solana-devnet",
+                            "stellar",
+                            "stellar-testnet",
+                            "sui",
+                            "tezos",
+                            "tron",
+                            "ton",
+                            "ton-testnet",
+                          ] as const),
+                          address: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                          logoURI: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                          isPoints: faker.helpers.arrayElement([
+                            faker.datatype.boolean(),
+                            undefined,
+                          ]),
+                          coinGeckoId: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                        },
+                      },
+                      yieldSource: faker.helpers.arrayElement([
+                        "staking",
+                        "restaking",
+                        "protocol_incentive",
+                        "points",
+                        "lending_interest",
+                        "mev",
+                        "real_world_asset_yield",
+                        "vault",
+                      ] as const),
+                      description: faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        undefined,
+                      ]),
+                    })),
+                  },
+                },
+                undefined,
+              ]),
+              provider: faker.helpers.arrayElement([
+                {
+                  ...{
+                    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    uniqueId: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    website: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    rank: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    preferred: faker.datatype.boolean(),
+                    revshare: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          trial: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                          standard: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                          pro: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                        },
+                      },
+                      undefined,
+                    ]),
+                  },
+                },
+                undefined,
+              ]),
+              commission: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              tvlUsd: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tvl: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tvlRaw: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              votingPower: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              preferred: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              minimumStake: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              remainingPossibleStake: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              remainingSlots: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              nominatorCount: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              status: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              providerId: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              pricePerShare: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              subnetId: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              subnetName: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              marketCap: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tokenSymbol: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+            })),
+            undefined,
+          ]),
+          amountUsd: faker.helpers.arrayElement([
+            faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              null,
+            ]),
+            undefined,
+          ]),
+          isEarning: faker.datatype.boolean(),
+        },
+      },
+      undefined,
+    ]),
   })),
   errors: Array.from(
     { length: faker.number.int({ min: 1, max: 10 }) },
@@ -2394,6 +3606,8 @@ export const getYieldsControllerGetYieldResponseMock = (
     "zksync",
     "linea",
     "unichain",
+    "monad-testnet",
+    "monad",
     "avalanche-c",
     "avalanche-c-atomic",
     "avalanche-p",
@@ -2406,6 +3620,7 @@ export const getYieldsControllerGetYieldResponseMock = (
     "viction",
     "core",
     "sonic",
+    "plasma",
     "katana",
     "hyperevm",
     "agoric",
@@ -2467,11 +3682,16 @@ export const getYieldsControllerGetYieldResponseMock = (
     "solana-devnet",
     "stellar",
     "stellar-testnet",
+    "sui",
     "tezos",
     "tron",
     "ton",
     "ton-testnet",
   ] as const),
+  chainId: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    undefined,
+  ]),
   inputTokens: Array.from(
     { length: faker.number.int({ min: 1, max: 10 }) },
     (_, i) => i + 1,
@@ -2500,6 +3720,8 @@ export const getYieldsControllerGetYieldResponseMock = (
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -2512,6 +3734,7 @@ export const getYieldsControllerGetYieldResponseMock = (
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -2573,6 +3796,7 @@ export const getYieldsControllerGetYieldResponseMock = (
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -2619,6 +3843,8 @@ export const getYieldsControllerGetYieldResponseMock = (
           "zksync",
           "linea",
           "unichain",
+          "monad-testnet",
+          "monad",
           "avalanche-c",
           "avalanche-c-atomic",
           "avalanche-p",
@@ -2631,6 +3857,7 @@ export const getYieldsControllerGetYieldResponseMock = (
           "viction",
           "core",
           "sonic",
+          "plasma",
           "katana",
           "hyperevm",
           "agoric",
@@ -2692,6 +3919,7 @@ export const getYieldsControllerGetYieldResponseMock = (
           "solana-devnet",
           "stellar",
           "stellar-testnet",
+          "sui",
           "tezos",
           "tron",
           "ton",
@@ -2743,6 +3971,8 @@ export const getYieldsControllerGetYieldResponseMock = (
         "zksync",
         "linea",
         "unichain",
+        "monad-testnet",
+        "monad",
         "avalanche-c",
         "avalanche-c-atomic",
         "avalanche-p",
@@ -2755,6 +3985,7 @@ export const getYieldsControllerGetYieldResponseMock = (
         "viction",
         "core",
         "sonic",
+        "plasma",
         "katana",
         "hyperevm",
         "agoric",
@@ -2816,6 +4047,7 @@ export const getYieldsControllerGetYieldResponseMock = (
         "solana-devnet",
         "stellar",
         "stellar-testnet",
+        "sui",
         "tezos",
         "tron",
         "ton",
@@ -2839,6 +4071,130 @@ export const getYieldsControllerGetYieldResponseMock = (
       ]),
     },
   },
+  tokens: Array.from(
+    { length: faker.number.int({ min: 1, max: 10 }) },
+    (_, i) => i + 1,
+  ).map(() => ({
+    symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    decimals: faker.number.float({
+      min: undefined,
+      max: undefined,
+      fractionDigits: 2,
+    }),
+    network: faker.helpers.arrayElement([
+      "ethereum",
+      "ethereum-goerli",
+      "ethereum-holesky",
+      "ethereum-sepolia",
+      "ethereum-hoodi",
+      "arbitrum",
+      "base",
+      "base-sepolia",
+      "gnosis",
+      "optimism",
+      "polygon",
+      "polygon-amoy",
+      "starknet",
+      "zksync",
+      "linea",
+      "unichain",
+      "monad-testnet",
+      "monad",
+      "avalanche-c",
+      "avalanche-c-atomic",
+      "avalanche-p",
+      "binance",
+      "celo",
+      "fantom",
+      "harmony",
+      "moonriver",
+      "okc",
+      "viction",
+      "core",
+      "sonic",
+      "plasma",
+      "katana",
+      "hyperevm",
+      "agoric",
+      "akash",
+      "axelar",
+      "band-protocol",
+      "bitsong",
+      "canto",
+      "chihuahua",
+      "comdex",
+      "coreum",
+      "cosmos",
+      "crescent",
+      "cronos",
+      "cudos",
+      "desmos",
+      "dydx",
+      "evmos",
+      "fetch-ai",
+      "gravity-bridge",
+      "injective",
+      "irisnet",
+      "juno",
+      "kava",
+      "ki-network",
+      "mars-protocol",
+      "nym",
+      "okex-chain",
+      "onomy",
+      "osmosis",
+      "persistence",
+      "quicksilver",
+      "regen",
+      "secret",
+      "sentinel",
+      "sommelier",
+      "stafi",
+      "stargaze",
+      "stride",
+      "teritori",
+      "tgrade",
+      "umee",
+      "sei",
+      "mantra",
+      "celestia",
+      "saga",
+      "zetachain",
+      "dymension",
+      "humansai",
+      "neutron",
+      "polkadot",
+      "kusama",
+      "westend",
+      "bittensor",
+      "binancebeacon",
+      "cardano",
+      "near",
+      "solana",
+      "solana-devnet",
+      "stellar",
+      "stellar-testnet",
+      "sui",
+      "tezos",
+      "tron",
+      "ton",
+      "ton-testnet",
+    ] as const),
+    address: faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      undefined,
+    ]),
+    logoURI: faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      undefined,
+    ]),
+    isPoints: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]),
+    coinGeckoId: faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      undefined,
+    ]),
+  })),
   rewardRate: {
     ...{
       total: faker.number.float({
@@ -2883,6 +4239,8 @@ export const getYieldsControllerGetYieldResponseMock = (
               "zksync",
               "linea",
               "unichain",
+              "monad-testnet",
+              "monad",
               "avalanche-c",
               "avalanche-c-atomic",
               "avalanche-p",
@@ -2895,6 +4253,7 @@ export const getYieldsControllerGetYieldResponseMock = (
               "viction",
               "core",
               "sonic",
+              "plasma",
               "katana",
               "hyperevm",
               "agoric",
@@ -2956,6 +4315,7 @@ export const getYieldsControllerGetYieldResponseMock = (
               "solana-devnet",
               "stellar",
               "stellar-testnet",
+              "sui",
               "tezos",
               "tron",
               "ton",
@@ -2987,6 +4347,7 @@ export const getYieldsControllerGetYieldResponseMock = (
           "lending_interest",
           "mev",
           "real_world_asset_yield",
+          "vault",
         ] as const),
         description: faker.helpers.arrayElement([
           faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -3006,6 +4367,13 @@ export const getYieldsControllerGetYieldResponseMock = (
           undefined,
         ]),
         tvl: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
+        tvlRaw: faker.helpers.arrayElement([
           faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             null,
@@ -3092,6 +4460,8 @@ export const getYieldsControllerGetYieldResponseMock = (
             "zksync",
             "linea",
             "unichain",
+            "monad-testnet",
+            "monad",
             "avalanche-c",
             "avalanche-c-atomic",
             "avalanche-p",
@@ -3104,6 +4474,7 @@ export const getYieldsControllerGetYieldResponseMock = (
             "viction",
             "core",
             "sonic",
+            "plasma",
             "katana",
             "hyperevm",
             "agoric",
@@ -3165,6 +4536,7 @@ export const getYieldsControllerGetYieldResponseMock = (
             "solana-devnet",
             "stellar",
             "stellar-testnet",
+            "sui",
             "tezos",
             "tron",
             "ton",
@@ -3281,8 +4653,10 @@ export const getYieldsControllerGetYieldResponseMock = (
                 ).map(() => ({
                   name: faker.helpers.arrayElement([
                     "amount",
+                    "amounts",
                     "validatorAddress",
                     "validatorAddresses",
+                    "receiverAddress",
                     "providerId",
                     "duration",
                     "inputToken",
@@ -3295,6 +4669,8 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "pAddressBech",
                     "executionMode",
                     "ledgerWalletApiCompatible",
+                    "useMaxAmount",
+                    "useInstantExecution",
                   ] as const),
                   type: faker.helpers.arrayElement([
                     "string",
@@ -3364,8 +4740,10 @@ export const getYieldsControllerGetYieldResponseMock = (
                 ).map(() => ({
                   name: faker.helpers.arrayElement([
                     "amount",
+                    "amounts",
                     "validatorAddress",
                     "validatorAddresses",
+                    "receiverAddress",
                     "providerId",
                     "duration",
                     "inputToken",
@@ -3378,6 +4756,8 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "pAddressBech",
                     "executionMode",
                     "ledgerWalletApiCompatible",
+                    "useMaxAmount",
+                    "useInstantExecution",
                   ] as const),
                   type: faker.helpers.arrayElement([
                     "string",
@@ -3448,8 +4828,10 @@ export const getYieldsControllerGetYieldResponseMock = (
                   ).map(() => ({
                     name: faker.helpers.arrayElement([
                       "amount",
+                      "amounts",
                       "validatorAddress",
                       "validatorAddresses",
+                      "receiverAddress",
                       "providerId",
                       "duration",
                       "inputToken",
@@ -3462,6 +4844,8 @@ export const getYieldsControllerGetYieldResponseMock = (
                       "pAddressBech",
                       "executionMode",
                       "ledgerWalletApiCompatible",
+                      "useMaxAmount",
+                      "useInstantExecution",
                     ] as const),
                     type: faker.helpers.arrayElement([
                       "string",
@@ -3533,8 +4917,10 @@ export const getYieldsControllerGetYieldResponseMock = (
                   ).map(() => ({
                     name: faker.helpers.arrayElement([
                       "amount",
+                      "amounts",
                       "validatorAddress",
                       "validatorAddresses",
+                      "receiverAddress",
                       "providerId",
                       "duration",
                       "inputToken",
@@ -3547,6 +4933,8 @@ export const getYieldsControllerGetYieldResponseMock = (
                       "pAddressBech",
                       "executionMode",
                       "ledgerWalletApiCompatible",
+                      "useMaxAmount",
+                      "useInstantExecution",
                     ] as const),
                     type: faker.helpers.arrayElement([
                       "string",
@@ -3695,8 +5083,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             ).map(() => ({
               name: faker.helpers.arrayElement([
                 "amount",
+                "amounts",
                 "validatorAddress",
                 "validatorAddresses",
+                "receiverAddress",
                 "providerId",
                 "duration",
                 "inputToken",
@@ -3709,6 +5099,8 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 "pAddressBech",
                 "executionMode",
                 "ledgerWalletApiCompatible",
+                "useMaxAmount",
+                "useInstantExecution",
               ] as const),
               type: faker.helpers.arrayElement([
                 "string",
@@ -3798,6 +5190,8 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           "zksync",
           "linea",
           "unichain",
+          "monad-testnet",
+          "monad",
           "avalanche-c",
           "avalanche-c-atomic",
           "avalanche-p",
@@ -3810,6 +5204,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           "viction",
           "core",
           "sonic",
+          "plasma",
           "katana",
           "hyperevm",
           "agoric",
@@ -3871,6 +5266,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           "solana-devnet",
           "stellar",
           "stellar-testnet",
+          "sui",
           "tezos",
           "tron",
           "ton",
@@ -3961,6 +5357,8 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         "zksync",
                         "linea",
                         "unichain",
+                        "monad-testnet",
+                        "monad",
                         "avalanche-c",
                         "avalanche-c-atomic",
                         "avalanche-p",
@@ -3973,6 +5371,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         "viction",
                         "core",
                         "sonic",
+                        "plasma",
                         "katana",
                         "hyperevm",
                         "agoric",
@@ -4034,6 +5433,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         "solana-devnet",
                         "stellar",
                         "stellar-testnet",
+                        "sui",
                         "tezos",
                         "tron",
                         "ton",
@@ -4065,6 +5465,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     "lending_interest",
                     "mev",
                     "real_world_asset_yield",
+                    "vault",
                   ] as const),
                   description: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4162,6 +5563,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             undefined,
           ]),
           tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvlRaw: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
@@ -4302,6 +5707,8 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       "zksync",
                       "linea",
                       "unichain",
+                      "monad-testnet",
+                      "monad",
                       "avalanche-c",
                       "avalanche-c-atomic",
                       "avalanche-p",
@@ -4314,6 +5721,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       "viction",
                       "core",
                       "sonic",
+                      "plasma",
                       "katana",
                       "hyperevm",
                       "agoric",
@@ -4375,6 +5783,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       "solana-devnet",
                       "stellar",
                       "stellar-testnet",
+                      "sui",
                       "tezos",
                       "tron",
                       "ton",
@@ -4406,6 +5815,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                   "lending_interest",
                   "mev",
                   "real_world_asset_yield",
+                  "vault",
                 ] as const),
                 description: faker.helpers.arrayElement([
                   faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4506,6 +5916,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           faker.string.alpha({ length: { min: 10, max: 20 } }),
           undefined,
         ]),
+        tvlRaw: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
         votingPower: faker.helpers.arrayElement([
           faker.number.float({
             min: undefined,
@@ -4586,6 +6000,1003 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
     ]),
     isEarning: faker.datatype.boolean(),
   })),
+  outputTokenBalance: faker.helpers.arrayElement([
+    {
+      ...{
+        address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        type: faker.helpers.arrayElement(Object.values(BalanceType)),
+        amount: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
+        date: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            `${faker.date.past().toISOString().split(".")[0]}Z`,
+            null,
+          ]),
+          undefined,
+        ]),
+        feeConfigurationId: faker.helpers.arrayElement([
+          faker.string.alpha({ length: { min: 10, max: 20 } }),
+          undefined,
+        ]),
+        pendingActions: Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => ({
+          intent: faker.helpers.arrayElement([
+            "enter",
+            "manage",
+            "exit",
+          ] as const),
+          type: faker.helpers.arrayElement([
+            "STAKE",
+            "UNSTAKE",
+            "CLAIM_REWARDS",
+            "RESTAKE_REWARDS",
+            "WITHDRAW",
+            "WITHDRAW_ALL",
+            "RESTAKE",
+            "CLAIM_UNSTAKED",
+            "UNLOCK_LOCKED",
+            "STAKE_LOCKED",
+            "VOTE",
+            "REVOKE",
+            "VOTE_LOCKED",
+            "REVOTE",
+            "REBOND",
+            "MIGRATE",
+            "VERIFY_WITHDRAW_CREDENTIALS",
+            "DELEGATE",
+          ] as const),
+          passthrough: faker.string.alpha({ length: { min: 10, max: 20 } }),
+          arguments: faker.helpers.arrayElement([
+            {
+              ...{
+                fields: Array.from(
+                  { length: faker.number.int({ min: 1, max: 10 }) },
+                  (_, i) => i + 1,
+                ).map(() => ({
+                  name: faker.helpers.arrayElement([
+                    "amount",
+                    "amounts",
+                    "validatorAddress",
+                    "validatorAddresses",
+                    "receiverAddress",
+                    "providerId",
+                    "duration",
+                    "inputToken",
+                    "subnetId",
+                    "tronResource",
+                    "feeConfigurationId",
+                    "cosmosPubKey",
+                    "tezosPubKey",
+                    "cAddressBech",
+                    "pAddressBech",
+                    "executionMode",
+                    "ledgerWalletApiCompatible",
+                    "useMaxAmount",
+                    "useInstantExecution",
+                  ] as const),
+                  type: faker.helpers.arrayElement([
+                    "string",
+                    "number",
+                    "address",
+                    "enum",
+                    "boolean",
+                  ] as const),
+                  label: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  description: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                  required: faker.helpers.arrayElement([
+                    faker.datatype.boolean(),
+                    undefined,
+                  ]),
+                  options: faker.helpers.arrayElement([
+                    Array.from(
+                      { length: faker.number.int({ min: 1, max: 10 }) },
+                      (_, i) => i + 1,
+                    ).map(() =>
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    ),
+                    undefined,
+                  ]),
+                  optionsRef: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                  default: faker.helpers.arrayElement([{}, undefined]),
+                  placeholder: faker.helpers.arrayElement([
+                    faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    undefined,
+                  ]),
+                  minimum: faker.helpers.arrayElement([
+                    faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      null,
+                    ]),
+                    undefined,
+                  ]),
+                  maximum: faker.helpers.arrayElement([
+                    faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      null,
+                    ]),
+                    undefined,
+                  ]),
+                  isArray: faker.helpers.arrayElement([
+                    faker.datatype.boolean(),
+                    undefined,
+                  ]),
+                })),
+                notes: faker.helpers.arrayElement([
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  undefined,
+                ]),
+              },
+            },
+            undefined,
+          ]),
+        })),
+        token: {
+          ...{
+            symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            decimals: faker.number.float({
+              min: undefined,
+              max: undefined,
+              fractionDigits: 2,
+            }),
+            network: faker.helpers.arrayElement([
+              "ethereum",
+              "ethereum-goerli",
+              "ethereum-holesky",
+              "ethereum-sepolia",
+              "ethereum-hoodi",
+              "arbitrum",
+              "base",
+              "base-sepolia",
+              "gnosis",
+              "optimism",
+              "polygon",
+              "polygon-amoy",
+              "starknet",
+              "zksync",
+              "linea",
+              "unichain",
+              "monad-testnet",
+              "monad",
+              "avalanche-c",
+              "avalanche-c-atomic",
+              "avalanche-p",
+              "binance",
+              "celo",
+              "fantom",
+              "harmony",
+              "moonriver",
+              "okc",
+              "viction",
+              "core",
+              "sonic",
+              "plasma",
+              "katana",
+              "hyperevm",
+              "agoric",
+              "akash",
+              "axelar",
+              "band-protocol",
+              "bitsong",
+              "canto",
+              "chihuahua",
+              "comdex",
+              "coreum",
+              "cosmos",
+              "crescent",
+              "cronos",
+              "cudos",
+              "desmos",
+              "dydx",
+              "evmos",
+              "fetch-ai",
+              "gravity-bridge",
+              "injective",
+              "irisnet",
+              "juno",
+              "kava",
+              "ki-network",
+              "mars-protocol",
+              "nym",
+              "okex-chain",
+              "onomy",
+              "osmosis",
+              "persistence",
+              "quicksilver",
+              "regen",
+              "secret",
+              "sentinel",
+              "sommelier",
+              "stafi",
+              "stargaze",
+              "stride",
+              "teritori",
+              "tgrade",
+              "umee",
+              "sei",
+              "mantra",
+              "celestia",
+              "saga",
+              "zetachain",
+              "dymension",
+              "humansai",
+              "neutron",
+              "polkadot",
+              "kusama",
+              "westend",
+              "bittensor",
+              "binancebeacon",
+              "cardano",
+              "near",
+              "solana",
+              "solana-devnet",
+              "stellar",
+              "stellar-testnet",
+              "sui",
+              "tezos",
+              "tron",
+              "ton",
+              "ton-testnet",
+            ] as const),
+            address: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            logoURI: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            isPoints: faker.helpers.arrayElement([
+              faker.datatype.boolean(),
+              undefined,
+            ]),
+            coinGeckoId: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+          },
+        },
+        validator: faker.helpers.arrayElement([
+          {
+            ...{
+              address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+              name: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              logoURI: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              website: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              rewardRate: faker.helpers.arrayElement([
+                {
+                  ...{
+                    total: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    rateType: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    components: Array.from(
+                      { length: faker.number.int({ min: 1, max: 10 }) },
+                      (_, i) => i + 1,
+                    ).map(() => ({
+                      rate: faker.number.float({
+                        min: undefined,
+                        max: undefined,
+                        fractionDigits: 2,
+                      }),
+                      rateType: faker.string.alpha({
+                        length: { min: 10, max: 20 },
+                      }),
+                      token: {
+                        ...{
+                          symbol: faker.string.alpha({
+                            length: { min: 10, max: 20 },
+                          }),
+                          name: faker.string.alpha({
+                            length: { min: 10, max: 20 },
+                          }),
+                          decimals: faker.number.float({
+                            min: undefined,
+                            max: undefined,
+                            fractionDigits: 2,
+                          }),
+                          network: faker.helpers.arrayElement([
+                            "ethereum",
+                            "ethereum-goerli",
+                            "ethereum-holesky",
+                            "ethereum-sepolia",
+                            "ethereum-hoodi",
+                            "arbitrum",
+                            "base",
+                            "base-sepolia",
+                            "gnosis",
+                            "optimism",
+                            "polygon",
+                            "polygon-amoy",
+                            "starknet",
+                            "zksync",
+                            "linea",
+                            "unichain",
+                            "monad-testnet",
+                            "monad",
+                            "avalanche-c",
+                            "avalanche-c-atomic",
+                            "avalanche-p",
+                            "binance",
+                            "celo",
+                            "fantom",
+                            "harmony",
+                            "moonriver",
+                            "okc",
+                            "viction",
+                            "core",
+                            "sonic",
+                            "plasma",
+                            "katana",
+                            "hyperevm",
+                            "agoric",
+                            "akash",
+                            "axelar",
+                            "band-protocol",
+                            "bitsong",
+                            "canto",
+                            "chihuahua",
+                            "comdex",
+                            "coreum",
+                            "cosmos",
+                            "crescent",
+                            "cronos",
+                            "cudos",
+                            "desmos",
+                            "dydx",
+                            "evmos",
+                            "fetch-ai",
+                            "gravity-bridge",
+                            "injective",
+                            "irisnet",
+                            "juno",
+                            "kava",
+                            "ki-network",
+                            "mars-protocol",
+                            "nym",
+                            "okex-chain",
+                            "onomy",
+                            "osmosis",
+                            "persistence",
+                            "quicksilver",
+                            "regen",
+                            "secret",
+                            "sentinel",
+                            "sommelier",
+                            "stafi",
+                            "stargaze",
+                            "stride",
+                            "teritori",
+                            "tgrade",
+                            "umee",
+                            "sei",
+                            "mantra",
+                            "celestia",
+                            "saga",
+                            "zetachain",
+                            "dymension",
+                            "humansai",
+                            "neutron",
+                            "polkadot",
+                            "kusama",
+                            "westend",
+                            "bittensor",
+                            "binancebeacon",
+                            "cardano",
+                            "near",
+                            "solana",
+                            "solana-devnet",
+                            "stellar",
+                            "stellar-testnet",
+                            "sui",
+                            "tezos",
+                            "tron",
+                            "ton",
+                            "ton-testnet",
+                          ] as const),
+                          address: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                          logoURI: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                          isPoints: faker.helpers.arrayElement([
+                            faker.datatype.boolean(),
+                            undefined,
+                          ]),
+                          coinGeckoId: faker.helpers.arrayElement([
+                            faker.string.alpha({
+                              length: { min: 10, max: 20 },
+                            }),
+                            undefined,
+                          ]),
+                        },
+                      },
+                      yieldSource: faker.helpers.arrayElement([
+                        "staking",
+                        "restaking",
+                        "protocol_incentive",
+                        "points",
+                        "lending_interest",
+                        "mev",
+                        "real_world_asset_yield",
+                        "vault",
+                      ] as const),
+                      description: faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        undefined,
+                      ]),
+                    })),
+                  },
+                },
+                undefined,
+              ]),
+              provider: faker.helpers.arrayElement([
+                {
+                  ...{
+                    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                    uniqueId: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    website: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    rank: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    preferred: faker.datatype.boolean(),
+                    revshare: faker.helpers.arrayElement([
+                      {
+                        ...{
+                          trial: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                          standard: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                          pro: faker.helpers.arrayElement([
+                            {
+                              ...{
+                                minRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                                maxRevShare: faker.number.float({
+                                  min: undefined,
+                                  max: undefined,
+                                  fractionDigits: 2,
+                                }),
+                              },
+                            },
+                            undefined,
+                          ]),
+                        },
+                      },
+                      undefined,
+                    ]),
+                  },
+                },
+                undefined,
+              ]),
+              commission: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              tvlUsd: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tvl: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tvlRaw: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              votingPower: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              preferred: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              minimumStake: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              remainingPossibleStake: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              remainingSlots: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              nominatorCount: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              status: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              providerId: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              pricePerShare: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              subnetId: faker.helpers.arrayElement([
+                faker.number.float({
+                  min: undefined,
+                  max: undefined,
+                  fractionDigits: 2,
+                }),
+                undefined,
+              ]),
+              subnetName: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              marketCap: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+              tokenSymbol: faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                undefined,
+              ]),
+            },
+          },
+          undefined,
+        ]),
+        validators: faker.helpers.arrayElement([
+          Array.from(
+            { length: faker.number.int({ min: 1, max: 10 }) },
+            (_, i) => i + 1,
+          ).map(() => ({
+            address: faker.string.alpha({ length: { min: 10, max: 20 } }),
+            name: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            logoURI: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            website: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            rewardRate: faker.helpers.arrayElement([
+              {
+                ...{
+                  total: faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  rateType: faker.string.alpha({
+                    length: { min: 10, max: 20 },
+                  }),
+                  components: Array.from(
+                    { length: faker.number.int({ min: 1, max: 10 }) },
+                    (_, i) => i + 1,
+                  ).map(() => ({
+                    rate: faker.number.float({
+                      min: undefined,
+                      max: undefined,
+                      fractionDigits: 2,
+                    }),
+                    rateType: faker.string.alpha({
+                      length: { min: 10, max: 20 },
+                    }),
+                    token: {
+                      ...{
+                        symbol: faker.string.alpha({
+                          length: { min: 10, max: 20 },
+                        }),
+                        name: faker.string.alpha({
+                          length: { min: 10, max: 20 },
+                        }),
+                        decimals: faker.number.float({
+                          min: undefined,
+                          max: undefined,
+                          fractionDigits: 2,
+                        }),
+                        network: faker.helpers.arrayElement([
+                          "ethereum",
+                          "ethereum-goerli",
+                          "ethereum-holesky",
+                          "ethereum-sepolia",
+                          "ethereum-hoodi",
+                          "arbitrum",
+                          "base",
+                          "base-sepolia",
+                          "gnosis",
+                          "optimism",
+                          "polygon",
+                          "polygon-amoy",
+                          "starknet",
+                          "zksync",
+                          "linea",
+                          "unichain",
+                          "monad-testnet",
+                          "monad",
+                          "avalanche-c",
+                          "avalanche-c-atomic",
+                          "avalanche-p",
+                          "binance",
+                          "celo",
+                          "fantom",
+                          "harmony",
+                          "moonriver",
+                          "okc",
+                          "viction",
+                          "core",
+                          "sonic",
+                          "plasma",
+                          "katana",
+                          "hyperevm",
+                          "agoric",
+                          "akash",
+                          "axelar",
+                          "band-protocol",
+                          "bitsong",
+                          "canto",
+                          "chihuahua",
+                          "comdex",
+                          "coreum",
+                          "cosmos",
+                          "crescent",
+                          "cronos",
+                          "cudos",
+                          "desmos",
+                          "dydx",
+                          "evmos",
+                          "fetch-ai",
+                          "gravity-bridge",
+                          "injective",
+                          "irisnet",
+                          "juno",
+                          "kava",
+                          "ki-network",
+                          "mars-protocol",
+                          "nym",
+                          "okex-chain",
+                          "onomy",
+                          "osmosis",
+                          "persistence",
+                          "quicksilver",
+                          "regen",
+                          "secret",
+                          "sentinel",
+                          "sommelier",
+                          "stafi",
+                          "stargaze",
+                          "stride",
+                          "teritori",
+                          "tgrade",
+                          "umee",
+                          "sei",
+                          "mantra",
+                          "celestia",
+                          "saga",
+                          "zetachain",
+                          "dymension",
+                          "humansai",
+                          "neutron",
+                          "polkadot",
+                          "kusama",
+                          "westend",
+                          "bittensor",
+                          "binancebeacon",
+                          "cardano",
+                          "near",
+                          "solana",
+                          "solana-devnet",
+                          "stellar",
+                          "stellar-testnet",
+                          "sui",
+                          "tezos",
+                          "tron",
+                          "ton",
+                          "ton-testnet",
+                        ] as const),
+                        address: faker.helpers.arrayElement([
+                          faker.string.alpha({ length: { min: 10, max: 20 } }),
+                          undefined,
+                        ]),
+                        logoURI: faker.helpers.arrayElement([
+                          faker.string.alpha({ length: { min: 10, max: 20 } }),
+                          undefined,
+                        ]),
+                        isPoints: faker.helpers.arrayElement([
+                          faker.datatype.boolean(),
+                          undefined,
+                        ]),
+                        coinGeckoId: faker.helpers.arrayElement([
+                          faker.string.alpha({ length: { min: 10, max: 20 } }),
+                          undefined,
+                        ]),
+                      },
+                    },
+                    yieldSource: faker.helpers.arrayElement([
+                      "staking",
+                      "restaking",
+                      "protocol_incentive",
+                      "points",
+                      "lending_interest",
+                      "mev",
+                      "real_world_asset_yield",
+                      "vault",
+                    ] as const),
+                    description: faker.helpers.arrayElement([
+                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      undefined,
+                    ]),
+                  })),
+                },
+              },
+              undefined,
+            ]),
+            provider: faker.helpers.arrayElement([
+              {
+                ...{
+                  name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  uniqueId: faker.string.alpha({
+                    length: { min: 10, max: 20 },
+                  }),
+                  website: faker.string.alpha({ length: { min: 10, max: 20 } }),
+                  rank: faker.number.float({
+                    min: undefined,
+                    max: undefined,
+                    fractionDigits: 2,
+                  }),
+                  preferred: faker.datatype.boolean(),
+                  revshare: faker.helpers.arrayElement([
+                    {
+                      ...{
+                        trial: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                        standard: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                        pro: faker.helpers.arrayElement([
+                          {
+                            ...{
+                              minRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                              maxRevShare: faker.number.float({
+                                min: undefined,
+                                max: undefined,
+                                fractionDigits: 2,
+                              }),
+                            },
+                          },
+                          undefined,
+                        ]),
+                      },
+                    },
+                    undefined,
+                  ]),
+                },
+              },
+              undefined,
+            ]),
+            commission: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            tvlUsd: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tvl: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tvlRaw: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            votingPower: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            preferred: faker.helpers.arrayElement([
+              faker.datatype.boolean(),
+              undefined,
+            ]),
+            minimumStake: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            remainingPossibleStake: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            remainingSlots: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            nominatorCount: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            status: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            providerId: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            pricePerShare: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            subnetId: faker.helpers.arrayElement([
+              faker.number.float({
+                min: undefined,
+                max: undefined,
+                fractionDigits: 2,
+              }),
+              undefined,
+            ]),
+            subnetName: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            marketCap: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+            tokenSymbol: faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              undefined,
+            ]),
+          })),
+          undefined,
+        ]),
+        amountUsd: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            null,
+          ]),
+          undefined,
+        ]),
+        isEarning: faker.datatype.boolean(),
+      },
+    },
+    undefined,
+  ]),
   ...overrideResponse,
 });
 
@@ -4678,6 +7089,8 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         "zksync",
                         "linea",
                         "unichain",
+                        "monad-testnet",
+                        "monad",
                         "avalanche-c",
                         "avalanche-c-atomic",
                         "avalanche-p",
@@ -4690,6 +7103,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         "viction",
                         "core",
                         "sonic",
+                        "plasma",
                         "katana",
                         "hyperevm",
                         "agoric",
@@ -4751,6 +7165,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         "solana-devnet",
                         "stellar",
                         "stellar-testnet",
+                        "sui",
                         "tezos",
                         "tron",
                         "ton",
@@ -4782,6 +7197,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                     "lending_interest",
                     "mev",
                     "real_world_asset_yield",
+                    "vault",
                   ] as const),
                   description: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4879,6 +7295,10 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             undefined,
           ]),
           tvl: faker.helpers.arrayElement([
+            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            undefined,
+          ]),
+          tvlRaw: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
             undefined,
           ]),
@@ -5044,6 +7464,8 @@ export const getActionsControllerGetActionsResponseMock =
               "zksync",
               "linea",
               "unichain",
+              "monad-testnet",
+              "monad",
               "avalanche-c",
               "avalanche-c-atomic",
               "avalanche-p",
@@ -5056,6 +7478,7 @@ export const getActionsControllerGetActionsResponseMock =
               "viction",
               "core",
               "sonic",
+              "plasma",
               "katana",
               "hyperevm",
               "agoric",
@@ -5117,6 +7540,7 @@ export const getActionsControllerGetActionsResponseMock =
               "solana-devnet",
               "stellar",
               "stellar-testnet",
+              "sui",
               "tezos",
               "tron",
               "ton",
@@ -5250,6 +7674,15 @@ export const getActionsControllerGetActionsResponseMock =
                 faker.string.alpha({ length: { min: 10, max: 20 } }),
                 undefined,
               ]),
+              amounts: faker.helpers.arrayElement([
+                Array.from(
+                  { length: faker.number.int({ min: 1, max: 10 }) },
+                  (_, i) => i + 1,
+                ).map(() =>
+                  faker.string.alpha({ length: { min: 10, max: 20 } }),
+                ),
+                undefined,
+              ]),
               validatorAddress: faker.helpers.arrayElement([
                 faker.string.alpha({ length: { min: 10, max: 20 } }),
                 undefined,
@@ -5316,6 +7749,14 @@ export const getActionsControllerGetActionsResponseMock =
                 undefined,
               ]),
               ledgerWalletApiCompatible: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              useMaxAmount: faker.helpers.arrayElement([
+                faker.datatype.boolean(),
+                undefined,
+              ]),
+              useInstantExecution: faker.helpers.arrayElement([
                 faker.datatype.boolean(),
                 undefined,
               ]),
@@ -5403,6 +7844,8 @@ export const getActionsControllerGetActionResponseMock = (
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -5415,6 +7858,7 @@ export const getActionsControllerGetActionResponseMock = (
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -5476,6 +7920,7 @@ export const getActionsControllerGetActionResponseMock = (
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -5605,6 +8050,13 @@ export const getActionsControllerGetActionResponseMock = (
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
       ]),
+      amounts: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
       validatorAddress: faker.helpers.arrayElement([
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
@@ -5669,6 +8121,14 @@ export const getActionsControllerGetActionResponseMock = (
         undefined,
       ]),
       ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useMaxAmount: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useInstantExecution: faker.helpers.arrayElement([
         faker.datatype.boolean(),
         undefined,
       ]),
@@ -5753,6 +8213,8 @@ export const getActionsControllerEnterYieldResponseMock = (
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -5765,6 +8227,7 @@ export const getActionsControllerEnterYieldResponseMock = (
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -5826,6 +8289,7 @@ export const getActionsControllerEnterYieldResponseMock = (
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -5955,6 +8419,13 @@ export const getActionsControllerEnterYieldResponseMock = (
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
       ]),
+      amounts: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
       validatorAddress: faker.helpers.arrayElement([
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
@@ -6019,6 +8490,14 @@ export const getActionsControllerEnterYieldResponseMock = (
         undefined,
       ]),
       ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useMaxAmount: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useInstantExecution: faker.helpers.arrayElement([
         faker.datatype.boolean(),
         undefined,
       ]),
@@ -6103,6 +8582,8 @@ export const getActionsControllerExitYieldResponseMock = (
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -6115,6 +8596,7 @@ export const getActionsControllerExitYieldResponseMock = (
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -6176,6 +8658,7 @@ export const getActionsControllerExitYieldResponseMock = (
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -6305,6 +8788,13 @@ export const getActionsControllerExitYieldResponseMock = (
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
       ]),
+      amounts: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
       validatorAddress: faker.helpers.arrayElement([
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
@@ -6369,6 +8859,14 @@ export const getActionsControllerExitYieldResponseMock = (
         undefined,
       ]),
       ledgerWalletApiCompatible: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useMaxAmount: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useInstantExecution: faker.helpers.arrayElement([
         faker.datatype.boolean(),
         undefined,
       ]),
@@ -6453,6 +8951,8 @@ export const getActionsControllerManageYieldResponseMock = (
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -6465,6 +8965,7 @@ export const getActionsControllerManageYieldResponseMock = (
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -6526,6 +9027,7 @@ export const getActionsControllerManageYieldResponseMock = (
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -6655,6 +9157,13 @@ export const getActionsControllerManageYieldResponseMock = (
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
       ]),
+      amounts: faker.helpers.arrayElement([
+        Array.from(
+          { length: faker.number.int({ min: 1, max: 10 }) },
+          (_, i) => i + 1,
+        ).map(() => faker.string.alpha({ length: { min: 10, max: 20 } })),
+        undefined,
+      ]),
       validatorAddress: faker.helpers.arrayElement([
         faker.string.alpha({ length: { min: 10, max: 20 } }),
         undefined,
@@ -6722,6 +9231,14 @@ export const getActionsControllerManageYieldResponseMock = (
         faker.datatype.boolean(),
         undefined,
       ]),
+      useMaxAmount: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
+      useInstantExecution: faker.helpers.arrayElement([
+        faker.datatype.boolean(),
+        undefined,
+      ]),
     },
   },
   createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
@@ -6763,6 +9280,8 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
     "zksync",
     "linea",
     "unichain",
+    "monad-testnet",
+    "monad",
     "avalanche-c",
     "avalanche-c-atomic",
     "avalanche-p",
@@ -6775,6 +9294,7 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
     "viction",
     "core",
     "sonic",
+    "plasma",
     "katana",
     "hyperevm",
     "agoric",
@@ -6836,6 +9356,7 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
     "solana-devnet",
     "stellar",
     "stellar-testnet",
+    "sui",
     "tezos",
     "tron",
     "ton",
@@ -6975,6 +9496,8 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
     "zksync",
     "linea",
     "unichain",
+    "monad-testnet",
+    "monad",
     "avalanche-c",
     "avalanche-c-atomic",
     "avalanche-p",
@@ -6987,6 +9510,7 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
     "viction",
     "core",
     "sonic",
+    "plasma",
     "katana",
     "hyperevm",
     "agoric",
@@ -7048,6 +9572,7 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
     "solana-devnet",
     "stellar",
     "stellar-testnet",
+    "sui",
     "tezos",
     "tron",
     "ton",
@@ -7187,6 +9712,8 @@ export const getTransactionsControllerGetTransactionResponseMock = (
     "zksync",
     "linea",
     "unichain",
+    "monad-testnet",
+    "monad",
     "avalanche-c",
     "avalanche-c-atomic",
     "avalanche-p",
@@ -7199,6 +9726,7 @@ export const getTransactionsControllerGetTransactionResponseMock = (
     "viction",
     "core",
     "sonic",
+    "plasma",
     "katana",
     "hyperevm",
     "agoric",
@@ -7260,6 +9788,7 @@ export const getTransactionsControllerGetTransactionResponseMock = (
     "solana-devnet",
     "stellar",
     "stellar-testnet",
+    "sui",
     "tezos",
     "tron",
     "ton",
@@ -7399,6 +9928,8 @@ export const getNetworksControllerGetNetworksResponseMock = (): NetworkDto[] =>
       "zksync",
       "linea",
       "unichain",
+      "monad-testnet",
+      "monad",
       "avalanche-c",
       "avalanche-c-atomic",
       "avalanche-p",
@@ -7411,6 +9942,7 @@ export const getNetworksControllerGetNetworksResponseMock = (): NetworkDto[] =>
       "viction",
       "core",
       "sonic",
+      "plasma",
       "katana",
       "hyperevm",
       "agoric",
@@ -7472,6 +10004,7 @@ export const getNetworksControllerGetNetworksResponseMock = (): NetworkDto[] =>
       "solana-devnet",
       "stellar",
       "stellar-testnet",
+      "sui",
       "tezos",
       "tron",
       "ton",
@@ -7571,21 +10104,26 @@ export const getYieldsControllerGetYieldsMockHandler = (
       ) =>
         | Promise<YieldsControllerGetYields200>
         | YieldsControllerGetYields200),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/yields", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/yields",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getYieldsControllerGetYieldsResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getYieldsControllerGetYieldsResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getYieldsControllerGetAggregateBalancesMockHandler = (
@@ -7594,21 +10132,26 @@ export const getYieldsControllerGetAggregateBalancesMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<BalancesResponseDto> | BalancesResponseDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/yields/balances", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/yields/balances",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getYieldsControllerGetAggregateBalancesResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getYieldsControllerGetAggregateBalancesResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getYieldsControllerGetYieldMockHandler = (
@@ -7617,21 +10160,26 @@ export const getYieldsControllerGetYieldMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<YieldDto> | YieldDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/yields/:yieldId", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/yields/:yieldId",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getYieldsControllerGetYieldResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getYieldsControllerGetYieldResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getYieldsControllerGetYieldBalancesMockHandler = (
@@ -7640,21 +10188,26 @@ export const getYieldsControllerGetYieldBalancesMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<YieldBalancesDto> | YieldBalancesDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/yields/:yieldId/balances", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/yields/:yieldId/balances",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getYieldsControllerGetYieldBalancesResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getYieldsControllerGetYieldBalancesResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getYieldsControllerGetYieldValidatorsMockHandler = (
@@ -7665,21 +10218,26 @@ export const getYieldsControllerGetYieldValidatorsMockHandler = (
       ) =>
         | Promise<YieldsControllerGetYieldValidators200>
         | YieldsControllerGetYieldValidators200),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/yields/:yieldId/validators", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/yields/:yieldId/validators",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getYieldsControllerGetYieldValidatorsResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getYieldsControllerGetYieldValidatorsResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getActionsControllerGetActionsMockHandler = (
@@ -7690,21 +10248,26 @@ export const getActionsControllerGetActionsMockHandler = (
       ) =>
         | Promise<ActionsControllerGetActions200>
         | ActionsControllerGetActions200),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/actions", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/actions",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getActionsControllerGetActionsResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getActionsControllerGetActionsResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getActionsControllerGetActionMockHandler = (
@@ -7713,21 +10276,26 @@ export const getActionsControllerGetActionMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<ActionDto> | ActionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/actions/:actionId", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/actions/:actionId",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getActionsControllerGetActionResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getActionsControllerGetActionResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getActionsControllerEnterYieldMockHandler = (
@@ -7736,21 +10304,26 @@ export const getActionsControllerEnterYieldMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<ActionDto> | ActionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/actions/enter", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/actions/enter",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getActionsControllerEnterYieldResponseMock(),
-      ),
-      { status: 201, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getActionsControllerEnterYieldResponseMock(),
+        ),
+        { status: 201, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getActionsControllerExitYieldMockHandler = (
@@ -7759,21 +10332,26 @@ export const getActionsControllerExitYieldMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<ActionDto> | ActionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/actions/exit", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/actions/exit",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getActionsControllerExitYieldResponseMock(),
-      ),
-      { status: 201, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getActionsControllerExitYieldResponseMock(),
+        ),
+        { status: 201, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getActionsControllerManageYieldMockHandler = (
@@ -7782,21 +10360,26 @@ export const getActionsControllerManageYieldMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<ActionDto> | ActionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/actions/manage", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/actions/manage",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getActionsControllerManageYieldResponseMock(),
-      ),
-      { status: 201, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getActionsControllerManageYieldResponseMock(),
+        ),
+        { status: 201, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getTransactionsControllerSubmitTransactionHashMockHandler = (
@@ -7805,6 +10388,7 @@ export const getTransactionsControllerSubmitTransactionHashMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.put>[1]>[0],
       ) => Promise<TransactionDto> | TransactionDto),
+  options?: RequestHandlerOptions,
 ) => {
   return http.put(
     "*/v1/transactions/:transactionId/submit-hash",
@@ -7822,6 +10406,7 @@ export const getTransactionsControllerSubmitTransactionHashMockHandler = (
         { status: 200, headers: { "Content-Type": "application/json" } },
       );
     },
+    options,
   );
 };
 
@@ -7831,21 +10416,26 @@ export const getTransactionsControllerSubmitTransactionMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.post>[1]>[0],
       ) => Promise<TransactionDto> | TransactionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.post("*/v1/transactions/:transactionId/submit", async (info) => {
-    await delay(1000);
+  return http.post(
+    "*/v1/transactions/:transactionId/submit",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getTransactionsControllerSubmitTransactionResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getTransactionsControllerSubmitTransactionResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getTransactionsControllerGetTransactionMockHandler = (
@@ -7854,21 +10444,26 @@ export const getTransactionsControllerGetTransactionMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<TransactionDto> | TransactionDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/transactions/:transactionId", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/transactions/:transactionId",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getTransactionsControllerGetTransactionResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getTransactionsControllerGetTransactionResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getNetworksControllerGetNetworksMockHandler = (
@@ -7877,21 +10472,26 @@ export const getNetworksControllerGetNetworksMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<NetworkDto[]> | NetworkDto[]),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/networks", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/networks",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getNetworksControllerGetNetworksResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getNetworksControllerGetNetworksResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getProvidersControllerGetProvidersMockHandler = (
@@ -7902,21 +10502,26 @@ export const getProvidersControllerGetProvidersMockHandler = (
       ) =>
         | Promise<ProvidersControllerGetProviders200>
         | ProvidersControllerGetProviders200),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/providers", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/providers",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getProvidersControllerGetProvidersResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getProvidersControllerGetProvidersResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getProvidersControllerGetProviderMockHandler = (
@@ -7925,21 +10530,26 @@ export const getProvidersControllerGetProviderMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<ProviderDto> | ProviderDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/v1/providers/:providerId", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/v1/providers/:providerId",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getProvidersControllerGetProviderResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getProvidersControllerGetProviderResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 
 export const getHealthControllerHealthMockHandler = (
@@ -7948,21 +10558,26 @@ export const getHealthControllerHealthMockHandler = (
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0],
       ) => Promise<HealthStatusDto> | HealthStatusDto),
+  options?: RequestHandlerOptions,
 ) => {
-  return http.get("*/health", async (info) => {
-    await delay(1000);
+  return http.get(
+    "*/health",
+    async (info) => {
+      await delay(1000);
 
-    return new HttpResponse(
-      JSON.stringify(
-        overrideResponse !== undefined
-          ? typeof overrideResponse === "function"
-            ? await overrideResponse(info)
-            : overrideResponse
-          : getHealthControllerHealthResponseMock(),
-      ),
-      { status: 200, headers: { "Content-Type": "application/json" } },
-    );
-  });
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === "function"
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getHealthControllerHealthResponseMock(),
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    },
+    options,
+  );
 };
 export const getYieldXyzAPIMock = () => [
   getYieldsControllerGetYieldsMockHandler(),

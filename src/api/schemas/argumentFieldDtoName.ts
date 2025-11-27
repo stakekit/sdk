@@ -7,8 +7,10 @@ export type ArgumentFieldDtoName =
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ArgumentFieldDtoName = {
   amount: "amount",
+  amounts: "amounts",
   validatorAddress: "validatorAddress",
   validatorAddresses: "validatorAddresses",
+  receiverAddress: "receiverAddress",
   providerId: "providerId",
   duration: "duration",
   inputToken: "inputToken",
@@ -21,4 +23,6 @@ export const ArgumentFieldDtoName = {
   pAddressBech: "pAddressBech",
   executionMode: "executionMode",
   ledgerWalletApiCompatible: "ledgerWalletApiCompatible",
+  useMaxAmount: "useMaxAmount",
+  useInstantExecution: "useInstantExecution",
 } as const;
