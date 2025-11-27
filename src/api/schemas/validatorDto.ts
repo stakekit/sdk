@@ -20,6 +20,8 @@ export interface ValidatorDto {
   tvlUsd?: string;
   /** Total value locked with this validator in native token */
   tvl?: string;
+  /** Raw total value locked with this validator (full precision) */
+  tvlRaw?: string;
   /** Validator's voting power share (0–1) */
   votingPower?: number;
   /** Whether this validator is flagged as preferred */

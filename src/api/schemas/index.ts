@@ -121,6 +121,7 @@ export * from "./validatorDto";
 export * from "./validatorProviderDto";
 export * from "./validatorQueryDto";
 export * from "./yieldBalancesDto";
+export * from "./yieldBalancesDtoOutputTokenBalance";
 export * from "./yieldBalancesRequestDto";
 export * from "./yieldDto";
 export * from "./yieldDtoNetwork";

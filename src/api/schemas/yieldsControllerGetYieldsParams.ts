@@ -20,6 +20,10 @@ export type YieldsControllerGetYieldsParams = {
    */
   network?: YieldsControllerGetYieldsNetwork;
   /**
+   * Filter by EVM chain ID (Ethereum: 1, Polygon: 137)
+   */
+  chainId?: string;
+  /**
    * Filter by multiple networks (comma separated)
    */
   networks?: string;

@@ -17,6 +17,8 @@ export interface YieldQueryDto {
   limit?: number;
   /** Filter by network */
   network?: YieldQueryDtoNetwork;
+  /** Filter by EVM chain ID (Ethereum: 1, Polygon: 137, etc) */
+  chainId?: string;
   /** Filter by multiple networks (comma separated) */
   networks?: string;
   /** @maxLength 200 */
