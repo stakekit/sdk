@@ -27,7 +27,7 @@ jobs:
 
       - name: Fix executable files for changesets
         run: |
-          chmod -x .husky/pre-commit
+          chmod -x .husky/commit-msg
 
       - name: Create release pull request or publish to npm
         id: changesets
@@ -35,8 +35,8 @@ jobs:
         with:
           publish: pnpm run release
           version: pnpm run version
-          commit: 'ci(changesets): version packages'
-          title: 'ci(changesets): version packages'
+          commit: "ci(changesets): version packages"
+          title: "ci(changesets): version packages"
           commitMode: github-api
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
