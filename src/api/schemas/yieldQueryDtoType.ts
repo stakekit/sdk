@@ -12,4 +12,6 @@ export const YieldQueryDtoType = {
   vault: "vault",
   fixed_yield: "fixed_yield",
   real_world_asset: "real_world_asset",
+  concentrated_liquidity_pool: "concentrated_liquidity_pool",
+  liquidity_pool: "liquidity_pool",
 } as const;

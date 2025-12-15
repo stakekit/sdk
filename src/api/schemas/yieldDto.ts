@@ -3,6 +3,7 @@ import type { TokenDto } from "./tokenDto";
 import type { YieldDtoNetwork } from "./yieldDtoNetwork";
 import type { YieldMechanicsDto } from "./yieldMechanicsDto";
 import type { YieldMetadataDto } from "./yieldMetadataDto";
+import type { YieldStateDto } from "./yieldStateDto";
 import type { YieldStatisticsDto } from "./yieldStatisticsDto";
 import type { YieldStatusDto } from "./yieldStatusDto";
 
@@ -35,4 +36,6 @@ export interface YieldDto {
   providerId: string;
   /** Optional tags for filtering or categorization */
   tags?: string[];
+  /** Dynamic, real-time protocol-level state values that affect entering or exiting a yield (e.g., pool price, capacity, price per share, liquidity, queue depth) */
+  state?: YieldStateDto;
 }
