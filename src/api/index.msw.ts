@@ -148,6 +148,7 @@ export const getYieldsControllerGetYieldsResponseMock =
             "tron",
             "ton",
             "ton-testnet",
+            "hyperliquid",
           ] as const),
           chainId: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -262,6 +263,7 @@ export const getYieldsControllerGetYieldsResponseMock =
               "tron",
               "ton",
               "ton-testnet",
+              "hyperliquid",
             ] as const),
             address: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -388,6 +390,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                   "tron",
                   "ton",
                   "ton-testnet",
+                  "hyperliquid",
                 ] as const),
                 address: faker.helpers.arrayElement([
                   faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -516,6 +519,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 "tron",
                 "ton",
                 "ton-testnet",
+                "hyperliquid",
               ] as const),
               address: faker.helpers.arrayElement([
                 faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -644,6 +648,7 @@ export const getYieldsControllerGetYieldsResponseMock =
               "tron",
               "ton",
               "ton-testnet",
+              "hyperliquid",
             ] as const),
             address: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -789,6 +794,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                       "tron",
                       "ton",
                       "ton-testnet",
+                      "hyperliquid",
                     ] as const),
                     address: faker.helpers.arrayElement([
                       faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -1019,6 +1025,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                     "tron",
                     "ton",
                     "ton-testnet",
+                    "hyperliquid",
                   ] as const),
                   address: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -1720,6 +1727,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -1856,6 +1864,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -2053,6 +2062,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -2189,6 +2199,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -2513,6 +2524,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             "tron",
             "ton",
             "ton-testnet",
+            "hyperliquid",
           ] as const),
           address: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -2682,6 +2694,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           "tron",
                           "ton",
                           "ton-testnet",
+                          "hyperliquid",
                         ] as const),
                         address: faker.helpers.arrayElement([
                           faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -3038,6 +3051,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         "tron",
                         "ton",
                         "ton-testnet",
+                        "hyperliquid",
                       ] as const),
                       address: faker.helpers.arrayElement([
                         faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -3507,6 +3521,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 "tron",
                 "ton",
                 "ton-testnet",
+                "hyperliquid",
               ] as const),
               address: faker.helpers.arrayElement([
                 faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -3676,6 +3691,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                               "tron",
                               "ton",
                               "ton-testnet",
+                              "hyperliquid",
                             ] as const),
                             address: faker.helpers.arrayElement([
                               faker.string.alpha({
@@ -4044,6 +4060,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -4387,6 +4404,7 @@ export const getYieldsControllerGetYieldResponseMock = (
     "tron",
     "ton",
     "ton-testnet",
+    "hyperliquid",
   ] as const),
   chainId: faker.helpers.arrayElement([
     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4501,6 +4519,7 @@ export const getYieldsControllerGetYieldResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     address: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4624,6 +4643,7 @@ export const getYieldsControllerGetYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         address: faker.helpers.arrayElement([
           faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4752,6 +4772,7 @@ export const getYieldsControllerGetYieldResponseMock = (
         "tron",
         "ton",
         "ton-testnet",
+        "hyperliquid",
       ] as const),
       address: faker.helpers.arrayElement([
         faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -4880,6 +4901,7 @@ export const getYieldsControllerGetYieldResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     address: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -5020,6 +5042,7 @@ export const getYieldsControllerGetYieldResponseMock = (
               "tron",
               "ton",
               "ton-testnet",
+              "hyperliquid",
             ] as const),
             address: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -5241,6 +5264,7 @@ export const getYieldsControllerGetYieldResponseMock = (
             "tron",
             "ton",
             "ton-testnet",
+            "hyperliquid",
           ] as const),
           address: faker.helpers.arrayElement([
             faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -5868,6 +5892,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "tron",
                     "ton",
                     "ton-testnet",
+                    "hyperliquid",
                   ] as const),
                   address: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -5994,6 +6019,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "tron",
                     "ton",
                     "ton-testnet",
+                    "hyperliquid",
                   ] as const),
                   address: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -6181,6 +6207,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "tron",
                     "ton",
                     "ton-testnet",
+                    "hyperliquid",
                   ] as const),
                   address: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -6307,6 +6334,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                     "tron",
                     "ton",
                     "ton-testnet",
+                    "hyperliquid",
                   ] as const),
                   address: faker.helpers.arrayElement([
                     faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -6612,6 +6640,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         address: faker.helpers.arrayElement([
           faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -6779,6 +6808,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         "tron",
                         "ton",
                         "ton-testnet",
+                        "hyperliquid",
                       ] as const),
                       address: faker.helpers.arrayElement([
                         faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -7129,6 +7159,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       "tron",
                       "ton",
                       "ton-testnet",
+                      "hyperliquid",
                     ] as const),
                     address: faker.helpers.arrayElement([
                       faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -7598,6 +7629,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               "tron",
               "ton",
               "ton-testnet",
+              "hyperliquid",
             ] as const),
             address: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -7767,6 +7799,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                             "tron",
                             "ton",
                             "ton-testnet",
+                            "hyperliquid",
                           ] as const),
                           address: faker.helpers.arrayElement([
                             faker.string.alpha({
@@ -8133,6 +8166,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                           "tron",
                           "ton",
                           "ton-testnet",
+                          "hyperliquid",
                         ] as const),
                         address: faker.helpers.arrayElement([
                           faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -8528,6 +8562,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         "tron",
                         "ton",
                         "ton-testnet",
+                        "hyperliquid",
                       ] as const),
                       address: faker.helpers.arrayElement([
                         faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -8903,6 +8938,7 @@ export const getActionsControllerGetActionsResponseMock =
               "tron",
               "ton",
               "ton-testnet",
+              "hyperliquid",
             ] as const),
             status: faker.helpers.arrayElement([
               "NOT_FOUND",
@@ -9173,6 +9209,7 @@ export const getActionsControllerGetActionsResponseMock =
                   "tron",
                   "ton",
                   "ton-testnet",
+                  "hyperliquid",
                 ] as const),
                 undefined,
               ]),
@@ -9279,6 +9316,7 @@ export const getActionsControllerGetActionsResponseMock =
                   "tron",
                   "ton",
                   "ton-testnet",
+                  "hyperliquid",
                 ] as const),
                 undefined,
               ]),
@@ -9511,6 +9549,7 @@ export const getActionsControllerGetActionResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     status: faker.helpers.arrayElement([
       "NOT_FOUND",
@@ -9773,6 +9812,7 @@ export const getActionsControllerGetActionResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -9879,6 +9919,7 @@ export const getActionsControllerGetActionResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -10108,6 +10149,7 @@ export const getActionsControllerEnterYieldResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     status: faker.helpers.arrayElement([
       "NOT_FOUND",
@@ -10370,6 +10412,7 @@ export const getActionsControllerEnterYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -10476,6 +10519,7 @@ export const getActionsControllerEnterYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -10705,6 +10749,7 @@ export const getActionsControllerExitYieldResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     status: faker.helpers.arrayElement([
       "NOT_FOUND",
@@ -10967,6 +11012,7 @@ export const getActionsControllerExitYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -11073,6 +11119,7 @@ export const getActionsControllerExitYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -11302,6 +11349,7 @@ export const getActionsControllerManageYieldResponseMock = (
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     status: faker.helpers.arrayElement([
       "NOT_FOUND",
@@ -11564,6 +11612,7 @@ export const getActionsControllerManageYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -11670,6 +11719,7 @@ export const getActionsControllerManageYieldResponseMock = (
           "tron",
           "ton",
           "ton-testnet",
+          "hyperliquid",
         ] as const),
         undefined,
       ]),
@@ -11859,6 +11909,7 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
     "tron",
     "ton",
     "ton-testnet",
+    "hyperliquid",
   ] as const),
   status: faker.helpers.arrayElement([
     "NOT_FOUND",
@@ -12079,6 +12130,7 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
     "tron",
     "ton",
     "ton-testnet",
+    "hyperliquid",
   ] as const),
   status: faker.helpers.arrayElement([
     "NOT_FOUND",
@@ -12299,6 +12351,7 @@ export const getTransactionsControllerGetTransactionResponseMock = (
     "tron",
     "ton",
     "ton-testnet",
+    "hyperliquid",
   ] as const),
   status: faker.helpers.arrayElement([
     "NOT_FOUND",
@@ -12519,6 +12572,7 @@ export const getNetworksControllerGetNetworksResponseMock = (): NetworkDto[] =>
       "tron",
       "ton",
       "ton-testnet",
+      "hyperliquid",
     ] as const),
     name: faker.string.alpha({ length: { min: 10, max: 20 } }),
     category: faker.helpers.arrayElement([

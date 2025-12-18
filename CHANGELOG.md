@@ -1,5 +1,11 @@
 # @yieldxyz/sdk
 
+## 0.0.6
+
+### Patch Changes
+
+- d050125: feat: latest changes
+
 ## 0.0.5
 
 ### Patch Changes
