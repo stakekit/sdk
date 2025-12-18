@@ -102,4 +102,5 @@ export const NetworkDtoId = {
   tron: "tron",
   ton: "ton",
   "ton-testnet": "ton-testnet",
+  hyperliquid: "hyperliquid",
 } as const;

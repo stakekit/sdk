@@ -103,4 +103,5 @@ export const YieldDtoNetwork = {
   tron: "tron",
   ton: "ton",
   "ton-testnet": "ton-testnet",
+  hyperliquid: "hyperliquid",
 } as const;
