@@ -14,6 +14,9 @@ export const ArgumentFieldDtoName = {
   providerId: "providerId",
   duration: "duration",
   inputToken: "inputToken",
+  inputTokenNetwork: "inputTokenNetwork",
+  outputToken: "outputToken",
+  outputTokenNetwork: "outputTokenNetwork",
   subnetId: "subnetId",
   tronResource: "tronResource",
   feeConfigurationId: "feeConfigurationId",
@@ -25,4 +28,8 @@ export const ArgumentFieldDtoName = {
   ledgerWalletApiCompatible: "ledgerWalletApiCompatible",
   useMaxAmount: "useMaxAmount",
   useInstantExecution: "useInstantExecution",
+  rangeMin: "rangeMin",
+  rangeMax: "rangeMax",
+  percentage: "percentage",
+  tokenId: "tokenId",
 } as const;

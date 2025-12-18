@@ -23,6 +23,10 @@ jobs:
 
       - uses: jdx/mise-action@v2
 
+      # npm 11.5.1 or later is required for trusted publishing
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - run: mise x -- pnpm install --frozen-lockfile
 
       - run: mise x -- pnpm run build
