@@ -1,3 +1,4 @@
+import type { BalanceDtoPriceRange } from "./balanceDtoPriceRange";
 import type { BalanceDtoValidator } from "./balanceDtoValidator";
 import type { BalanceType } from "./balanceType";
 import type { PendingActionDto } from "./pendingActionDto";
@@ -40,4 +41,8 @@ export interface BalanceDto {
   amountUsd?: string | null;
   /** Whether this balance is currently earning rewards */
   isEarning: boolean;
+  /** Price range for concentrated liquidity positions in tokens[1]/tokens[0] format (e.g., if tokens[0]=WETH and tokens[1]=USDC, then priceRange represents USDC/WETH) */
+  priceRange?: BalanceDtoPriceRange;
+  /** NFT token ID for liquidity positions (e.g., PancakeSwap V3 position NFT ID) */
+  tokenId?: string;
 }

@@ -14,6 +14,8 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,13 +23,17 @@ jobs:
 
       - uses: jdx/mise-action@v2
 
+      # npm 11.5.1 or later is required for trusted publishing
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - run: mise x -- pnpm install --frozen-lockfile
 
       - run: mise x -- pnpm run build
 
       - name: Fix executable files for changesets
         run: |
-          chmod -x .husky/pre-commit
+          chmod -x .husky/commit-msg
 
       - name: Create release pull request or publish to npm
         id: changesets
@@ -35,9 +41,11 @@ jobs:
         with:
           publish: pnpm run release
           version: pnpm run version
-          commit: 'ci(changesets): version packages'
-          title: 'ci(changesets): version packages'
+          commit: "ci(changesets): version packages"
+          title: "ci(changesets): version packages"
           commitMode: github-api
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Use OIDC for npm authentication instead of NPM_TOKEN
+          NPM_TOKEN: "" # https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
+

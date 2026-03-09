@@ -32,7 +32,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  */
 export const getYields = (
   params?: YieldsControllerGetYieldsParams,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<YieldsControllerGetYields200>>,
 ) => {
   return customFetch<YieldsControllerGetYields200>(
     { url: `/v1/yields`, method: "GET", params },
@@ -46,7 +46,7 @@ export const getYields = (
  */
 export const getAggregateBalances = (
   balancesRequestDto: BalancesRequestDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<BalancesResponseDto>>,
 ) => {
   return customFetch<BalancesResponseDto>(
     {
@@ -65,7 +65,7 @@ export const getAggregateBalances = (
  */
 export const getYield = (
   yieldId: string,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<YieldDto>>,
 ) => {
   return customFetch<YieldDto>(
     { url: `/v1/yields/${yieldId}`, method: "GET" },
@@ -80,7 +80,7 @@ export const getYield = (
 export const getYieldBalances = (
   yieldId: string,
   yieldBalancesRequestDto: YieldBalancesRequestDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<YieldBalancesDto>>,
 ) => {
   return customFetch<YieldBalancesDto>(
     {
@@ -100,7 +100,9 @@ export const getYieldBalances = (
 export const getYieldValidators = (
   yieldId: string,
   params?: YieldsControllerGetYieldValidatorsParams,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<
+    typeof customFetch<YieldsControllerGetYieldValidators200>
+  >,
 ) => {
   return customFetch<YieldsControllerGetYieldValidators200>(
     { url: `/v1/yields/${yieldId}/validators`, method: "GET", params },
@@ -114,7 +116,7 @@ export const getYieldValidators = (
  */
 export const getActions = (
   params: ActionsControllerGetActionsParams,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ActionsControllerGetActions200>>,
 ) => {
   return customFetch<ActionsControllerGetActions200>(
     { url: `/v1/actions`, method: "GET", params },
@@ -128,7 +130,7 @@ export const getActions = (
  */
 export const getAction = (
   actionId: string,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ActionDto>>,
 ) => {
   return customFetch<ActionDto>(
     { url: `/v1/actions/${actionId}`, method: "GET" },
@@ -142,7 +144,7 @@ export const getAction = (
  */
 export const enterYield = (
   createActionDto: CreateActionDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ActionDto>>,
 ) => {
   return customFetch<ActionDto>(
     {
@@ -161,7 +163,7 @@ export const enterYield = (
  */
 export const exitYield = (
   createActionDto: CreateActionDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ActionDto>>,
 ) => {
   return customFetch<ActionDto>(
     {
@@ -180,7 +182,7 @@ export const exitYield = (
  */
 export const manageYield = (
   createManageActionDto: CreateManageActionDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ActionDto>>,
 ) => {
   return customFetch<ActionDto>(
     {
@@ -200,7 +202,7 @@ export const manageYield = (
 export const submitTransactionHash = (
   transactionId: string,
   submitHashDto: SubmitHashDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
   return customFetch<TransactionDto>(
     {
@@ -220,7 +222,7 @@ export const submitTransactionHash = (
 export const submitTransaction = (
   transactionId: string,
   submitTransactionDto: SubmitTransactionDto,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
   return customFetch<TransactionDto>(
     {
@@ -239,7 +241,7 @@ export const submitTransaction = (
  */
 export const getTransaction = (
   transactionId: string,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
   return customFetch<TransactionDto>(
     { url: `/v1/transactions/${transactionId}`, method: "GET" },
@@ -251,7 +253,9 @@ export const getTransaction = (
  * Retrieve a list of all supported networks that can be used for filtering yields and other operations.
  * @summary List all available networks
  */
-export const getNetworks = (options?: SecondParameter<typeof customFetch>) => {
+export const getNetworks = (
+  options?: SecondParameter<typeof customFetch<NetworkDto[]>>,
+) => {
   return customFetch<NetworkDto[]>(
     { url: `/v1/networks`, method: "GET" },
     options,
@@ -264,7 +268,9 @@ export const getNetworks = (options?: SecondParameter<typeof customFetch>) => {
  */
 export const getProviders = (
   params?: ProvidersControllerGetProvidersParams,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<
+    typeof customFetch<ProvidersControllerGetProviders200>
+  >,
 ) => {
   return customFetch<ProvidersControllerGetProviders200>(
     { url: `/v1/providers`, method: "GET", params },
@@ -278,7 +284,7 @@ export const getProviders = (
  */
 export const getProvider = (
   providerId: string,
-  options?: SecondParameter<typeof customFetch>,
+  options?: SecondParameter<typeof customFetch<ProviderDto>>,
 ) => {
   return customFetch<ProviderDto>(
     { url: `/v1/providers/${providerId}`, method: "GET" },
@@ -290,7 +296,9 @@ export const getProvider = (
  * Get the health status of the yield API with current timestamp
  * @summary Health check
  */
-export const health = (options?: SecondParameter<typeof customFetch>) => {
+export const health = (
+  options?: SecondParameter<typeof customFetch<HealthStatusDto>>,
+) => {
   return customFetch<HealthStatusDto>(
     { url: `/health`, method: "GET" },
     options,

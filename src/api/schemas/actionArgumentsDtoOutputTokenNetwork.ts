@@ -1,11 +1,11 @@
 /**
- * Network this transaction is for
+ * Network for the output token. Required for cross-chain withdrawals when the destination is on a different network than the vault.
  */
-export type TransactionDtoNetwork =
-  (typeof TransactionDtoNetwork)[keyof typeof TransactionDtoNetwork];
+export type ActionArgumentsDtoOutputTokenNetwork =
+  (typeof ActionArgumentsDtoOutputTokenNetwork)[keyof typeof ActionArgumentsDtoOutputTokenNetwork];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const TransactionDtoNetwork = {
+export const ActionArgumentsDtoOutputTokenNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",
   "ethereum-holesky": "ethereum-holesky",

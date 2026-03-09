@@ -10,6 +10,11 @@ export interface YieldStatisticsDto {
    */
   tvl?: string | null;
   /**
+   * Raw total value locked (full precision)
+   * @nullable
+   */
+  tvlRaw?: string | null;
+  /**
    * Number of users with active positions in the yield
    * @nullable
    */
