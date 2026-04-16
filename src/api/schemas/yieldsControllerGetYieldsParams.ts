@@ -77,7 +77,7 @@ export type YieldsControllerGetYieldsParams = {
    */
   search?: string;
   /**
-   * Sort by yield status
+   * Sort by yield status or reward rate
    */
   sort?: YieldsControllerGetYieldsSort;
 };

@@ -45,4 +45,10 @@ export interface BalanceDto {
   priceRange?: BalanceDtoPriceRange;
   /** NFT token ID for liquidity positions (e.g., PancakeSwap V3 position NFT ID) */
   tokenId?: string;
+  /** Share balance in human-readable format */
+  shareAmount?: string;
+  /** Share balance in full precision (smallest unit) */
+  shareAmountRaw?: string;
+  /** The share token that shareAmount and shareAmountRaw are denominated in */
+  shareToken?: TokenDto;
 }

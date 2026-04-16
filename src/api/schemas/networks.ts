@@ -1,6 +1,3 @@
-/**
- * Network for this address
- */
 export type Networks = (typeof Networks)[keyof typeof Networks];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
@@ -90,6 +87,7 @@ export const Networks = {
   kusama: "kusama",
   westend: "westend",
   bittensor: "bittensor",
+  aptos: "aptos",
   binancebeacon: "binancebeacon",
   cardano: "cardano",
   near: "near",

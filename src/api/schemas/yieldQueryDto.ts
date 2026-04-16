@@ -45,6 +45,6 @@ export interface YieldQueryDto {
   providers?: string[];
   /** Search by yield name */
   search?: string;
-  /** Sort by yield status */
+  /** Sort by yield status or reward rate */
   sort?: YieldQueryDtoSort;
 }

@@ -91,6 +91,7 @@ export const YieldQueryDtoNetwork = {
   kusama: "kusama",
   westend: "westend",
   bittensor: "bittensor",
+  aptos: "aptos",
   binancebeacon: "binancebeacon",
   cardano: "cardano",
   near: "near",

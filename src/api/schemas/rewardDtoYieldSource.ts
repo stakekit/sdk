@@ -9,6 +9,7 @@ export const RewardDtoYieldSource = {
   staking: "staking",
   restaking: "restaking",
   protocol_incentive: "protocol_incentive",
+  campaign_incentive: "campaign_incentive",
   points: "points",
   lending_interest: "lending_interest",
   mev: "mev",

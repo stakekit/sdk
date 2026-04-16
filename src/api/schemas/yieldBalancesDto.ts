@@ -1,5 +1,6 @@
 import type { BalanceDto } from "./balanceDto";
 import type { YieldBalancesDtoOutputTokenBalance } from "./yieldBalancesDtoOutputTokenBalance";
+import type { YieldBalancesDtoRewardRate } from "./yieldBalancesDtoRewardRate";
 
 export interface YieldBalancesDto {
   /** Unique identifier of the yield */
@@ -11,4 +12,9 @@ export interface YieldBalancesDto {
    * @nullable
    */
   outputTokenBalance?: YieldBalancesDtoOutputTokenBalance;
+  /**
+   * Personalized reward rate breakdown for this balance position
+   * @nullable
+   */
+  rewardRate?: YieldBalancesDtoRewardRate;
 }
