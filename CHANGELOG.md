@@ -1,5 +1,12 @@
 # @yieldxyz/sdk
 
+## 0.0.7
+
+### Patch Changes
+
+- 3b9c523: chore: bump deps
+- 9a75de1: feat: update schemas
+
 ## 0.0.6
 
 ### Patch Changes
