@@ -4,7 +4,6 @@
 export type RewardDtoYieldSource =
   (typeof RewardDtoYieldSource)[keyof typeof RewardDtoYieldSource];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RewardDtoYieldSource = {
   staking: "staking",
   restaking: "restaking",

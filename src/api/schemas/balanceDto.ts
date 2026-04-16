@@ -1,5 +1,4 @@
 import type { BalanceDtoPriceRange } from "./balanceDtoPriceRange";
-import type { BalanceDtoValidator } from "./balanceDtoValidator";
 import type { BalanceType } from "./balanceType";
 import type { PendingActionDto } from "./pendingActionDto";
 import type { TokenDto } from "./tokenDto";
@@ -24,11 +23,8 @@ export interface BalanceDto {
   pendingActions: PendingActionDto[];
   /** Token used for balance amounts */
   token: TokenDto;
-  /**
-   * Validator information (if applicable)
-   * @nullable
-   */
-  validator?: BalanceDtoValidator;
+  /** Validator information (if applicable) */
+  validator?: ValidatorDto | null;
   /**
    * Multiple validators information (when balance is distributed across multiple validators)
    * @nullable

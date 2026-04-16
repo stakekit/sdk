@@ -1,7 +1,6 @@
 export type ActionsControllerGetActionsStatusesItem =
   (typeof ActionsControllerGetActionsStatusesItem)[keyof typeof ActionsControllerGetActionsStatusesItem];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsControllerGetActionsStatusesItem = {
   CANCELED: "CANCELED",
   CREATED: "CREATED",

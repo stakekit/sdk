@@ -33,10 +33,7 @@ export interface TransactionDto {
    * @nullable
    */
   signedTransaction: string | null;
-  /**
-   * The unsigned transaction data to be signed by the wallet
-   * @nullable
-   */
+  /** The unsigned transaction data to be signed by the wallet */
   unsignedTransaction: TransactionDtoUnsignedTransaction;
   /**
    * Human-readable breakdown of the transaction for display purposes

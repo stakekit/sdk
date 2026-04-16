@@ -1,5 +1,5 @@
 import type { AllocationDtoNetwork } from "./allocationDtoNetwork";
-import type { AllocationDtoRewardRate } from "./allocationDtoRewardRate";
+import type { AllocationRewardRateDto } from "./allocationRewardRateDto";
 
 export interface AllocationDto {
   /** Contract address of the underlying strategy */
@@ -23,11 +23,8 @@ export interface AllocationDto {
   weight: number;
   /** Target weight of this strategy as a percentage (0-100) */
   targetWeight: number;
-  /**
-   * Reward rate of the underlying strategy
-   * @nullable
-   */
-  rewardRate: AllocationDtoRewardRate;
+  /** Reward rate of the underlying strategy */
+  rewardRate: AllocationRewardRateDto | null;
   /**
    * Total value locked in the underlying strategy in input token units
    * @nullable

@@ -15,7 +15,7 @@ export default defineConfig({
       schemas: schemasPath,
       clean: true,
       mock: true,
-      biome: true,
+      formatter: "biome",
       override: {
         header: false,
         mutator: {

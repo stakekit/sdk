@@ -1,5 +1,6 @@
-import type { ActionsControllerGetActions200AllOf } from "./actionsControllerGetActions200AllOf";
+import type { ActionDto } from "./actionDto";
 import type { PaginatedResponseDto } from "./paginatedResponseDto";
 
-export type ActionsControllerGetActions200 = PaginatedResponseDto &
-  ActionsControllerGetActions200AllOf;
+export type ActionsControllerGetActions200 = PaginatedResponseDto & {
+  items?: ActionDto[];
+};

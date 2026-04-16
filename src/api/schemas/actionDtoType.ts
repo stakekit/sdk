@@ -3,7 +3,6 @@
  */
 export type ActionDtoType = (typeof ActionDtoType)[keyof typeof ActionDtoType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionDtoType = {
   STAKE: "STAKE",
   UNSTAKE: "UNSTAKE",

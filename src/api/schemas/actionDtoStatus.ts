@@ -4,7 +4,6 @@
 export type ActionDtoStatus =
   (typeof ActionDtoStatus)[keyof typeof ActionDtoStatus];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionDtoStatus = {
   CANCELED: "CANCELED",
   CREATED: "CREATED",

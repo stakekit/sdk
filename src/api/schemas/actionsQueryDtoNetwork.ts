@@ -4,7 +4,6 @@
 export type ActionsQueryDtoNetwork =
   (typeof ActionsQueryDtoNetwork)[keyof typeof ActionsQueryDtoNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsQueryDtoNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

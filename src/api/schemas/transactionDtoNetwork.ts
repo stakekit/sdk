@@ -4,7 +4,6 @@
 export type TransactionDtoNetwork =
   (typeof TransactionDtoNetwork)[keyof typeof TransactionDtoNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionDtoNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

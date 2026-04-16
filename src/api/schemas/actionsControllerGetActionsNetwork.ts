@@ -1,7 +1,6 @@
 export type ActionsControllerGetActionsNetwork =
   (typeof ActionsControllerGetActionsNetwork)[keyof typeof ActionsControllerGetActionsNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsControllerGetActionsNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

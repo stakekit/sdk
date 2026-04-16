@@ -4,7 +4,6 @@
 export type PendingActionDtoType =
   (typeof PendingActionDtoType)[keyof typeof PendingActionDtoType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PendingActionDtoType = {
   STAKE: "STAKE",
   UNSTAKE: "UNSTAKE",

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "lint": "biome check . && tsc -b",
-    "format": "biome check . --write",
+    "format": "biome format --write .",
     "build": "pnpm run generate-api && rslib build",
     "generate-api": "orval --config ./orval.config.ts",
     "prepare": "husky",
@@ -60,19 +60,19 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.7",
-    "@changesets/cli": "^2.29.7",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@faker-js/faker": "^10.1.0",
-    "@rslib/core": "^0.18.1",
-    "@types/node": "^24.10.1",
-    "bignumber.js": "^9.3.1",
+    "@biomejs/biome": "2.4.11",
+    "@changesets/cli": "^2.30.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@faker-js/faker": "^10.4.0",
+    "@rslib/core": "^0.21.0",
+    "@types/node": "^25.6.0",
+    "bignumber.js": "^10.0.2",
     "husky": "^9.1.7",
-    "msw": "^2.12.3",
-    "orval": "^7.16.1",
-    "tsx": "^4.20.6",
+    "msw": "^2.13.2",
+    "orval": "^8.7.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "viem": "^2.40.0"
+    "viem": "^2.47.16"
   }
 }

@@ -3,7 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/.tsbuildinfo.build.json"
   },
   "include": ["src"]
 }

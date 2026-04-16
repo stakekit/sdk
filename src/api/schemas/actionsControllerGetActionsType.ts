@@ -1,7 +1,6 @@
 export type ActionsControllerGetActionsType =
   (typeof ActionsControllerGetActionsType)[keyof typeof ActionsControllerGetActionsType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsControllerGetActionsType = {
   STAKE: "STAKE",
   UNSTAKE: "UNSTAKE",

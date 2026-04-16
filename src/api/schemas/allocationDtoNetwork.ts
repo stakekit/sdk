@@ -4,7 +4,6 @@
 export type AllocationDtoNetwork =
   (typeof AllocationDtoNetwork)[keyof typeof AllocationDtoNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const AllocationDtoNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

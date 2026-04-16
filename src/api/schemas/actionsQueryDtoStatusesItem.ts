@@ -1,7 +1,6 @@
 export type ActionsQueryDtoStatusesItem =
   (typeof ActionsQueryDtoStatusesItem)[keyof typeof ActionsQueryDtoStatusesItem];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsQueryDtoStatusesItem = {
   CANCELED: "CANCELED",
   CREATED: "CREATED",

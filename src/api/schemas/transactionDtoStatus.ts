@@ -4,7 +4,6 @@
 export type TransactionDtoStatus =
   (typeof TransactionDtoStatus)[keyof typeof TransactionDtoStatus];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionDtoStatus = {
   NOT_FOUND: "NOT_FOUND",
   CREATED: "CREATED",

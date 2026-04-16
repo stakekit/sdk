@@ -1,7 +1,6 @@
 export type YieldsControllerGetYieldsType =
   (typeof YieldsControllerGetYieldsType)[keyof typeof YieldsControllerGetYieldsType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldsControllerGetYieldsType = {
   staking: "staking",
   restaking: "restaking",

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import type { RequestHandlerOptions } from "msw";
-import { delay, HttpResponse, http } from "msw";
+import { HttpResponse, http } from "msw";
 import type {
   ActionDto,
   ActionsControllerGetActions200,
@@ -33,21 +33,9 @@ import {
 export const getYieldsControllerGetYieldsResponseMock =
   (): YieldsControllerGetYields200 => ({
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
+      offset: faker.number.float({ fractionDigits: 2 }),
+      limit: faker.number.float({ fractionDigits: 2 }),
     },
     ...{
       items: faker.helpers.arrayElement([
@@ -167,11 +155,7 @@ export const getYieldsControllerGetYieldsResponseMock =
           ).map(() => ({
             symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
             name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            decimals: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            decimals: faker.number.float({ fractionDigits: 2 }),
             network: faker.helpers.arrayElement([
               "ethereum",
               "ethereum-goerli",
@@ -295,11 +279,7 @@ export const getYieldsControllerGetYieldsResponseMock =
               ...{
                 symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                decimals: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                decimals: faker.number.float({ fractionDigits: 2 }),
                 network: faker.helpers.arrayElement([
                   "ethereum",
                   "ethereum-goerli",
@@ -425,11 +405,7 @@ export const getYieldsControllerGetYieldsResponseMock =
             ...{
               symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
               name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-              decimals: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              decimals: faker.number.float({ fractionDigits: 2 }),
               network: faker.helpers.arrayElement([
                 "ethereum",
                 "ethereum-goerli",
@@ -555,11 +531,7 @@ export const getYieldsControllerGetYieldsResponseMock =
           ).map(() => ({
             symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
             name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            decimals: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            decimals: faker.number.float({ fractionDigits: 2 }),
             network: faker.helpers.arrayElement([
               "ethereum",
               "ethereum-goerli",
@@ -680,21 +652,13 @@ export const getYieldsControllerGetYieldsResponseMock =
           })),
           rewardRate: {
             ...{
-              total: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              total: faker.number.float({ fractionDigits: 2 }),
               rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
               components: Array.from(
                 { length: faker.number.int({ min: 1, max: 10 }) },
                 (_, i) => i + 1,
               ).map(() => ({
-                rate: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                rate: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 token: {
                   ...{
@@ -702,11 +666,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                       length: { min: 10, max: 20 },
                     }),
                     name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                    decimals: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    decimals: faker.number.float({ fractionDigits: 2 }),
                     network: faker.helpers.arrayElement([
                       "ethereum",
                       "ethereum-goerli",
@@ -870,11 +830,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 ]),
                 uniqueUsers: faker.helpers.arrayElement([
                   faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     null,
                   ]),
                   undefined,
@@ -965,11 +921,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -1090,39 +1042,15 @@ export const getYieldsControllerGetYieldsResponseMock =
                 },
               },
               lockupPeriod: faker.helpers.arrayElement([
-                {
-                  ...{
-                    seconds: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
-                  },
-                },
+                { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
                 undefined,
               ]),
               cooldownPeriod: faker.helpers.arrayElement([
-                {
-                  ...{
-                    seconds: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
-                  },
-                },
+                { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
                 undefined,
               ]),
               warmupPeriod: faker.helpers.arrayElement([
-                {
-                  ...{
-                    seconds: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
-                  },
-                },
+                { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
                 undefined,
               ]),
               fee: faker.helpers.arrayElement([
@@ -1152,11 +1080,17 @@ export const getYieldsControllerGetYieldsResponseMock =
                 {
                   ...{
                     minimum: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                     maximum: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                   },
@@ -1669,9 +1603,18 @@ export const getYieldsControllerGetYieldsResponseMock =
           curator: faker.helpers.arrayElement([
             {
               ...{
-                name: faker.helpers.arrayElement([{}, undefined]),
-                description: faker.helpers.arrayElement([{}, undefined]),
-                logoURI: faker.helpers.arrayElement([{}, undefined]),
+                name: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  undefined,
+                ]),
+                description: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  undefined,
+                ]),
+                logoURI: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  undefined,
+                ]),
               },
             },
             undefined,
@@ -1689,11 +1632,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                 pricePerShareState: faker.helpers.arrayElement([
                   {
                     ...{
-                      price: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      price: faker.number.float({ fractionDigits: 2 }),
                       shareToken: {
                         ...{
                           symbol: faker.string.alpha({
@@ -1702,11 +1641,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -1840,11 +1775,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -1977,60 +1908,33 @@ export const getYieldsControllerGetYieldsResponseMock =
                 concentratedLiquidityPoolState: faker.helpers.arrayElement([
                   {
                     ...{
-                      baseApr: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
-                      price: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
-                      tickSpacing: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
-                      minTick: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
-                      maxTick: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      baseApr: faker.number.float({ fractionDigits: 2 }),
+                      price: faker.number.float({ fractionDigits: 2 }),
+                      tickSpacing: faker.number.float({ fractionDigits: 2 }),
+                      minTick: faker.number.float({ fractionDigits: 2 }),
+                      maxTick: faker.number.float({ fractionDigits: 2 }),
                       volume24hUsd: faker.helpers.arrayElement([
-                        faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        faker.helpers.arrayElement([
+                          faker.number.float({ fractionDigits: 2 }),
+                          null,
+                        ]),
                         null,
                       ]),
                       fee24hUsd: faker.helpers.arrayElement([
-                        faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        faker.helpers.arrayElement([
+                          faker.number.float({ fractionDigits: 2 }),
+                          null,
+                        ]),
                         null,
                       ]),
                       tvlUsd: faker.helpers.arrayElement([
-                        faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        faker.helpers.arrayElement([
+                          faker.number.float({ fractionDigits: 2 }),
+                          null,
+                        ]),
                         null,
                       ]),
-                      feeTier: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      feeTier: faker.number.float({ fractionDigits: 2 }),
                       baseToken: {
                         ...{
                           symbol: faker.string.alpha({
@@ -2039,11 +1943,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -2177,11 +2077,7 @@ export const getYieldsControllerGetYieldsResponseMock =
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -2338,8 +2234,14 @@ export const getYieldsControllerGetYieldsResponseMock =
                 liquidityState: faker.helpers.arrayElement([
                   {
                     ...{
-                      liquidity: faker.helpers.arrayElement([{}, undefined]),
-                      utilization: faker.helpers.arrayElement([{}, undefined]),
+                      liquidity: faker.helpers.arrayElement([
+                        faker.helpers.arrayElement([null]),
+                        undefined,
+                      ]),
+                      utilization: faker.helpers.arrayElement([
+                        faker.helpers.arrayElement([null]),
+                        undefined,
+                      ]),
                     },
                   },
                   undefined,
@@ -2466,45 +2368,48 @@ export const getYieldsControllerGetYieldsResponseMock =
                       length: { min: 10, max: 20 },
                     }),
                     allocationUsd: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
-                    weight: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
-                    targetWeight: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    weight: faker.number.float({ fractionDigits: 2 }),
+                    targetWeight: faker.number.float({ fractionDigits: 2 }),
                     rewardRate: {
                       ...{
-                        total: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        total: faker.number.float({ fractionDigits: 2 }),
                         rateType: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
                       },
                     },
                     tvl: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                     tvlUsd: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                     maxCapacity: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                     remainingCapacity: faker.helpers.arrayElement([
-                      faker.string.alpha({ length: { min: 10, max: 20 } }),
+                      faker.helpers.arrayElement([
+                        faker.string.alpha({ length: { min: 10, max: 20 } }),
+                        null,
+                      ]),
                       null,
                     ]),
                   })),
@@ -2521,7 +2426,7 @@ export const getYieldsControllerGetYieldsResponseMock =
   });
 
 export const getYieldsControllerGetAggregateBalancesResponseMock = (
-  overrideResponse: Partial<BalancesResponseDto> = {},
+  overrideResponse: Partial<Extract<BalancesResponseDto, object>> = {},
 ): BalancesResponseDto => ({
   items: Array.from(
     { length: faker.number.int({ min: 1, max: 10 }) },
@@ -2538,7 +2443,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
       amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
       date: faker.helpers.arrayElement([
         faker.helpers.arrayElement([
-          `${faker.date.past().toISOString().split(".")[0]}Z`,
+          faker.date.past().toISOString().slice(0, 19) + "Z",
           null,
         ]),
         undefined,
@@ -2676,7 +2581,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               ]),
             },
           },
-          undefined,
+          null,
         ]),
         amount: faker.helpers.arrayElement([
           faker.helpers.arrayElement([
@@ -2690,11 +2595,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
         ...{
           symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
           name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          decimals: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          decimals: faker.number.float({ fractionDigits: 2 }),
           network: faker.helpers.arrayElement([
             "ethereum",
             "ethereum-goerli",
@@ -2833,11 +2734,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             rewardRate: faker.helpers.arrayElement([
               {
                 ...{
-                  total: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  total: faker.number.float({ fractionDigits: 2 }),
                   rateType: faker.string.alpha({
                     length: { min: 10, max: 20 },
                   }),
@@ -2845,11 +2742,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     { length: faker.number.int({ min: 1, max: 10 }) },
                     (_, i) => i + 1,
                   ).map(() => ({
-                    rate: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    rate: faker.number.float({ fractionDigits: 2 }),
                     rateType: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
@@ -2861,11 +2754,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         name: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
-                        decimals: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        decimals: faker.number.float({ fractionDigits: 2 }),
                         network: faker.helpers.arrayElement([
                           "ethereum",
                           "ethereum-goerli",
@@ -3015,7 +2904,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     length: { min: 10, max: 20 },
                   }),
                   website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  tvlUsd: {},
+                  tvlUsd: faker.helpers.arrayElement([
+                    faker.helpers.arrayElement([null]),
+                    null,
+                  ]),
                   type: faker.helpers.arrayElement([
                     "protocol",
                     "validator_provider",
@@ -3029,11 +2921,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     ),
                     undefined,
                   ]),
-                  rank: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  rank: faker.number.float({ fractionDigits: 2 }),
                   preferred: faker.datatype.boolean(),
                   revshare: faker.helpers.arrayElement([
                     {
@@ -3042,13 +2930,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -3059,13 +2943,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -3076,13 +2956,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -3098,11 +2974,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     undefined,
                   ]),
                   createdAt: faker.helpers.arrayElement([
-                    `${faker.date.past().toISOString().split(".")[0]}Z`,
+                    faker.date.past().toISOString().slice(0, 19) + "Z",
                     undefined,
                   ]),
                   updatedAt: faker.helpers.arrayElement([
-                    `${faker.date.past().toISOString().split(".")[0]}Z`,
+                    faker.date.past().toISOString().slice(0, 19) + "Z",
                     undefined,
                   ]),
                 },
@@ -3110,11 +2986,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               undefined,
             ]),
             commission: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             tvlUsd: faker.helpers.arrayElement([
@@ -3130,11 +3002,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               undefined,
             ]),
             votingPower: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             preferred: faker.helpers.arrayElement([
@@ -3150,19 +3018,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               undefined,
             ]),
             remainingSlots: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             nominatorCount: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             status: faker.helpers.arrayElement([
@@ -3178,11 +3038,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               undefined,
             ]),
             subnetId: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             subnetName: faker.helpers.arrayElement([
@@ -3199,7 +3055,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             ]),
           },
         },
-        undefined,
+        null,
       ]),
       validators: faker.helpers.arrayElement([
         Array.from(
@@ -3222,21 +3078,13 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
-                total: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                total: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 components: Array.from(
                   { length: faker.number.int({ min: 1, max: 10 }) },
                   (_, i) => i + 1,
                 ).map(() => ({
-                  rate: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  rate: faker.number.float({ fractionDigits: 2 }),
                   rateType: faker.string.alpha({
                     length: { min: 10, max: 20 },
                   }),
@@ -3248,11 +3096,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       name: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
-                      decimals: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      decimals: faker.number.float({ fractionDigits: 2 }),
                       network: faker.helpers.arrayElement([
                         "ethereum",
                         "ethereum-goerli",
@@ -3402,7 +3246,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   length: { min: 10, max: 20 },
                 }),
                 website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                tvlUsd: {},
+                tvlUsd: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  null,
+                ]),
                 type: faker.helpers.arrayElement([
                   "protocol",
                   "validator_provider",
@@ -3416,11 +3263,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   ),
                   undefined,
                 ]),
-                rank: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                rank: faker.number.float({ fractionDigits: 2 }),
                 preferred: faker.datatype.boolean(),
                 revshare: faker.helpers.arrayElement([
                   {
@@ -3429,13 +3272,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -3446,13 +3285,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -3463,13 +3298,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -3485,11 +3316,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   undefined,
                 ]),
                 createdAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
                 updatedAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
               },
@@ -3497,11 +3328,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             undefined,
           ]),
           commission: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           tvlUsd: faker.helpers.arrayElement([
@@ -3517,11 +3344,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             undefined,
           ]),
           votingPower: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           preferred: faker.helpers.arrayElement([
@@ -3537,19 +3360,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             undefined,
           ]),
           remainingSlots: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           nominatorCount: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           status: faker.helpers.arrayElement([
@@ -3565,11 +3380,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             undefined,
           ]),
           subnetId: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           subnetName: faker.helpers.arrayElement([
@@ -3613,11 +3424,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           ...{
             symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
             name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            decimals: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            decimals: faker.number.float({ fractionDigits: 2 }),
             network: faker.helpers.arrayElement([
               "ethereum",
               "ethereum-goerli",
@@ -3749,7 +3556,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
           date: faker.helpers.arrayElement([
             faker.helpers.arrayElement([
-              `${faker.date.past().toISOString().split(".")[0]}Z`,
+              faker.date.past().toISOString().slice(0, 19) + "Z",
               null,
             ]),
             undefined,
@@ -3887,7 +3694,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   ]),
                 },
               },
-              undefined,
+              null,
             ]),
             amount: faker.helpers.arrayElement([
               faker.helpers.arrayElement([
@@ -3901,11 +3708,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
             ...{
               symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
               name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-              decimals: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              decimals: faker.number.float({ fractionDigits: 2 }),
               network: faker.helpers.arrayElement([
                 "ethereum",
                 "ethereum-goerli",
@@ -4044,11 +3847,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 rewardRate: faker.helpers.arrayElement([
                   {
                     ...{
-                      total: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      total: faker.number.float({ fractionDigits: 2 }),
                       rateType: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
@@ -4056,11 +3855,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         { length: faker.number.int({ min: 1, max: 10 }) },
                         (_, i) => i + 1,
                       ).map(() => ({
-                        rate: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        rate: faker.number.float({ fractionDigits: 2 }),
                         rateType: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
@@ -4072,11 +3867,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                             name: faker.string.alpha({
                               length: { min: 10, max: 20 },
                             }),
-                            decimals: faker.number.float({
-                              min: undefined,
-                              max: undefined,
-                              fractionDigits: 2,
-                            }),
+                            decimals: faker.number.float({ fractionDigits: 2 }),
                             network: faker.helpers.arrayElement([
                               "ethereum",
                               "ethereum-goerli",
@@ -4238,7 +4029,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       website: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
-                      tvlUsd: {},
+                      tvlUsd: faker.helpers.arrayElement([
+                        faker.helpers.arrayElement([null]),
+                        null,
+                      ]),
                       type: faker.helpers.arrayElement([
                         "protocol",
                         "validator_provider",
@@ -4252,11 +4046,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         ),
                         undefined,
                       ]),
-                      rank: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      rank: faker.number.float({ fractionDigits: 2 }),
                       preferred: faker.datatype.boolean(),
                       revshare: faker.helpers.arrayElement([
                         {
@@ -4265,13 +4055,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -4282,13 +4068,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -4299,13 +4081,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -4321,11 +4099,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                         undefined,
                       ]),
                       createdAt: faker.helpers.arrayElement([
-                        `${faker.date.past().toISOString().split(".")[0]}Z`,
+                        faker.date.past().toISOString().slice(0, 19) + "Z",
                         undefined,
                       ]),
                       updatedAt: faker.helpers.arrayElement([
-                        `${faker.date.past().toISOString().split(".")[0]}Z`,
+                        faker.date.past().toISOString().slice(0, 19) + "Z",
                         undefined,
                       ]),
                     },
@@ -4333,11 +4111,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   undefined,
                 ]),
                 commission: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 tvlUsd: faker.helpers.arrayElement([
@@ -4353,11 +4127,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   undefined,
                 ]),
                 votingPower: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 preferred: faker.helpers.arrayElement([
@@ -4373,19 +4143,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   undefined,
                 ]),
                 remainingSlots: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 nominatorCount: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 status: faker.helpers.arrayElement([
@@ -4401,11 +4163,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                   undefined,
                 ]),
                 subnetId: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 subnetName: faker.helpers.arrayElement([
@@ -4422,7 +4180,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 ]),
               },
             },
-            undefined,
+            null,
           ]),
           validators: faker.helpers.arrayElement([
             Array.from(
@@ -4445,11 +4203,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               rewardRate: faker.helpers.arrayElement([
                 {
                   ...{
-                    total: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    total: faker.number.float({ fractionDigits: 2 }),
                     rateType: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
@@ -4457,11 +4211,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       { length: faker.number.int({ min: 1, max: 10 }) },
                       (_, i) => i + 1,
                     ).map(() => ({
-                      rate: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      rate: faker.number.float({ fractionDigits: 2 }),
                       rateType: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
@@ -4473,11 +4223,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -4637,7 +4383,10 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                     website: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
-                    tvlUsd: {},
+                    tvlUsd: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([null]),
+                      null,
+                    ]),
                     type: faker.helpers.arrayElement([
                       "protocol",
                       "validator_provider",
@@ -4651,11 +4400,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       ),
                       undefined,
                     ]),
-                    rank: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    rank: faker.number.float({ fractionDigits: 2 }),
                     preferred: faker.datatype.boolean(),
                     revshare: faker.helpers.arrayElement([
                       {
@@ -4664,13 +4409,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -4681,13 +4422,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -4698,13 +4435,9 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -4720,11 +4453,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                       undefined,
                     ]),
                     createdAt: faker.helpers.arrayElement([
-                      `${faker.date.past().toISOString().split(".")[0]}Z`,
+                      faker.date.past().toISOString().slice(0, 19) + "Z",
                       undefined,
                     ]),
                     updatedAt: faker.helpers.arrayElement([
-                      `${faker.date.past().toISOString().split(".")[0]}Z`,
+                      faker.date.past().toISOString().slice(0, 19) + "Z",
                       undefined,
                     ]),
                   },
@@ -4732,11 +4465,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 undefined,
               ]),
               commission: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               tvlUsd: faker.helpers.arrayElement([
@@ -4752,11 +4481,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 undefined,
               ]),
               votingPower: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               preferred: faker.helpers.arrayElement([
@@ -4772,19 +4497,11 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 undefined,
               ]),
               remainingSlots: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               nominatorCount: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               status: faker.helpers.arrayElement([
@@ -4800,11 +4517,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
                 undefined,
               ]),
               subnetId: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               subnetName: faker.helpers.arrayElement([
@@ -4848,11 +4561,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
               ...{
                 symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                decimals: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                decimals: faker.number.float({ fractionDigits: 2 }),
                 network: faker.helpers.arrayElement([
                   "ethereum",
                   "ethereum-goerli",
@@ -4976,36 +4685,24 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           ]),
         },
       },
-      undefined,
+      null,
     ]),
     rewardRate: faker.helpers.arrayElement([
       {
         ...{
-          total: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          total: faker.number.float({ fractionDigits: 2 }),
           rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
           components: Array.from(
             { length: faker.number.int({ min: 1, max: 10 }) },
             (_, i) => i + 1,
           ).map(() => ({
-            rate: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            rate: faker.number.float({ fractionDigits: 2 }),
             rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
             token: {
               ...{
                 symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                decimals: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                decimals: faker.number.float({ fractionDigits: 2 }),
                 network: faker.helpers.arrayElement([
                   "ethereum",
                   "ethereum-goerli",
@@ -5143,7 +4840,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
           })),
         },
       },
-      undefined,
+      null,
     ]),
   })),
   errors: Array.from(
@@ -5157,7 +4854,7 @@ export const getYieldsControllerGetAggregateBalancesResponseMock = (
 });
 
 export const getYieldsControllerGetYieldResponseMock = (
-  overrideResponse: Partial<YieldDto> = {},
+  overrideResponse: Partial<Extract<YieldDto, object>> = {},
 ): YieldDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   network: faker.helpers.arrayElement([
@@ -5271,11 +4968,7 @@ export const getYieldsControllerGetYieldResponseMock = (
   ).map(() => ({
     symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
     name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-    decimals: faker.number.float({
-      min: undefined,
-      max: undefined,
-      fractionDigits: 2,
-    }),
+    decimals: faker.number.float({ fractionDigits: 2 }),
     network: faker.helpers.arrayElement([
       "ethereum",
       "ethereum-goerli",
@@ -5396,11 +5089,7 @@ export const getYieldsControllerGetYieldResponseMock = (
       ...{
         symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
         name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        decimals: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        decimals: faker.number.float({ fractionDigits: 2 }),
         network: faker.helpers.arrayElement([
           "ethereum",
           "ethereum-goerli",
@@ -5526,11 +5215,7 @@ export const getYieldsControllerGetYieldResponseMock = (
     ...{
       symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
       name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-      decimals: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      decimals: faker.number.float({ fractionDigits: 2 }),
       network: faker.helpers.arrayElement([
         "ethereum",
         "ethereum-goerli",
@@ -5656,11 +5341,7 @@ export const getYieldsControllerGetYieldResponseMock = (
   ).map(() => ({
     symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
     name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-    decimals: faker.number.float({
-      min: undefined,
-      max: undefined,
-      fractionDigits: 2,
-    }),
+    decimals: faker.number.float({ fractionDigits: 2 }),
     network: faker.helpers.arrayElement([
       "ethereum",
       "ethereum-goerli",
@@ -5778,31 +5459,19 @@ export const getYieldsControllerGetYieldResponseMock = (
   })),
   rewardRate: {
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
       rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
       components: Array.from(
         { length: faker.number.int({ min: 1, max: 10 }) },
         (_, i) => i + 1,
       ).map(() => ({
-        rate: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        rate: faker.number.float({ fractionDigits: 2 }),
         rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
         token: {
           ...{
             symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
             name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            decimals: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            decimals: faker.number.float({ fractionDigits: 2 }),
             network: faker.helpers.arrayElement([
               "ethereum",
               "ethereum-goerli",
@@ -5966,11 +5635,7 @@ export const getYieldsControllerGetYieldResponseMock = (
         ]),
         uniqueUsers: faker.helpers.arrayElement([
           faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             null,
           ]),
           undefined,
@@ -6049,11 +5714,7 @@ export const getYieldsControllerGetYieldResponseMock = (
         ...{
           symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
           name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          decimals: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          decimals: faker.number.float({ fractionDigits: 2 }),
           network: faker.helpers.arrayElement([
             "ethereum",
             "ethereum-goerli",
@@ -6174,39 +5835,15 @@ export const getYieldsControllerGetYieldResponseMock = (
         },
       },
       lockupPeriod: faker.helpers.arrayElement([
-        {
-          ...{
-            seconds: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-          },
-        },
+        { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
         undefined,
       ]),
       cooldownPeriod: faker.helpers.arrayElement([
-        {
-          ...{
-            seconds: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-          },
-        },
+        { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
         undefined,
       ]),
       warmupPeriod: faker.helpers.arrayElement([
-        {
-          ...{
-            seconds: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-          },
-        },
+        { ...{ seconds: faker.number.float({ fractionDigits: 2 }) } },
         undefined,
       ]),
       fee: faker.helpers.arrayElement([
@@ -6236,11 +5873,17 @@ export const getYieldsControllerGetYieldResponseMock = (
         {
           ...{
             minimum: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
             maximum: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
           },
@@ -6683,9 +6326,18 @@ export const getYieldsControllerGetYieldResponseMock = (
   curator: faker.helpers.arrayElement([
     {
       ...{
-        name: faker.helpers.arrayElement([{}, undefined]),
-        description: faker.helpers.arrayElement([{}, undefined]),
-        logoURI: faker.helpers.arrayElement([{}, undefined]),
+        name: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([null]),
+          undefined,
+        ]),
+        description: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([null]),
+          undefined,
+        ]),
+        logoURI: faker.helpers.arrayElement([
+          faker.helpers.arrayElement([null]),
+          undefined,
+        ]),
       },
     },
     undefined,
@@ -6703,20 +6355,12 @@ export const getYieldsControllerGetYieldResponseMock = (
         pricePerShareState: faker.helpers.arrayElement([
           {
             ...{
-              price: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              price: faker.number.float({ fractionDigits: 2 }),
               shareToken: {
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -6840,11 +6484,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -6971,69 +6611,38 @@ export const getYieldsControllerGetYieldResponseMock = (
         concentratedLiquidityPoolState: faker.helpers.arrayElement([
           {
             ...{
-              baseApr: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
-              price: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
-              tickSpacing: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
-              minTick: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
-              maxTick: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              baseApr: faker.number.float({ fractionDigits: 2 }),
+              price: faker.number.float({ fractionDigits: 2 }),
+              tickSpacing: faker.number.float({ fractionDigits: 2 }),
+              minTick: faker.number.float({ fractionDigits: 2 }),
+              maxTick: faker.number.float({ fractionDigits: 2 }),
               volume24hUsd: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.helpers.arrayElement([
+                  faker.number.float({ fractionDigits: 2 }),
+                  null,
+                ]),
                 null,
               ]),
               fee24hUsd: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.helpers.arrayElement([
+                  faker.number.float({ fractionDigits: 2 }),
+                  null,
+                ]),
                 null,
               ]),
               tvlUsd: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.helpers.arrayElement([
+                  faker.number.float({ fractionDigits: 2 }),
+                  null,
+                ]),
                 null,
               ]),
-              feeTier: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              feeTier: faker.number.float({ fractionDigits: 2 }),
               baseToken: {
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -7157,11 +6766,7 @@ export const getYieldsControllerGetYieldResponseMock = (
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -7310,8 +6915,14 @@ export const getYieldsControllerGetYieldResponseMock = (
         liquidityState: faker.helpers.arrayElement([
           {
             ...{
-              liquidity: faker.helpers.arrayElement([{}, undefined]),
-              utilization: faker.helpers.arrayElement([{}, undefined]),
+              liquidity: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([null]),
+                undefined,
+              ]),
+              utilization: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([null]),
+                undefined,
+              ]),
             },
           },
           undefined,
@@ -7434,43 +7045,46 @@ export const getYieldsControllerGetYieldResponseMock = (
             ]),
             allocation: faker.string.alpha({ length: { min: 10, max: 20 } }),
             allocationUsd: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
-            weight: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
-            targetWeight: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            weight: faker.number.float({ fractionDigits: 2 }),
+            targetWeight: faker.number.float({ fractionDigits: 2 }),
             rewardRate: {
               ...{
-                total: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                total: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
               },
             },
             tvl: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
             tvlUsd: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
             maxCapacity: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
             remainingCapacity: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
           })),
@@ -7501,28 +7115,16 @@ export const getYieldsControllerGetYieldRiskResponseMock =
       asset: faker.helpers.arrayElement([{}, undefined]),
       protocol: faker.helpers.arrayElement([{}, undefined]),
       integrationId: faker.helpers.arrayElement([{}, undefined]),
-      createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
-      updatedAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+      createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
+      updatedAt: faker.date.past().toISOString().slice(0, 19) + "Z",
     }));
 
 export const getYieldsControllerGetBalanceHistoryResponseMock =
   (): YieldsControllerGetBalanceHistory200 => ({
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
+      offset: faker.number.float({ fractionDigits: 2 }),
+      limit: faker.number.float({ fractionDigits: 2 }),
     },
     ...{
       items: faker.helpers.arrayElement([
@@ -7531,11 +7133,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
           (_, i) => i + 1,
         ).map(() => ({
           timestamp: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          blockNumber: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          blockNumber: faker.number.float({ fractionDigits: 2 }),
           yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
           balances: Array.from(
             { length: faker.number.int({ min: 1, max: 10 }) },
@@ -7547,7 +7145,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
             amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
             date: faker.helpers.arrayElement([
               faker.helpers.arrayElement([
-                `${faker.date.past().toISOString().split(".")[0]}Z`,
+                faker.date.past().toISOString().slice(0, 19) + "Z",
                 null,
               ]),
               undefined,
@@ -7687,7 +7285,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                     ]),
                   },
                 },
-                undefined,
+                null,
               ]),
               amount: faker.helpers.arrayElement([
                 faker.helpers.arrayElement([
@@ -7701,11 +7299,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
               ...{
                 symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                decimals: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                decimals: faker.number.float({ fractionDigits: 2 }),
                 network: faker.helpers.arrayElement([
                   "ethereum",
                   "ethereum-goerli",
@@ -7844,11 +7438,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   rewardRate: faker.helpers.arrayElement([
                     {
                       ...{
-                        total: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        total: faker.number.float({ fractionDigits: 2 }),
                         rateType: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
@@ -7856,11 +7446,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                           { length: faker.number.int({ min: 1, max: 10 }) },
                           (_, i) => i + 1,
                         ).map(() => ({
-                          rate: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          rate: faker.number.float({ fractionDigits: 2 }),
                           rateType: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
@@ -7873,8 +7459,6 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                                 length: { min: 10, max: 20 },
                               }),
                               decimals: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               network: faker.helpers.arrayElement([
@@ -8042,7 +7626,10 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                         website: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
-                        tvlUsd: {},
+                        tvlUsd: faker.helpers.arrayElement([
+                          faker.helpers.arrayElement([null]),
+                          null,
+                        ]),
                         type: faker.helpers.arrayElement([
                           "protocol",
                           "validator_provider",
@@ -8058,11 +7645,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                           ),
                           undefined,
                         ]),
-                        rank: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        rank: faker.number.float({ fractionDigits: 2 }),
                         preferred: faker.datatype.boolean(),
                         revshare: faker.helpers.arrayElement([
                           {
@@ -8071,13 +7654,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                                 {
                                   ...{
                                     minRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                     maxRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                   },
@@ -8088,13 +7667,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                                 {
                                   ...{
                                     minRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                     maxRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                   },
@@ -8105,13 +7680,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                                 {
                                   ...{
                                     minRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                     maxRevShare: faker.number.float({
-                                      min: undefined,
-                                      max: undefined,
                                       fractionDigits: 2,
                                     }),
                                   },
@@ -8127,11 +7698,11 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                           undefined,
                         ]),
                         createdAt: faker.helpers.arrayElement([
-                          `${faker.date.past().toISOString().split(".")[0]}Z`,
+                          faker.date.past().toISOString().slice(0, 19) + "Z",
                           undefined,
                         ]),
                         updatedAt: faker.helpers.arrayElement([
-                          `${faker.date.past().toISOString().split(".")[0]}Z`,
+                          faker.date.past().toISOString().slice(0, 19) + "Z",
                           undefined,
                         ]),
                       },
@@ -8139,11 +7710,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                     undefined,
                   ]),
                   commission: faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     undefined,
                   ]),
                   tvlUsd: faker.helpers.arrayElement([
@@ -8159,11 +7726,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                     undefined,
                   ]),
                   votingPower: faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     undefined,
                   ]),
                   preferred: faker.helpers.arrayElement([
@@ -8179,19 +7742,11 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                     undefined,
                   ]),
                   remainingSlots: faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     undefined,
                   ]),
                   nominatorCount: faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     undefined,
                   ]),
                   status: faker.helpers.arrayElement([
@@ -8207,11 +7762,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                     undefined,
                   ]),
                   subnetId: faker.helpers.arrayElement([
-                    faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    faker.number.float({ fractionDigits: 2 }),
                     undefined,
                   ]),
                   subnetName: faker.helpers.arrayElement([
@@ -8228,7 +7779,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   ]),
                 },
               },
-              undefined,
+              null,
             ]),
             validators: faker.helpers.arrayElement([
               Array.from(
@@ -8251,11 +7802,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                 rewardRate: faker.helpers.arrayElement([
                   {
                     ...{
-                      total: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      total: faker.number.float({ fractionDigits: 2 }),
                       rateType: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
@@ -8263,11 +7810,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                         { length: faker.number.int({ min: 1, max: 10 }) },
                         (_, i) => i + 1,
                       ).map(() => ({
-                        rate: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        rate: faker.number.float({ fractionDigits: 2 }),
                         rateType: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
@@ -8279,11 +7822,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                             name: faker.string.alpha({
                               length: { min: 10, max: 20 },
                             }),
-                            decimals: faker.number.float({
-                              min: undefined,
-                              max: undefined,
-                              fractionDigits: 2,
-                            }),
+                            decimals: faker.number.float({ fractionDigits: 2 }),
                             network: faker.helpers.arrayElement([
                               "ethereum",
                               "ethereum-goerli",
@@ -8445,7 +7984,10 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                       website: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
-                      tvlUsd: {},
+                      tvlUsd: faker.helpers.arrayElement([
+                        faker.helpers.arrayElement([null]),
+                        null,
+                      ]),
                       type: faker.helpers.arrayElement([
                         "protocol",
                         "validator_provider",
@@ -8459,11 +8001,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                         ),
                         undefined,
                       ]),
-                      rank: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      rank: faker.number.float({ fractionDigits: 2 }),
                       preferred: faker.datatype.boolean(),
                       revshare: faker.helpers.arrayElement([
                         {
@@ -8472,13 +8010,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -8489,13 +8023,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -8506,13 +8036,9 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                               {
                                 ...{
                                   minRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                   maxRevShare: faker.number.float({
-                                    min: undefined,
-                                    max: undefined,
                                     fractionDigits: 2,
                                   }),
                                 },
@@ -8528,11 +8054,11 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                         undefined,
                       ]),
                       createdAt: faker.helpers.arrayElement([
-                        `${faker.date.past().toISOString().split(".")[0]}Z`,
+                        faker.date.past().toISOString().slice(0, 19) + "Z",
                         undefined,
                       ]),
                       updatedAt: faker.helpers.arrayElement([
-                        `${faker.date.past().toISOString().split(".")[0]}Z`,
+                        faker.date.past().toISOString().slice(0, 19) + "Z",
                         undefined,
                       ]),
                     },
@@ -8540,11 +8066,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   undefined,
                 ]),
                 commission: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 tvlUsd: faker.helpers.arrayElement([
@@ -8560,11 +8082,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   undefined,
                 ]),
                 votingPower: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 preferred: faker.helpers.arrayElement([
@@ -8580,19 +8098,11 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   undefined,
                 ]),
                 remainingSlots: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 nominatorCount: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 status: faker.helpers.arrayElement([
@@ -8608,11 +8118,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                   undefined,
                 ]),
                 subnetId: faker.helpers.arrayElement([
-                  faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  faker.number.float({ fractionDigits: 2 }),
                   undefined,
                 ]),
                 subnetName: faker.helpers.arrayElement([
@@ -8656,11 +8162,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
                 ...{
                   symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
                   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  decimals: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  decimals: faker.number.float({ fractionDigits: 2 }),
                   network: faker.helpers.arrayElement([
                     "ethereum",
                     "ethereum-goerli",
@@ -8790,7 +8292,7 @@ export const getYieldsControllerGetBalanceHistoryResponseMock =
   });
 
 export const getYieldsControllerGetYieldBalancesResponseMock = (
-  overrideResponse: Partial<YieldBalancesDto> = {},
+  overrideResponse: Partial<Extract<YieldBalancesDto, object>> = {},
 ): YieldBalancesDto => ({
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   balances: Array.from(
@@ -8803,7 +8305,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
     amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
     date: faker.helpers.arrayElement([
       faker.helpers.arrayElement([
-        `${faker.date.past().toISOString().split(".")[0]}Z`,
+        faker.date.past().toISOString().slice(0, 19) + "Z",
         null,
       ]),
       undefined,
@@ -8937,7 +8439,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             ]),
           },
         },
-        undefined,
+        null,
       ]),
       amount: faker.helpers.arrayElement([
         faker.helpers.arrayElement([
@@ -8951,11 +8453,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
       ...{
         symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
         name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-        decimals: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        decimals: faker.number.float({ fractionDigits: 2 }),
         network: faker.helpers.arrayElement([
           "ethereum",
           "ethereum-goerli",
@@ -9094,21 +8592,13 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
-                total: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                total: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 components: Array.from(
                   { length: faker.number.int({ min: 1, max: 10 }) },
                   (_, i) => i + 1,
                 ).map(() => ({
-                  rate: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  rate: faker.number.float({ fractionDigits: 2 }),
                   rateType: faker.string.alpha({
                     length: { min: 10, max: 20 },
                   }),
@@ -9120,11 +8610,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       name: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
-                      decimals: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      decimals: faker.number.float({ fractionDigits: 2 }),
                       network: faker.helpers.arrayElement([
                         "ethereum",
                         "ethereum-goerli",
@@ -9274,7 +8760,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                   length: { min: 10, max: 20 },
                 }),
                 website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                tvlUsd: {},
+                tvlUsd: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  null,
+                ]),
                 type: faker.helpers.arrayElement([
                   "protocol",
                   "validator_provider",
@@ -9288,11 +8777,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                   ),
                   undefined,
                 ]),
-                rank: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                rank: faker.number.float({ fractionDigits: 2 }),
                 preferred: faker.datatype.boolean(),
                 revshare: faker.helpers.arrayElement([
                   {
@@ -9301,13 +8786,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -9318,13 +8799,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -9335,13 +8812,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -9357,11 +8830,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                   undefined,
                 ]),
                 createdAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
                 updatedAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
               },
@@ -9369,11 +8842,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             undefined,
           ]),
           commission: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           tvlUsd: faker.helpers.arrayElement([
@@ -9389,11 +8858,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             undefined,
           ]),
           votingPower: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           preferred: faker.helpers.arrayElement([
@@ -9409,19 +8874,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             undefined,
           ]),
           remainingSlots: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           nominatorCount: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           status: faker.helpers.arrayElement([
@@ -9437,11 +8894,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             undefined,
           ]),
           subnetId: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           subnetName: faker.helpers.arrayElement([
@@ -9458,7 +8911,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           ]),
         },
       },
-      undefined,
+      null,
     ]),
     validators: faker.helpers.arrayElement([
       Array.from(
@@ -9481,21 +8934,13 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         rewardRate: faker.helpers.arrayElement([
           {
             ...{
-              total: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              total: faker.number.float({ fractionDigits: 2 }),
               rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
               components: Array.from(
                 { length: faker.number.int({ min: 1, max: 10 }) },
                 (_, i) => i + 1,
               ).map(() => ({
-                rate: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                rate: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 token: {
                   ...{
@@ -9503,11 +8948,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       length: { min: 10, max: 20 },
                     }),
                     name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                    decimals: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    decimals: faker.number.float({ fractionDigits: 2 }),
                     network: faker.helpers.arrayElement([
                       "ethereum",
                       "ethereum-goerli",
@@ -9655,7 +9096,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
               description: faker.string.alpha({ length: { min: 10, max: 20 } }),
               website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-              tvlUsd: {},
+              tvlUsd: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([null]),
+                null,
+              ]),
               type: faker.helpers.arrayElement([
                 "protocol",
                 "validator_provider",
@@ -9669,11 +9113,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 ),
                 undefined,
               ]),
-              rank: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              rank: faker.number.float({ fractionDigits: 2 }),
               preferred: faker.datatype.boolean(),
               revshare: faker.helpers.arrayElement([
                 {
@@ -9682,13 +9122,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       {
                         ...{
                           minRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                           maxRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                         },
@@ -9699,13 +9135,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       {
                         ...{
                           minRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                           maxRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                         },
@@ -9716,13 +9148,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       {
                         ...{
                           minRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                           maxRevShare: faker.number.float({
-                            min: undefined,
-                            max: undefined,
                             fractionDigits: 2,
                           }),
                         },
@@ -9738,11 +9166,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 undefined,
               ]),
               createdAt: faker.helpers.arrayElement([
-                `${faker.date.past().toISOString().split(".")[0]}Z`,
+                faker.date.past().toISOString().slice(0, 19) + "Z",
                 undefined,
               ]),
               updatedAt: faker.helpers.arrayElement([
-                `${faker.date.past().toISOString().split(".")[0]}Z`,
+                faker.date.past().toISOString().slice(0, 19) + "Z",
                 undefined,
               ]),
             },
@@ -9750,11 +9178,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           undefined,
         ]),
         commission: faker.helpers.arrayElement([
-          faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          faker.number.float({ fractionDigits: 2 }),
           undefined,
         ]),
         tvlUsd: faker.helpers.arrayElement([
@@ -9770,11 +9194,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           undefined,
         ]),
         votingPower: faker.helpers.arrayElement([
-          faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          faker.number.float({ fractionDigits: 2 }),
           undefined,
         ]),
         preferred: faker.helpers.arrayElement([
@@ -9790,19 +9210,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           undefined,
         ]),
         remainingSlots: faker.helpers.arrayElement([
-          faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          faker.number.float({ fractionDigits: 2 }),
           undefined,
         ]),
         nominatorCount: faker.helpers.arrayElement([
-          faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          faker.number.float({ fractionDigits: 2 }),
           undefined,
         ]),
         status: faker.helpers.arrayElement([
@@ -9818,11 +9230,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           undefined,
         ]),
         subnetId: faker.helpers.arrayElement([
-          faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          faker.number.float({ fractionDigits: 2 }),
           undefined,
         ]),
         subnetName: faker.helpers.arrayElement([
@@ -9866,11 +9274,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         ...{
           symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
           name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          decimals: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          decimals: faker.number.float({ fractionDigits: 2 }),
           network: faker.helpers.arrayElement([
             "ethereum",
             "ethereum-goerli",
@@ -10002,7 +9406,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         amountRaw: faker.string.alpha({ length: { min: 10, max: 20 } }),
         date: faker.helpers.arrayElement([
           faker.helpers.arrayElement([
-            `${faker.date.past().toISOString().split(".")[0]}Z`,
+            faker.date.past().toISOString().slice(0, 19) + "Z",
             null,
           ]),
           undefined,
@@ -10140,7 +9544,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 ]),
               },
             },
-            undefined,
+            null,
           ]),
           amount: faker.helpers.arrayElement([
             faker.helpers.arrayElement([
@@ -10154,11 +9558,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
           ...{
             symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
             name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-            decimals: faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            decimals: faker.number.float({ fractionDigits: 2 }),
             network: faker.helpers.arrayElement([
               "ethereum",
               "ethereum-goerli",
@@ -10297,11 +9697,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               rewardRate: faker.helpers.arrayElement([
                 {
                   ...{
-                    total: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    total: faker.number.float({ fractionDigits: 2 }),
                     rateType: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
@@ -10309,11 +9705,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       { length: faker.number.int({ min: 1, max: 10 }) },
                       (_, i) => i + 1,
                     ).map(() => ({
-                      rate: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      rate: faker.number.float({ fractionDigits: 2 }),
                       rateType: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
@@ -10325,11 +9717,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                           name: faker.string.alpha({
                             length: { min: 10, max: 20 },
                           }),
-                          decimals: faker.number.float({
-                            min: undefined,
-                            max: undefined,
-                            fractionDigits: 2,
-                          }),
+                          decimals: faker.number.float({ fractionDigits: 2 }),
                           network: faker.helpers.arrayElement([
                             "ethereum",
                             "ethereum-goerli",
@@ -10489,7 +9877,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     website: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
-                    tvlUsd: {},
+                    tvlUsd: faker.helpers.arrayElement([
+                      faker.helpers.arrayElement([null]),
+                      null,
+                    ]),
                     type: faker.helpers.arrayElement([
                       "protocol",
                       "validator_provider",
@@ -10503,11 +9894,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       ),
                       undefined,
                     ]),
-                    rank: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    rank: faker.number.float({ fractionDigits: 2 }),
                     preferred: faker.datatype.boolean(),
                     revshare: faker.helpers.arrayElement([
                       {
@@ -10516,13 +9903,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -10533,13 +9916,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -10550,13 +9929,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                             {
                               ...{
                                 minRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                                 maxRevShare: faker.number.float({
-                                  min: undefined,
-                                  max: undefined,
                                   fractionDigits: 2,
                                 }),
                               },
@@ -10572,11 +9947,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                       undefined,
                     ]),
                     createdAt: faker.helpers.arrayElement([
-                      `${faker.date.past().toISOString().split(".")[0]}Z`,
+                      faker.date.past().toISOString().slice(0, 19) + "Z",
                       undefined,
                     ]),
                     updatedAt: faker.helpers.arrayElement([
-                      `${faker.date.past().toISOString().split(".")[0]}Z`,
+                      faker.date.past().toISOString().slice(0, 19) + "Z",
                       undefined,
                     ]),
                   },
@@ -10584,11 +9959,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 undefined,
               ]),
               commission: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               tvlUsd: faker.helpers.arrayElement([
@@ -10604,11 +9975,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 undefined,
               ]),
               votingPower: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               preferred: faker.helpers.arrayElement([
@@ -10624,19 +9991,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 undefined,
               ]),
               remainingSlots: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               nominatorCount: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               status: faker.helpers.arrayElement([
@@ -10652,11 +10011,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                 undefined,
               ]),
               subnetId: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               subnetName: faker.helpers.arrayElement([
@@ -10673,7 +10028,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               ]),
             },
           },
-          undefined,
+          null,
         ]),
         validators: faker.helpers.arrayElement([
           Array.from(
@@ -10696,11 +10051,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             rewardRate: faker.helpers.arrayElement([
               {
                 ...{
-                  total: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  total: faker.number.float({ fractionDigits: 2 }),
                   rateType: faker.string.alpha({
                     length: { min: 10, max: 20 },
                   }),
@@ -10708,11 +10059,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     { length: faker.number.int({ min: 1, max: 10 }) },
                     (_, i) => i + 1,
                   ).map(() => ({
-                    rate: faker.number.float({
-                      min: undefined,
-                      max: undefined,
-                      fractionDigits: 2,
-                    }),
+                    rate: faker.number.float({ fractionDigits: 2 }),
                     rateType: faker.string.alpha({
                       length: { min: 10, max: 20 },
                     }),
@@ -10724,11 +10071,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                         name: faker.string.alpha({
                           length: { min: 10, max: 20 },
                         }),
-                        decimals: faker.number.float({
-                          min: undefined,
-                          max: undefined,
-                          fractionDigits: 2,
-                        }),
+                        decimals: faker.number.float({ fractionDigits: 2 }),
                         network: faker.helpers.arrayElement([
                           "ethereum",
                           "ethereum-goerli",
@@ -10878,7 +10221,10 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     length: { min: 10, max: 20 },
                   }),
                   website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                  tvlUsd: {},
+                  tvlUsd: faker.helpers.arrayElement([
+                    faker.helpers.arrayElement([null]),
+                    null,
+                  ]),
                   type: faker.helpers.arrayElement([
                     "protocol",
                     "validator_provider",
@@ -10892,11 +10238,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     ),
                     undefined,
                   ]),
-                  rank: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  rank: faker.number.float({ fractionDigits: 2 }),
                   preferred: faker.datatype.boolean(),
                   revshare: faker.helpers.arrayElement([
                     {
@@ -10905,13 +10247,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -10922,13 +10260,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -10939,13 +10273,9 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                           {
                             ...{
                               minRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                               maxRevShare: faker.number.float({
-                                min: undefined,
-                                max: undefined,
                                 fractionDigits: 2,
                               }),
                             },
@@ -10961,11 +10291,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
                     undefined,
                   ]),
                   createdAt: faker.helpers.arrayElement([
-                    `${faker.date.past().toISOString().split(".")[0]}Z`,
+                    faker.date.past().toISOString().slice(0, 19) + "Z",
                     undefined,
                   ]),
                   updatedAt: faker.helpers.arrayElement([
-                    `${faker.date.past().toISOString().split(".")[0]}Z`,
+                    faker.date.past().toISOString().slice(0, 19) + "Z",
                     undefined,
                   ]),
                 },
@@ -10973,11 +10303,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               undefined,
             ]),
             commission: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             tvlUsd: faker.helpers.arrayElement([
@@ -10993,11 +10319,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               undefined,
             ]),
             votingPower: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             preferred: faker.helpers.arrayElement([
@@ -11013,19 +10335,11 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               undefined,
             ]),
             remainingSlots: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             nominatorCount: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             status: faker.helpers.arrayElement([
@@ -11041,11 +10355,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
               undefined,
             ]),
             subnetId: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             subnetName: faker.helpers.arrayElement([
@@ -11089,11 +10399,7 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
             ...{
               symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
               name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-              decimals: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              decimals: faker.number.float({ fractionDigits: 2 }),
               network: faker.helpers.arrayElement([
                 "ethereum",
                 "ethereum-goerli",
@@ -11217,36 +10523,24 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         ]),
       },
     },
-    undefined,
+    null,
   ]),
   rewardRate: faker.helpers.arrayElement([
     {
       ...{
-        total: faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        total: faker.number.float({ fractionDigits: 2 }),
         rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
         components: Array.from(
           { length: faker.number.int({ min: 1, max: 10 }) },
           (_, i) => i + 1,
         ).map(() => ({
-          rate: faker.number.float({
-            min: undefined,
-            max: undefined,
-            fractionDigits: 2,
-          }),
+          rate: faker.number.float({ fractionDigits: 2 }),
           rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
           token: {
             ...{
               symbol: faker.string.alpha({ length: { min: 10, max: 20 } }),
               name: faker.string.alpha({ length: { min: 10, max: 20 } }),
-              decimals: faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              decimals: faker.number.float({ fractionDigits: 2 }),
               network: faker.helpers.arrayElement([
                 "ethereum",
                 "ethereum-goerli",
@@ -11384,50 +10678,26 @@ export const getYieldsControllerGetYieldBalancesResponseMock = (
         })),
       },
     },
-    undefined,
+    null,
   ]),
   ...overrideResponse,
 });
 
 export const getYieldsControllerGetYieldRewardsResponseMock = (
-  overrideResponse: Partial<PaginatedResponseDto> = {},
+  overrideResponse: Partial<Extract<PaginatedResponseDto, object>> = {},
 ): PaginatedResponseDto => ({
-  total: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  offset: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  limit: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
+  total: faker.number.float({ fractionDigits: 2 }),
+  offset: faker.number.float({ fractionDigits: 2 }),
+  limit: faker.number.float({ fractionDigits: 2 }),
   ...overrideResponse,
 });
 
 export const getYieldsControllerGetYieldRewardRateHistoryResponseMock = (
-  overrideResponse: Partial<RewardRateHistoryResponseDto> = {},
+  overrideResponse: Partial<Extract<RewardRateHistoryResponseDto, object>> = {},
 ): RewardRateHistoryResponseDto => ({
-  total: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  offset: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  limit: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
+  total: faker.number.float({ fractionDigits: 2 }),
+  offset: faker.number.float({ fractionDigits: 2 }),
+  limit: faker.number.float({ fractionDigits: 2 }),
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   interval: faker.helpers.arrayElement(["day", "week", "month"] as const),
   from: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -11436,23 +10706,11 @@ export const getYieldsControllerGetYieldRewardRateHistoryResponseMock = (
 });
 
 export const getYieldsControllerGetYieldTvlHistoryResponseMock = (
-  overrideResponse: Partial<TvlHistoryResponseDto> = {},
+  overrideResponse: Partial<Extract<TvlHistoryResponseDto, object>> = {},
 ): TvlHistoryResponseDto => ({
-  total: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  offset: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
-  limit: faker.number.float({
-    min: undefined,
-    max: undefined,
-    fractionDigits: 2,
-  }),
+  total: faker.number.float({ fractionDigits: 2 }),
+  offset: faker.number.float({ fractionDigits: 2 }),
+  limit: faker.number.float({ fractionDigits: 2 }),
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   interval: faker.helpers.arrayElement(["day", "week", "month"] as const),
   from: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -11463,21 +10721,9 @@ export const getYieldsControllerGetYieldTvlHistoryResponseMock = (
 export const getYieldsControllerGetYieldValidatorsResponseMock =
   (): YieldsControllerGetYieldValidators200 => ({
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
+      offset: faker.number.float({ fractionDigits: 2 }),
+      limit: faker.number.float({ fractionDigits: 2 }),
     },
     ...{
       items: faker.helpers.arrayElement([
@@ -11501,21 +10747,13 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
           rewardRate: faker.helpers.arrayElement([
             {
               ...{
-                total: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                total: faker.number.float({ fractionDigits: 2 }),
                 rateType: faker.string.alpha({ length: { min: 10, max: 20 } }),
                 components: Array.from(
                   { length: faker.number.int({ min: 1, max: 10 }) },
                   (_, i) => i + 1,
                 ).map(() => ({
-                  rate: faker.number.float({
-                    min: undefined,
-                    max: undefined,
-                    fractionDigits: 2,
-                  }),
+                  rate: faker.number.float({ fractionDigits: 2 }),
                   rateType: faker.string.alpha({
                     length: { min: 10, max: 20 },
                   }),
@@ -11527,11 +10765,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                       name: faker.string.alpha({
                         length: { min: 10, max: 20 },
                       }),
-                      decimals: faker.number.float({
-                        min: undefined,
-                        max: undefined,
-                        fractionDigits: 2,
-                      }),
+                      decimals: faker.number.float({ fractionDigits: 2 }),
                       network: faker.helpers.arrayElement([
                         "ethereum",
                         "ethereum-goerli",
@@ -11681,7 +10915,10 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                   length: { min: 10, max: 20 },
                 }),
                 website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-                tvlUsd: {},
+                tvlUsd: faker.helpers.arrayElement([
+                  faker.helpers.arrayElement([null]),
+                  null,
+                ]),
                 type: faker.helpers.arrayElement([
                   "protocol",
                   "validator_provider",
@@ -11695,11 +10932,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                   ),
                   undefined,
                 ]),
-                rank: faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                rank: faker.number.float({ fractionDigits: 2 }),
                 preferred: faker.datatype.boolean(),
                 revshare: faker.helpers.arrayElement([
                   {
@@ -11708,13 +10941,9 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -11725,13 +10954,9 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -11742,13 +10967,9 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                         {
                           ...{
                             minRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                             maxRevShare: faker.number.float({
-                              min: undefined,
-                              max: undefined,
                               fractionDigits: 2,
                             }),
                           },
@@ -11764,11 +10985,11 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
                   undefined,
                 ]),
                 createdAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
                 updatedAt: faker.helpers.arrayElement([
-                  `${faker.date.past().toISOString().split(".")[0]}Z`,
+                  faker.date.past().toISOString().slice(0, 19) + "Z",
                   undefined,
                 ]),
               },
@@ -11776,11 +10997,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             undefined,
           ]),
           commission: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           tvlUsd: faker.helpers.arrayElement([
@@ -11796,11 +11013,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             undefined,
           ]),
           votingPower: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           preferred: faker.helpers.arrayElement([
@@ -11816,19 +11029,11 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             undefined,
           ]),
           remainingSlots: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           nominatorCount: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           status: faker.helpers.arrayElement([
@@ -11844,11 +11049,7 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
             undefined,
           ]),
           subnetId: faker.helpers.arrayElement([
-            faker.number.float({
-              min: undefined,
-              max: undefined,
-              fractionDigits: 2,
-            }),
+            faker.number.float({ fractionDigits: 2 }),
             undefined,
           ]),
           subnetName: faker.helpers.arrayElement([
@@ -11872,21 +11073,9 @@ export const getYieldsControllerGetYieldValidatorsResponseMock =
 export const getActionsControllerGetActionsResponseMock =
   (): ActionsControllerGetActions200 => ({
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
+      offset: faker.number.float({ fractionDigits: 2 }),
+      limit: faker.number.float({ fractionDigits: 2 }),
     },
     ...{
       items: faker.helpers.arrayElement([
@@ -11925,15 +11114,24 @@ export const getActionsControllerGetActionsResponseMock =
           yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
           address: faker.string.alpha({ length: { min: 10, max: 20 } }),
           amount: faker.helpers.arrayElement([
-            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              null,
+            ]),
             null,
           ]),
           amountRaw: faker.helpers.arrayElement([
-            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              null,
+            ]),
             null,
           ]),
           amountUsd: faker.helpers.arrayElement([
-            faker.string.alpha({ length: { min: 10, max: 20 } }),
+            faker.helpers.arrayElement([
+              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              null,
+            ]),
             null,
           ]),
           transactions: Array.from(
@@ -12113,29 +11311,40 @@ export const getActionsControllerGetActionsResponseMock =
               "BATCH",
             ] as const),
             hash: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
-            createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+            createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
             broadcastedAt: faker.helpers.arrayElement([
-              `${faker.date.past().toISOString().split(".")[0]}Z`,
+              faker.helpers.arrayElement([
+                faker.date.past().toISOString().slice(0, 19) + "Z",
+                null,
+              ]),
               null,
             ]),
             signedTransaction: faker.helpers.arrayElement([
-              faker.string.alpha({ length: { min: 10, max: 20 } }),
+              faker.helpers.arrayElement([
+                faker.string.alpha({ length: { min: 10, max: 20 } }),
+                null,
+              ]),
               null,
             ]),
             unsignedTransaction: faker.helpers.arrayElement([
               faker.string.alpha({ length: { min: 10, max: 20 } }),
             ]),
-            annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-            structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+            annotatedTransaction: faker.helpers.arrayElement([
+              faker.helpers.arrayElement([null]),
+              undefined,
+            ]),
+            structuredTransaction: faker.helpers.arrayElement([
+              faker.helpers.arrayElement([null]),
+              undefined,
+            ]),
             stepIndex: faker.helpers.arrayElement([
-              faker.number.float({
-                min: undefined,
-                max: undefined,
-                fractionDigits: 2,
-              }),
+              faker.number.float({ fractionDigits: 2 }),
               undefined,
             ]),
             description: faker.helpers.arrayElement([
@@ -12203,11 +11412,7 @@ export const getActionsControllerGetActionsResponseMock =
                 undefined,
               ]),
               duration: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               inputToken: faker.helpers.arrayElement([
@@ -12427,11 +11632,7 @@ export const getActionsControllerGetActionsResponseMock =
                 undefined,
               ]),
               subnetId: faker.helpers.arrayElement([
-                faker.number.float({
-                  min: undefined,
-                  max: undefined,
-                  fractionDigits: 2,
-                }),
+                faker.number.float({ fractionDigits: 2 }),
                 undefined,
               ]),
               tronResource: faker.helpers.arrayElement([
@@ -12508,9 +11709,12 @@ export const getActionsControllerGetActionsResponseMock =
               ]),
             },
           },
-          createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+          createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
           completedAt: faker.helpers.arrayElement([
-            `${faker.date.past().toISOString().split(".")[0]}Z`,
+            faker.helpers.arrayElement([
+              faker.date.past().toISOString().slice(0, 19) + "Z",
+              null,
+            ]),
             null,
           ]),
           status: faker.helpers.arrayElement([
@@ -12529,7 +11733,7 @@ export const getActionsControllerGetActionsResponseMock =
   });
 
 export const getActionsControllerGetActionResponseMock = (
-  overrideResponse: Partial<ActionDto> = {},
+  overrideResponse: Partial<Extract<ActionDto, object>> = {},
 ): ActionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   intent: faker.helpers.arrayElement(["enter", "manage", "exit"] as const),
@@ -12558,15 +11762,24 @@ export const getActionsControllerGetActionResponseMock = (
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   address: faker.string.alpha({ length: { min: 10, max: 20 } }),
   amount: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountRaw: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountUsd: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   transactions: Array.from(
@@ -12746,25 +11959,40 @@ export const getActionsControllerGetActionResponseMock = (
       "BATCH",
     ] as const),
     hash: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
-    createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+    createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
     broadcastedAt: faker.helpers.arrayElement([
-      `${faker.date.past().toISOString().split(".")[0]}Z`,
+      faker.helpers.arrayElement([
+        faker.date.past().toISOString().slice(0, 19) + "Z",
+        null,
+      ]),
       null,
     ]),
     signedTransaction: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
     unsignedTransaction: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ]),
-    annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-    structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+    annotatedTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
+    structuredTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
     stepIndex: faker.helpers.arrayElement([
-      faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+      faker.number.float({ fractionDigits: 2 }),
       undefined,
     ]),
     description: faker.helpers.arrayElement([
@@ -12828,11 +12056,7 @@ export const getActionsControllerGetActionResponseMock = (
         undefined,
       ]),
       duration: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       inputToken: faker.helpers.arrayElement([
@@ -13052,11 +12276,7 @@ export const getActionsControllerGetActionResponseMock = (
         undefined,
       ]),
       subnetId: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       tronResource: faker.helpers.arrayElement([
@@ -13133,9 +12353,12 @@ export const getActionsControllerGetActionResponseMock = (
       ]),
     },
   },
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   completedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   status: faker.helpers.arrayElement([
@@ -13151,7 +12374,7 @@ export const getActionsControllerGetActionResponseMock = (
 });
 
 export const getActionsControllerEnterYieldResponseMock = (
-  overrideResponse: Partial<ActionDto> = {},
+  overrideResponse: Partial<Extract<ActionDto, object>> = {},
 ): ActionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   intent: faker.helpers.arrayElement(["enter", "manage", "exit"] as const),
@@ -13180,15 +12403,24 @@ export const getActionsControllerEnterYieldResponseMock = (
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   address: faker.string.alpha({ length: { min: 10, max: 20 } }),
   amount: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountRaw: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountUsd: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   transactions: Array.from(
@@ -13368,25 +12600,40 @@ export const getActionsControllerEnterYieldResponseMock = (
       "BATCH",
     ] as const),
     hash: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
-    createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+    createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
     broadcastedAt: faker.helpers.arrayElement([
-      `${faker.date.past().toISOString().split(".")[0]}Z`,
+      faker.helpers.arrayElement([
+        faker.date.past().toISOString().slice(0, 19) + "Z",
+        null,
+      ]),
       null,
     ]),
     signedTransaction: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
     unsignedTransaction: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ]),
-    annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-    structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+    annotatedTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
+    structuredTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
     stepIndex: faker.helpers.arrayElement([
-      faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+      faker.number.float({ fractionDigits: 2 }),
       undefined,
     ]),
     description: faker.helpers.arrayElement([
@@ -13450,11 +12697,7 @@ export const getActionsControllerEnterYieldResponseMock = (
         undefined,
       ]),
       duration: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       inputToken: faker.helpers.arrayElement([
@@ -13674,11 +12917,7 @@ export const getActionsControllerEnterYieldResponseMock = (
         undefined,
       ]),
       subnetId: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       tronResource: faker.helpers.arrayElement([
@@ -13755,9 +12994,12 @@ export const getActionsControllerEnterYieldResponseMock = (
       ]),
     },
   },
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   completedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   status: faker.helpers.arrayElement([
@@ -13773,7 +13015,7 @@ export const getActionsControllerEnterYieldResponseMock = (
 });
 
 export const getActionsControllerExitYieldResponseMock = (
-  overrideResponse: Partial<ActionDto> = {},
+  overrideResponse: Partial<Extract<ActionDto, object>> = {},
 ): ActionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   intent: faker.helpers.arrayElement(["enter", "manage", "exit"] as const),
@@ -13802,15 +13044,24 @@ export const getActionsControllerExitYieldResponseMock = (
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   address: faker.string.alpha({ length: { min: 10, max: 20 } }),
   amount: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountRaw: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountUsd: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   transactions: Array.from(
@@ -13990,25 +13241,40 @@ export const getActionsControllerExitYieldResponseMock = (
       "BATCH",
     ] as const),
     hash: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
-    createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+    createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
     broadcastedAt: faker.helpers.arrayElement([
-      `${faker.date.past().toISOString().split(".")[0]}Z`,
+      faker.helpers.arrayElement([
+        faker.date.past().toISOString().slice(0, 19) + "Z",
+        null,
+      ]),
       null,
     ]),
     signedTransaction: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
     unsignedTransaction: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ]),
-    annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-    structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+    annotatedTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
+    structuredTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
     stepIndex: faker.helpers.arrayElement([
-      faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+      faker.number.float({ fractionDigits: 2 }),
       undefined,
     ]),
     description: faker.helpers.arrayElement([
@@ -14072,11 +13338,7 @@ export const getActionsControllerExitYieldResponseMock = (
         undefined,
       ]),
       duration: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       inputToken: faker.helpers.arrayElement([
@@ -14296,11 +13558,7 @@ export const getActionsControllerExitYieldResponseMock = (
         undefined,
       ]),
       subnetId: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       tronResource: faker.helpers.arrayElement([
@@ -14377,9 +13635,12 @@ export const getActionsControllerExitYieldResponseMock = (
       ]),
     },
   },
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   completedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   status: faker.helpers.arrayElement([
@@ -14395,7 +13656,7 @@ export const getActionsControllerExitYieldResponseMock = (
 });
 
 export const getActionsControllerManageYieldResponseMock = (
-  overrideResponse: Partial<ActionDto> = {},
+  overrideResponse: Partial<Extract<ActionDto, object>> = {},
 ): ActionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   intent: faker.helpers.arrayElement(["enter", "manage", "exit"] as const),
@@ -14424,15 +13685,24 @@ export const getActionsControllerManageYieldResponseMock = (
   yieldId: faker.string.alpha({ length: { min: 10, max: 20 } }),
   address: faker.string.alpha({ length: { min: 10, max: 20 } }),
   amount: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountRaw: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   amountUsd: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   transactions: Array.from(
@@ -14612,25 +13882,40 @@ export const getActionsControllerManageYieldResponseMock = (
       "BATCH",
     ] as const),
     hash: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
-    createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+    createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
     broadcastedAt: faker.helpers.arrayElement([
-      `${faker.date.past().toISOString().split(".")[0]}Z`,
+      faker.helpers.arrayElement([
+        faker.date.past().toISOString().slice(0, 19) + "Z",
+        null,
+      ]),
       null,
     ]),
     signedTransaction: faker.helpers.arrayElement([
-      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        null,
+      ]),
       null,
     ]),
     unsignedTransaction: faker.helpers.arrayElement([
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ]),
-    annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-    structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+    annotatedTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
+    structuredTransaction: faker.helpers.arrayElement([
+      faker.helpers.arrayElement([null]),
+      undefined,
+    ]),
     stepIndex: faker.helpers.arrayElement([
-      faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+      faker.number.float({ fractionDigits: 2 }),
       undefined,
     ]),
     description: faker.helpers.arrayElement([
@@ -14694,11 +13979,7 @@ export const getActionsControllerManageYieldResponseMock = (
         undefined,
       ]),
       duration: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       inputToken: faker.helpers.arrayElement([
@@ -14918,11 +14199,7 @@ export const getActionsControllerManageYieldResponseMock = (
         undefined,
       ]),
       subnetId: faker.helpers.arrayElement([
-        faker.number.float({
-          min: undefined,
-          max: undefined,
-          fractionDigits: 2,
-        }),
+        faker.number.float({ fractionDigits: 2 }),
         undefined,
       ]),
       tronResource: faker.helpers.arrayElement([
@@ -14999,9 +14276,12 @@ export const getActionsControllerManageYieldResponseMock = (
       ]),
     },
   },
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   completedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   status: faker.helpers.arrayElement([
@@ -15017,7 +14297,7 @@ export const getActionsControllerManageYieldResponseMock = (
 });
 
 export const getTransactionsControllerSubmitTransactionHashResponseMock = (
-  overrideResponse: Partial<TransactionDto> = {},
+  overrideResponse: Partial<Extract<TransactionDto, object>> = {},
 ): TransactionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   title: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -15192,25 +14472,40 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
     "BATCH",
   ] as const),
   hash: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   broadcastedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   signedTransaction: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   unsignedTransaction: faker.helpers.arrayElement([
     faker.string.alpha({ length: { min: 10, max: 20 } }),
   ]),
-  annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-  structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+  annotatedTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
+  structuredTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
   stepIndex: faker.helpers.arrayElement([
-    faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+    faker.number.float({ fractionDigits: 2 }),
     undefined,
   ]),
   description: faker.helpers.arrayElement([
@@ -15240,7 +14535,7 @@ export const getTransactionsControllerSubmitTransactionHashResponseMock = (
 });
 
 export const getTransactionsControllerSubmitTransactionResponseMock = (
-  overrideResponse: Partial<TransactionDto> = {},
+  overrideResponse: Partial<Extract<TransactionDto, object>> = {},
 ): TransactionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   title: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -15415,25 +14710,40 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
     "BATCH",
   ] as const),
   hash: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   broadcastedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   signedTransaction: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   unsignedTransaction: faker.helpers.arrayElement([
     faker.string.alpha({ length: { min: 10, max: 20 } }),
   ]),
-  annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-  structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+  annotatedTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
+  structuredTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
   stepIndex: faker.helpers.arrayElement([
-    faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+    faker.number.float({ fractionDigits: 2 }),
     undefined,
   ]),
   description: faker.helpers.arrayElement([
@@ -15463,7 +14773,7 @@ export const getTransactionsControllerSubmitTransactionResponseMock = (
 });
 
 export const getTransactionsControllerGetTransactionResponseMock = (
-  overrideResponse: Partial<TransactionDto> = {},
+  overrideResponse: Partial<Extract<TransactionDto, object>> = {},
 ): TransactionDto => ({
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   title: faker.string.alpha({ length: { min: 10, max: 20 } }),
@@ -15638,25 +14948,40 @@ export const getTransactionsControllerGetTransactionResponseMock = (
     "BATCH",
   ] as const),
   hash: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
-  createdAt: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  createdAt: faker.date.past().toISOString().slice(0, 19) + "Z",
   broadcastedAt: faker.helpers.arrayElement([
-    `${faker.date.past().toISOString().split(".")[0]}Z`,
+    faker.helpers.arrayElement([
+      faker.date.past().toISOString().slice(0, 19) + "Z",
+      null,
+    ]),
     null,
   ]),
   signedTransaction: faker.helpers.arrayElement([
-    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    faker.helpers.arrayElement([
+      faker.string.alpha({ length: { min: 10, max: 20 } }),
+      null,
+    ]),
     null,
   ]),
   unsignedTransaction: faker.helpers.arrayElement([
     faker.string.alpha({ length: { min: 10, max: 20 } }),
   ]),
-  annotatedTransaction: faker.helpers.arrayElement([{}, undefined]),
-  structuredTransaction: faker.helpers.arrayElement([{}, undefined]),
+  annotatedTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
+  structuredTransaction: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    undefined,
+  ]),
   stepIndex: faker.helpers.arrayElement([
-    faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
+    faker.number.float({ fractionDigits: 2 }),
     undefined,
   ]),
   description: faker.helpers.arrayElement([
@@ -15804,21 +15129,9 @@ export const getNetworksControllerGetNetworksResponseMock = (): NetworkDto[] =>
 export const getProvidersControllerGetProvidersResponseMock =
   (): ProvidersControllerGetProviders200 => ({
     ...{
-      total: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      offset: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
-      limit: faker.number.float({
-        min: undefined,
-        max: undefined,
-        fractionDigits: 2,
-      }),
+      total: faker.number.float({ fractionDigits: 2 }),
+      offset: faker.number.float({ fractionDigits: 2 }),
+      limit: faker.number.float({ fractionDigits: 2 }),
     },
     ...{
       items: faker.helpers.arrayElement([
@@ -15831,7 +15144,10 @@ export const getProvidersControllerGetProvidersResponseMock =
           logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
           description: faker.string.alpha({ length: { min: 10, max: 20 } }),
           website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-          tvlUsd: {},
+          tvlUsd: faker.helpers.arrayElement([
+            faker.helpers.arrayElement([null]),
+            null,
+          ]),
           type: faker.helpers.arrayElement([
             "protocol",
             "validator_provider",
@@ -15850,14 +15166,17 @@ export const getProvidersControllerGetProvidersResponseMock =
   });
 
 export const getProvidersControllerGetProviderResponseMock = (
-  overrideResponse: Partial<ProviderDto> = {},
+  overrideResponse: Partial<Extract<ProviderDto, object>> = {},
 ): ProviderDto => ({
   name: faker.string.alpha({ length: { min: 10, max: 20 } }),
   id: faker.string.alpha({ length: { min: 10, max: 20 } }),
   logoURI: faker.string.alpha({ length: { min: 10, max: 20 } }),
   description: faker.string.alpha({ length: { min: 10, max: 20 } }),
   website: faker.string.alpha({ length: { min: 10, max: 20 } }),
-  tvlUsd: {},
+  tvlUsd: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([null]),
+    null,
+  ]),
   type: faker.helpers.arrayElement(["protocol", "validator_provider"] as const),
   references: faker.helpers.arrayElement([
     Array.from(
@@ -15870,10 +15189,10 @@ export const getProvidersControllerGetProviderResponseMock = (
 });
 
 export const getHealthControllerHealthResponseMock = (
-  overrideResponse: Partial<HealthStatusDto> = {},
+  overrideResponse: Partial<Extract<HealthStatusDto, object>> = {},
 ): HealthStatusDto => ({
   status: faker.helpers.arrayElement(Object.values(HealthStatus)),
-  timestamp: `${faker.date.past().toISOString().split(".")[0]}Z`,
+  timestamp: faker.date.past().toISOString().slice(0, 19) + "Z",
   ...overrideResponse,
 });
 
@@ -15889,18 +15208,14 @@ export const getYieldsControllerGetYieldsMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldsResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldsResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -15917,18 +15232,14 @@ export const getYieldsControllerGetAggregateBalancesMockHandler = (
 ) => {
   return http.post(
     "*/v1/yields/balances",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetAggregateBalancesResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetAggregateBalancesResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -15945,18 +15256,14 @@ export const getYieldsControllerGetYieldMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -15973,18 +15280,14 @@ export const getYieldsControllerGetYieldRiskMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/risk",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldRiskResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldRiskResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16003,18 +15306,14 @@ export const getYieldsControllerGetBalanceHistoryMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/balances/history",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetBalanceHistoryResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetBalanceHistoryResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16031,18 +15330,14 @@ export const getYieldsControllerGetYieldBalancesMockHandler = (
 ) => {
   return http.post(
     "*/v1/yields/:yieldId/balances",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldBalancesResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldBalancesResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16059,18 +15354,14 @@ export const getYieldsControllerGetYieldRewardsMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/rewards/history",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldRewardsResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldRewardsResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16089,18 +15380,14 @@ export const getYieldsControllerGetYieldRewardRateHistoryMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/reward-rate/history",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldRewardRateHistoryResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldRewardRateHistoryResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16117,18 +15404,14 @@ export const getYieldsControllerGetYieldTvlHistoryMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/tvl/history",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldTvlHistoryResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldTvlHistoryResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16147,18 +15430,14 @@ export const getYieldsControllerGetYieldValidatorsMockHandler = (
 ) => {
   return http.get(
     "*/v1/yields/:yieldId/validators",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getYieldsControllerGetYieldValidatorsResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getYieldsControllerGetYieldValidatorsResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16177,18 +15456,14 @@ export const getActionsControllerGetActionsMockHandler = (
 ) => {
   return http.get(
     "*/v1/actions",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getActionsControllerGetActionsResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getActionsControllerGetActionsResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16205,18 +15480,14 @@ export const getActionsControllerGetActionMockHandler = (
 ) => {
   return http.get(
     "*/v1/actions/:actionId",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getActionsControllerGetActionResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getActionsControllerGetActionResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16233,18 +15504,14 @@ export const getActionsControllerEnterYieldMockHandler = (
 ) => {
   return http.post(
     "*/v1/actions/enter",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getActionsControllerEnterYieldResponseMock(),
-        ),
-        { status: 201, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getActionsControllerEnterYieldResponseMock(),
+        { status: 201 },
       );
     },
     options,
@@ -16261,18 +15528,14 @@ export const getActionsControllerExitYieldMockHandler = (
 ) => {
   return http.post(
     "*/v1/actions/exit",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getActionsControllerExitYieldResponseMock(),
-        ),
-        { status: 201, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getActionsControllerExitYieldResponseMock(),
+        { status: 201 },
       );
     },
     options,
@@ -16289,18 +15552,14 @@ export const getActionsControllerManageYieldMockHandler = (
 ) => {
   return http.post(
     "*/v1/actions/manage",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getActionsControllerManageYieldResponseMock(),
-        ),
-        { status: 201, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getActionsControllerManageYieldResponseMock(),
+        { status: 201 },
       );
     },
     options,
@@ -16317,18 +15576,14 @@ export const getTransactionsControllerSubmitTransactionHashMockHandler = (
 ) => {
   return http.put(
     "*/v1/transactions/:transactionId/submit-hash",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getTransactionsControllerSubmitTransactionHashResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.put>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getTransactionsControllerSubmitTransactionHashResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16345,18 +15600,14 @@ export const getTransactionsControllerSubmitTransactionMockHandler = (
 ) => {
   return http.post(
     "*/v1/transactions/:transactionId/submit",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getTransactionsControllerSubmitTransactionResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getTransactionsControllerSubmitTransactionResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16373,18 +15624,14 @@ export const getTransactionsControllerGetTransactionMockHandler = (
 ) => {
   return http.get(
     "*/v1/transactions/:transactionId",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getTransactionsControllerGetTransactionResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getTransactionsControllerGetTransactionResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16401,18 +15648,14 @@ export const getNetworksControllerGetNetworksMockHandler = (
 ) => {
   return http.get(
     "*/v1/networks",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getNetworksControllerGetNetworksResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getNetworksControllerGetNetworksResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16431,18 +15674,14 @@ export const getProvidersControllerGetProvidersMockHandler = (
 ) => {
   return http.get(
     "*/v1/providers",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getProvidersControllerGetProvidersResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getProvidersControllerGetProvidersResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16459,18 +15698,14 @@ export const getProvidersControllerGetProviderMockHandler = (
 ) => {
   return http.get(
     "*/v1/providers/:providerId",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getProvidersControllerGetProviderResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getProvidersControllerGetProviderResponseMock(),
+        { status: 200 },
       );
     },
     options,
@@ -16487,18 +15722,14 @@ export const getHealthControllerHealthMockHandler = (
 ) => {
   return http.get(
     "*/health",
-    async (info) => {
-      await delay(1000);
-
-      return new HttpResponse(
-        JSON.stringify(
-          overrideResponse !== undefined
-            ? typeof overrideResponse === "function"
-              ? await overrideResponse(info)
-              : overrideResponse
-            : getHealthControllerHealthResponseMock(),
-        ),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+    async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+      return HttpResponse.json(
+        overrideResponse !== undefined
+          ? typeof overrideResponse === "function"
+            ? await overrideResponse(info)
+            : overrideResponse
+          : getHealthControllerHealthResponseMock(),
+        { status: 200 },
       );
     },
     options,

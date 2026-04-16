@@ -4,7 +4,6 @@
 export type ArgumentFieldDtoName =
   (typeof ArgumentFieldDtoName)[keyof typeof ArgumentFieldDtoName];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ArgumentFieldDtoName = {
   amount: "amount",
   amounts: "amounts",

@@ -3,7 +3,6 @@
  */
 export type BalanceType = (typeof BalanceType)[keyof typeof BalanceType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const BalanceType = {
   active: "active",
   entering: "entering",

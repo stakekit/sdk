@@ -4,7 +4,6 @@
 export type ActionDtoExecutionPattern =
   (typeof ActionDtoExecutionPattern)[keyof typeof ActionDtoExecutionPattern];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionDtoExecutionPattern = {
   synchronous: "synchronous",
   asynchronous: "asynchronous",
