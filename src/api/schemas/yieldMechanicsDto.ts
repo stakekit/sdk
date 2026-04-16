@@ -7,6 +7,7 @@ import type { YieldEntryLimitsDto } from "./yieldEntryLimitsDto";
 import type { YieldFeeDto } from "./yieldFeeDto";
 import type { YieldMechanicsArgumentsDto } from "./yieldMechanicsArgumentsDto";
 import type { YieldMechanicsDtoExtraTransactionFormatsSupportedItem } from "./yieldMechanicsDtoExtraTransactionFormatsSupportedItem";
+import type { YieldRequirementsDto } from "./yieldRequirementsDto";
 import type { YieldType } from "./yieldType";
 
 export interface YieldMechanicsDto {
@@ -27,6 +28,8 @@ export interface YieldMechanicsDto {
   fee?: YieldFeeDto;
   /** Entry amount limits for this yield */
   entryLimits?: YieldEntryLimitsDto;
+  /** Access requirements (e.g. KYC) for this yield */
+  requirements?: YieldRequirementsDto;
   /** Supports Ledger Wallet API (connect via Ledger Live) */
   supportsLedgerWalletApi?: boolean;
   /** Additional transaction formats supported (e.g. safe, batch) */

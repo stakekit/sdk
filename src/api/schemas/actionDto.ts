@@ -17,12 +17,12 @@ export interface ActionDto {
   /** User wallet address */
   address: string;
   /**
-   * Amount involved in the action
+   * Amount involved in the action, in human-readable token units (not the smallest denomination).
    * @nullable
    */
   amount: string | null;
   /**
-   * Raw wei amount (full precision)
+   * Raw smallest-denomination amount (full precision)
    * @nullable
    */
   amountRaw: string | null;

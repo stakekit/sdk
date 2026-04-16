@@ -4,9 +4,9 @@ import type { ActionArgumentsDtoOutputTokenNetwork } from "./actionArgumentsDtoO
 import type { ActionArgumentsDtoTronResource } from "./actionArgumentsDtoTronResource";
 
 export interface ActionArgumentsDto {
-  /** Amount to stake/unstake */
+  /** Amount in human-readable token units, not the smallest denomination. For example, "1.500000" for 1.5 USDC (6 decimals) or "0.01" for 0.01 ETH (18 decimals). Precision up to the token's decimal places is supported. */
   amount?: string;
-  /** Amounts to stake/unstake */
+  /** Amounts in human-readable token units, not the smallest denomination. Precision up to the token's decimal places is supported. */
   amounts?: string[];
   /** Validator address for single validator selection */
   validatorAddress?: string;
@@ -46,6 +46,14 @@ export interface ActionArgumentsDto {
   useMaxAmount?: boolean;
   /** Use instant execution for exit (faster but may have fees) */
   useInstantExecution?: boolean;
+  /** Skip pre-flight balance and rent checks */
+  skipPrechecks?: boolean;
+  /** When true, ERC20 approval transactions use the maximum allowance (uint256.max) instead of the exact deposit amount. Useful to avoid repeated approval transactions on subsequent deposits. */
+  useMaxAllowance?: boolean;
+  /** Fee payer address for gas-sponsored wallets (Solana). When provided, this address is used as the payer for account creation instructions and as the transaction-level fee payer. */
+  feePayerAddress?: string;
+  /** Receiver wallet address: ERC4626 vault flows, or on Solana the address for tokens after an optional post-exit swap */
+  receiverAddress?: string;
   /** Minimum price bound for concentrated liquidity pools (as decimal string). Must be non-negative (can be 0) and less than rangeMax. */
   rangeMin?: string;
   /** Maximum price bound for concentrated liquidity pools (as decimal string). Must be positive and greater than rangeMin. */

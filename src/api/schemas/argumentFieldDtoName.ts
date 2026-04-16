@@ -32,4 +32,7 @@ export const ArgumentFieldDtoName = {
   rangeMax: "rangeMax",
   percentage: "percentage",
   tokenId: "tokenId",
+  skipPrechecks: "skipPrechecks",
+  useMaxAllowance: "useMaxAllowance",
+  feePayerAddress: "feePayerAddress",
 } as const;

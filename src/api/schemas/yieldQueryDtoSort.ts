@@ -1,5 +1,5 @@
 /**
- * Sort by yield status
+ * Sort by yield status or reward rate
  */
 export type YieldQueryDtoSort =
   (typeof YieldQueryDtoSort)[keyof typeof YieldQueryDtoSort];
@@ -10,4 +10,6 @@ export const YieldQueryDtoSort = {
   statusEnterDesc: "statusEnterDesc",
   statusExitAsc: "statusExitAsc",
   statusExitDesc: "statusExitDesc",
+  rewardRateAsc: "rewardRateAsc",
+  rewardRateDesc: "rewardRateDesc",
 } as const;

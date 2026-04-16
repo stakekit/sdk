@@ -7,4 +7,6 @@ export const YieldsControllerGetYieldsSort = {
   statusEnterDesc: "statusEnterDesc",
   statusExitAsc: "statusExitAsc",
   statusExitDesc: "statusExitDesc",
+  rewardRateAsc: "rewardRateAsc",
+  rewardRateDesc: "rewardRateDesc",
 } as const;

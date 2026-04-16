@@ -14,4 +14,9 @@ export interface PendingActionDto {
    * @nullable
    */
   arguments?: PendingActionDtoArguments;
+  /**
+   * Amount involved in the action, in human-readable token units (not the smallest denomination).
+   * @nullable
+   */
+  amount?: string | null;
 }

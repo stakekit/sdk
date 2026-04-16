@@ -9,17 +9,26 @@ import type {
   CreateManageActionDto,
   HealthStatusDto,
   NetworkDto,
+  PaginatedResponseDto,
   ProviderDto,
   ProvidersControllerGetProviders200,
   ProvidersControllerGetProvidersParams,
+  RewardRateHistoryResponseDto,
+  RiskParameterDto,
   SubmitHashDto,
   SubmitTransactionDto,
   TransactionDto,
+  TvlHistoryResponseDto,
   YieldBalancesDto,
   YieldBalancesRequestDto,
   YieldDto,
+  YieldsControllerGetBalanceHistory200,
+  YieldsControllerGetBalanceHistoryParams,
+  YieldsControllerGetYieldRewardRateHistoryParams,
+  YieldsControllerGetYieldRewardsParams,
   YieldsControllerGetYields200,
   YieldsControllerGetYieldsParams,
+  YieldsControllerGetYieldTvlHistoryParams,
   YieldsControllerGetYieldValidators200,
   YieldsControllerGetYieldValidatorsParams,
 } from "./schemas";
@@ -74,6 +83,37 @@ export const getYield = (
 };
 
 /**
+ * Retrieve risk metadata associated with a specific yield.
+ * @summary Get risk metadata for a yield
+ */
+export const getYieldRisk = (
+  yieldId: string,
+  options?: SecondParameter<typeof customFetch<RiskParameterDto[]>>,
+) => {
+  return customFetch<RiskParameterDto[]>(
+    { url: `/v1/yields/${yieldId}/risk`, method: "GET" },
+    options,
+  );
+};
+
+/**
+ * Returns a chronological time series of balance snapshots for a wallet address within a yield. Each entry reflects the position at a specific timestamp or block. Supports configurable sampling intervals and point-in-time queries. Only available for ERC4626 vaults with indexed transfer history.
+ * @summary Get historical balance snapshots for a yield
+ */
+export const getBalanceHistory = (
+  yieldId: string,
+  params: YieldsControllerGetBalanceHistoryParams,
+  options?: SecondParameter<
+    typeof customFetch<YieldsControllerGetBalanceHistory200>
+  >,
+) => {
+  return customFetch<YieldsControllerGetBalanceHistory200>(
+    { url: `/v1/yields/${yieldId}/balances/history`, method: "GET", params },
+    options,
+  );
+};
+
+/**
  * Retrieve all balances associated with a yield opportunity for a specific wallet address, including active, pending, claimable, and withdrawable balances. The network is automatically determined from the yield configuration.
  * @summary Get balances for a specific yield
  */
@@ -89,6 +129,51 @@ export const getYieldBalances = (
       headers: { "Content-Type": "application/json" },
       data: yieldBalancesRequestDto,
     },
+    options,
+  );
+};
+
+/**
+ * Retrieve a chronological list of on-chain reward events for an indexed yield. Each record includes timestamp, token metadata, amount, reward source, and transaction reference.
+ * @summary Get reward history
+ */
+export const getYieldRewards = (
+  yieldId: string,
+  params: YieldsControllerGetYieldRewardsParams,
+  options?: SecondParameter<typeof customFetch<PaginatedResponseDto>>,
+) => {
+  return customFetch<PaginatedResponseDto>(
+    { url: `/v1/yields/${yieldId}/rewards/history`, method: "GET", params },
+    options,
+  );
+};
+
+/**
+ * Returns a chronological time series of reward rate snapshots for the specified yield, suitable for charting and analytics. Supports configurable time ranges, sampling intervals (day/week/month), and pagination.
+ * @summary Get historical reward rate snapshots for a yield
+ */
+export const getYieldRewardRateHistory = (
+  yieldId: string,
+  params?: YieldsControllerGetYieldRewardRateHistoryParams,
+  options?: SecondParameter<typeof customFetch<RewardRateHistoryResponseDto>>,
+) => {
+  return customFetch<RewardRateHistoryResponseDto>(
+    { url: `/v1/yields/${yieldId}/reward-rate/history`, method: "GET", params },
+    options,
+  );
+};
+
+/**
+ * Returns a chronological time series of Total Value Locked for the specified yield, expressed in underlying token units. Supports configurable time ranges, sampling intervals (day/week/month), and pagination.
+ * @summary Get historical TVL snapshots for a yield
+ */
+export const getYieldTvlHistory = (
+  yieldId: string,
+  params?: YieldsControllerGetYieldTvlHistoryParams,
+  options?: SecondParameter<typeof customFetch<TvlHistoryResponseDto>>,
+) => {
+  return customFetch<TvlHistoryResponseDto>(
+    { url: `/v1/yields/${yieldId}/tvl/history`, method: "GET", params },
     options,
   );
 };
@@ -200,7 +285,7 @@ export const manageYield = (
  * @summary Submit transaction hash
  */
 export const submitTransactionHash = (
-  transactionId: string,
+  transactionId: unknown,
   submitHashDto: SubmitHashDto,
   options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
@@ -220,7 +305,7 @@ export const submitTransactionHash = (
  * @summary Submit transaction
  */
 export const submitTransaction = (
-  transactionId: string,
+  transactionId: unknown,
   submitTransactionDto: SubmitTransactionDto,
   options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
@@ -240,7 +325,7 @@ export const submitTransaction = (
  * @summary Get transaction details
  */
 export const getTransaction = (
-  transactionId: string,
+  transactionId: unknown,
   options?: SecondParameter<typeof customFetch<TransactionDto>>,
 ) => {
   return customFetch<TransactionDto>(
@@ -312,8 +397,23 @@ export type GetAggregateBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getAggregateBalances>>
 >;
 export type GetYieldResult = NonNullable<Awaited<ReturnType<typeof getYield>>>;
+export type GetYieldRiskResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldRisk>>
+>;
+export type GetBalanceHistoryResult = NonNullable<
+  Awaited<ReturnType<typeof getBalanceHistory>>
+>;
 export type GetYieldBalancesResult = NonNullable<
   Awaited<ReturnType<typeof getYieldBalances>>
+>;
+export type GetYieldRewardsResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldRewards>>
+>;
+export type GetYieldRewardRateHistoryResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldRewardRateHistory>>
+>;
+export type GetYieldTvlHistoryResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldTvlHistory>>
 >;
 export type GetYieldValidatorsResult = NonNullable<
   Awaited<ReturnType<typeof getYieldValidators>>

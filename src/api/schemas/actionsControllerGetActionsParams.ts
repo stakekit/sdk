@@ -1,5 +1,7 @@
 import type { ActionsControllerGetActionsIntent } from "./actionsControllerGetActionsIntent";
+import type { ActionsControllerGetActionsNetwork } from "./actionsControllerGetActionsNetwork";
 import type { ActionsControllerGetActionsStatus } from "./actionsControllerGetActionsStatus";
+import type { ActionsControllerGetActionsStatusesItem } from "./actionsControllerGetActionsStatusesItem";
 import type { ActionsControllerGetActionsType } from "./actionsControllerGetActionsType";
 
 export type ActionsControllerGetActionsParams = {
@@ -23,6 +25,10 @@ export type ActionsControllerGetActionsParams = {
    */
   status?: ActionsControllerGetActionsStatus;
   /**
+   * Filter actions by multiple statuses (supports CSV or repeated query params)
+   */
+  statuses?: ActionsControllerGetActionsStatusesItem[];
+  /**
    * Filter actions by intent
    */
   intent?: ActionsControllerGetActionsIntent;
@@ -34,4 +40,8 @@ export type ActionsControllerGetActionsParams = {
    * Filter actions by specific yield
    */
   yieldId?: string;
+  /**
+   * Filter by network
+   */
+  network?: ActionsControllerGetActionsNetwork;
 };
