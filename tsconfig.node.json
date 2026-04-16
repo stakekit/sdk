@@ -3,7 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
-    "target": "es2024"
+    "target": "es2024",
+    "outDir": "./dist/node",
+    "tsBuildInfoFile": "./dist/node/.tsbuildinfo.node.json"
   },
   "include": ["src", "orval.config.ts", "example"]
 }

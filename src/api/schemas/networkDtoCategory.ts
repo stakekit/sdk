@@ -4,7 +4,6 @@
 export type NetworkDtoCategory =
   (typeof NetworkDtoCategory)[keyof typeof NetworkDtoCategory];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const NetworkDtoCategory = {
   evm: "evm",
   cosmos: "cosmos",

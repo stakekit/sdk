@@ -4,7 +4,6 @@
 export type PendingActionDtoIntent =
   (typeof PendingActionDtoIntent)[keyof typeof PendingActionDtoIntent];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PendingActionDtoIntent = {
   enter: "enter",
   manage: "manage",

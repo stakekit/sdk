@@ -1,6 +1,6 @@
+import type { ActionArgumentsDto } from "./actionArgumentsDto";
 import type { ActionDtoExecutionPattern } from "./actionDtoExecutionPattern";
 import type { ActionDtoIntent } from "./actionDtoIntent";
-import type { ActionDtoRawArguments } from "./actionDtoRawArguments";
 import type { ActionDtoStatus } from "./actionDtoStatus";
 import type { ActionDtoType } from "./actionDtoType";
 import type { TransactionDto } from "./transactionDto";
@@ -35,11 +35,8 @@ export interface ActionDto {
   transactions: TransactionDto[];
   /** Transaction execution pattern - synchronous (submit one by one, wait for each), asynchronous (submit all at once), or batch (single transaction with multiple operations) */
   executionPattern: ActionDtoExecutionPattern;
-  /**
-   * Raw arguments exactly as submitted by the user for this action
-   * @nullable
-   */
-  rawArguments: ActionDtoRawArguments;
+  /** Raw arguments exactly as submitted by the user for this action */
+  rawArguments: ActionArgumentsDto | null;
   /** When the action was created */
   createdAt: string;
   /**

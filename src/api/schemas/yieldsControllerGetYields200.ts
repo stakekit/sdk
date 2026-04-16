@@ -1,5 +1,6 @@
 import type { PaginatedResponseDto } from "./paginatedResponseDto";
-import type { YieldsControllerGetYields200AllOf } from "./yieldsControllerGetYields200AllOf";
+import type { YieldDto } from "./yieldDto";
 
-export type YieldsControllerGetYields200 = PaginatedResponseDto &
-  YieldsControllerGetYields200AllOf;
+export type YieldsControllerGetYields200 = PaginatedResponseDto & {
+  items?: YieldDto[];
+};

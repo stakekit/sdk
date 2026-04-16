@@ -4,7 +4,6 @@
 export type ActionsQueryDtoType =
   (typeof ActionsQueryDtoType)[keyof typeof ActionsQueryDtoType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionsQueryDtoType = {
   STAKE: "STAKE",
   UNSTAKE: "UNSTAKE",

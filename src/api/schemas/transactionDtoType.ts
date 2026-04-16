@@ -4,7 +4,6 @@
 export type TransactionDtoType =
   (typeof TransactionDtoType)[keyof typeof TransactionDtoType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionDtoType = {
   SWAP: "SWAP",
   DEPOSIT: "DEPOSIT",

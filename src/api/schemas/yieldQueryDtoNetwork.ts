@@ -4,7 +4,6 @@
 export type YieldQueryDtoNetwork =
   (typeof YieldQueryDtoNetwork)[keyof typeof YieldQueryDtoNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldQueryDtoNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

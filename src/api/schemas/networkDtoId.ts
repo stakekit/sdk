@@ -3,7 +3,6 @@
  */
 export type NetworkDtoId = (typeof NetworkDtoId)[keyof typeof NetworkDtoId];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const NetworkDtoId = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

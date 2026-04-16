@@ -1,4 +1,4 @@
-import type { PendingActionDtoArguments } from "./pendingActionDtoArguments";
+import type { ArgumentSchemaDto } from "./argumentSchemaDto";
 import type { PendingActionDtoIntent } from "./pendingActionDtoIntent";
 import type { PendingActionDtoType } from "./pendingActionDtoType";
 
@@ -9,11 +9,8 @@ export interface PendingActionDto {
   type: PendingActionDtoType;
   /** Server-generated passthrough that must be included when executing the action */
   passthrough: string;
-  /**
-   * Argument schema required to execute this action
-   * @nullable
-   */
-  arguments?: PendingActionDtoArguments;
+  /** Argument schema required to execute this action */
+  arguments?: ArgumentSchemaDto | null;
   /**
    * Amount involved in the action, in human-readable token units (not the smallest denomination).
    * @nullable

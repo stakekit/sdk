@@ -4,7 +4,6 @@
 export type ActionArgumentsDtoInputTokenNetwork =
   (typeof ActionArgumentsDtoInputTokenNetwork)[keyof typeof ActionArgumentsDtoInputTokenNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActionArgumentsDtoInputTokenNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

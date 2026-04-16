@@ -1,7 +1,6 @@
 export type YieldsControllerGetYieldRewardRateHistoryPeriod =
   (typeof YieldsControllerGetYieldRewardRateHistoryPeriod)[keyof typeof YieldsControllerGetYieldRewardRateHistoryPeriod];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldsControllerGetYieldRewardRateHistoryPeriod = {
   "1d": "1d",
   "7d": "7d",

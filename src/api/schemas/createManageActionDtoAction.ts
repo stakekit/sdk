@@ -4,7 +4,6 @@
 export type CreateManageActionDtoAction =
   (typeof CreateManageActionDtoAction)[keyof typeof CreateManageActionDtoAction];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CreateManageActionDtoAction = {
   STAKE: "STAKE",
   UNSTAKE: "UNSTAKE",

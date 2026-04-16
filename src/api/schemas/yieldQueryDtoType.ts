@@ -4,7 +4,6 @@
 export type YieldQueryDtoType =
   (typeof YieldQueryDtoType)[keyof typeof YieldQueryDtoType];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldQueryDtoType = {
   staking: "staking",
   restaking: "restaking",

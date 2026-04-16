@@ -1,7 +1,6 @@
 export type YieldsControllerGetYieldsNetwork =
   (typeof YieldsControllerGetYieldsNetwork)[keyof typeof YieldsControllerGetYieldsNetwork];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldsControllerGetYieldsNetwork = {
   ethereum: "ethereum",
   "ethereum-goerli": "ethereum-goerli",

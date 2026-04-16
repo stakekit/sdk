@@ -1,7 +1,6 @@
 export type YieldsControllerGetYieldTvlHistoryPeriod =
   (typeof YieldsControllerGetYieldTvlHistoryPeriod)[keyof typeof YieldsControllerGetYieldTvlHistoryPeriod];
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const YieldsControllerGetYieldTvlHistoryPeriod = {
   "1d": "1d",
   "7d": "7d",
