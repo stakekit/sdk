@@ -41,7 +41,8 @@ export const customFetch = async <T>(
     return response.json() as Promise<T>;
   }
 
-  return Promise.reject(response);
+  const responseText = await response.text();
+  return Promise.reject(responseText);
 };
 
 const getUrl = ({
