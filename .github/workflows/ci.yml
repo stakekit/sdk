@@ -10,9 +10,15 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
-      - uses: jdx/mise-action@v2
+      - name: Install mise
+        run: |
+          curl https://mise.run | sh
+          echo "$HOME/.local/share/mise/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+          mise install
 
       - run: pnpm install --frozen-lockfile
 

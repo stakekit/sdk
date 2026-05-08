@@ -4,7 +4,7 @@ import type { TokenDto } from "./tokenDto";
 import type { YieldDtoNetwork } from "./yieldDtoNetwork";
 import type { YieldMechanicsDto } from "./yieldMechanicsDto";
 import type { YieldMetadataDto } from "./yieldMetadataDto";
-import type { YieldRiskDto } from "./yieldRiskDto";
+import type { YieldRiskSummaryDto } from "./yieldRiskSummaryDto";
 import type { YieldStateDto } from "./yieldStateDto";
 import type { YieldStatisticsDto } from "./yieldStatisticsDto";
 import type { YieldStatusDto } from "./yieldStatusDto";
@@ -28,8 +28,8 @@ export interface YieldDto {
   rewardRate: RewardRateDto;
   /** Key statistics and analytics for this yield opportunity */
   statistics?: YieldStatisticsDto;
-  /** Risk scores and provider ratings for this yield */
-  risk?: YieldRiskDto;
+  /** Top-level provider risk ratings for this yield. */
+  risk?: YieldRiskSummaryDto;
   /** Current availability of user actions like enter, exit, claim */
   status: YieldStatusDto;
   /** Descriptive metadata including name, logo, description, and documentation */

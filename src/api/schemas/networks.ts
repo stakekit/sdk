@@ -1,3 +1,6 @@
+/**
+ * Network for this address
+ */
 export type Networks = (typeof Networks)[keyof typeof Networks];
 
 export const Networks = {
