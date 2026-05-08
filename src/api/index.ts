@@ -14,7 +14,6 @@ import type {
   ProvidersControllerGetProviders200,
   ProvidersControllerGetProvidersParams,
   RewardRateHistoryResponseDto,
-  RiskParameterDto,
   SubmitHashDto,
   SubmitTransactionDto,
   TransactionDto,
@@ -22,8 +21,11 @@ import type {
   YieldBalancesDto,
   YieldBalancesRequestDto,
   YieldDto,
+  YieldRiskDto,
   YieldsControllerGetBalanceHistory200,
   YieldsControllerGetBalanceHistoryParams,
+  YieldsControllerGetYieldCampaigns200,
+  YieldsControllerGetYieldCampaignsParams,
   YieldsControllerGetYieldRewardRateHistoryParams,
   YieldsControllerGetYieldRewardsParams,
   YieldsControllerGetYields200,
@@ -83,14 +85,14 @@ export const getYield = (
 };
 
 /**
- * Retrieve risk metadata associated with a specific yield.
- * @summary Get risk metadata for a yield
+ * Retrieve consolidated risk ratings from third-party providers for a yield.
+ * @summary Get risk ratings for a yield
  */
 export const getYieldRisk = (
   yieldId: string,
-  options?: SecondParameter<typeof customFetch<RiskParameterDto[]>>,
+  options?: SecondParameter<typeof customFetch<YieldRiskDto>>,
 ) => {
-  return customFetch<RiskParameterDto[]>(
+  return customFetch<YieldRiskDto>(
     { url: `/v1/yields/${yieldId}/risk`, method: "GET" },
     options,
   );
@@ -191,6 +193,23 @@ export const getYieldValidators = (
 ) => {
   return customFetch<YieldsControllerGetYieldValidators200>(
     { url: `/v1/yields/${yieldId}/validators`, method: "GET", params },
+    options,
+  );
+};
+
+/**
+ * Returns campaign metadata for the given yield opportunity within the API key project scope.
+ * @summary Get yield campaigns
+ */
+export const getYieldCampaigns = (
+  yieldId: string,
+  params?: YieldsControllerGetYieldCampaignsParams,
+  options?: SecondParameter<
+    typeof customFetch<YieldsControllerGetYieldCampaigns200>
+  >,
+) => {
+  return customFetch<YieldsControllerGetYieldCampaigns200>(
+    { url: `/v1/yields/${yieldId}/campaigns`, method: "GET", params },
     options,
   );
 };
@@ -417,6 +436,9 @@ export type GetYieldTvlHistoryResult = NonNullable<
 >;
 export type GetYieldValidatorsResult = NonNullable<
   Awaited<ReturnType<typeof getYieldValidators>>
+>;
+export type GetYieldCampaignsResult = NonNullable<
+  Awaited<ReturnType<typeof getYieldCampaigns>>
 >;
 export type GetActionsResult = NonNullable<
   Awaited<ReturnType<typeof getActions>>

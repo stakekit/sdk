@@ -10,7 +10,7 @@ export const RewardDtoYieldSource = {
   protocol_incentive: "protocol_incentive",
   campaign_incentive: "campaign_incentive",
   points: "points",
-  lending_interest: "lending_interest",
+  lending: "lending",
   mev: "mev",
   real_world_asset_yield: "real_world_asset_yield",
   vault: "vault",
